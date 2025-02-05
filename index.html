@@ -2,14 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- Ajuste do viewport para responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Meta para SEO -->
-  <meta name="description" content="aMathyzin compartilha dicas, truques e ferramentas exclusivas para otimizar o desempenho do seu PC. Conheça nossos downloads, projetos inovadores e junte-se à nossa comunidade no Discord!">
+  <!-- Meta tags para SEO e redes sociais -->
+  <meta name="description" content="aMathyzin compartilha dicas, truques e ferramentas exclusivas para otimizar o desempenho do seu PC.">
   <meta name="author" content="aMathyzin">
-  
-  <!-- Meta tags para compartilhamento em redes sociais -->
   <meta property="og:title" content="aMathyzin - Downloads & Otimizações">
-  <meta property="og:description" content="aMathyzin compartilha dicas, truques e ferramentas exclusivas para otimizar o desempenho do seu PC.">
+  <meta property="og:description" content="Descubra os melhores downloads e otimizações para seu PC com aMathyzin.">
   <meta property="og:image" content="https://amathyzin.com/imagens/og-image.jpg">
   <meta property="og:url" content="https://amathyzin.com">
   <meta property="og:type" content="website">
@@ -23,54 +22,22 @@
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   
-  <!-- CSS de bibliotecas -->
+  <!-- CSS de FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <!-- Swiper CSS para o carrossel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
   <style>
-    /* Estilos para o popup com timer */
-    #popup-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 5000;
-    }
-    .popup {
-      position: relative;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 1rem;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-    .popup.show { opacity: 1; }
-    .timer {
-      height: 4px;
-      background-color: green;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      animation: timerBar 3s linear forwards;
-    }
-    @keyframes timerBar {
-      from { width: 100%; }
-      to { width: 0; }
-    }
-    
+    /* Estilos Gerais */
     html { scroll-behavior: smooth; }
-    
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
       --accent: #ffe66d;
       --dark: #1a1a1a;
-      --neon-glow: 0 0 15px rgba(255, 107, 107, 0.8);
+      --neon-glow: 0 0 15px rgba(255,107,107,0.8);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body {
@@ -80,7 +47,7 @@
       perspective: 1000px;
     }
     
-    /* Fundo 3D (galáxia de partículas) */
+    /* Fundo de Partículas (exemplo com Three.js) */
     #particle-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -92,7 +59,7 @@
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.5rem 5%;
-      background: rgba(25, 25, 25, 0.9);
+      background: rgba(25,25,25,0.9);
       backdrop-filter: blur(10px);
       position: fixed; width: 100%; z-index: 1000;
       border-bottom: 2px solid var(--primary);
@@ -100,14 +67,14 @@
     }
     .navbar::before {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(45deg, transparent 50%, rgba(255, 107, 107, 0.1));
+      background: linear-gradient(45deg, transparent 50%, rgba(255,107,107,0.1));
       pointer-events: none;
     }
     .logo {
       font-size: 2rem; font-weight: 700;
       background: linear-gradient(45deg, var(--primary), var(--secondary));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+      text-shadow: 0 0 15px rgba(255,107,107,0.5);
     }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links li { list-style: none; }
@@ -146,13 +113,13 @@
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.1), transparent 60%);
+      background: radial-gradient(circle at 50% 50%, rgba(255,107,107,0.1), transparent 60%);
     }
     .hero h1 {
       font-size: 4rem; text-transform: uppercase; letter-spacing: 0.5rem;
       margin-bottom: 2rem;
       animation: float 3s ease-in-out infinite;
-      text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+      text-shadow: 0 0 30px rgba(255,107,107,0.5);
       position: relative; z-index: 1;
     }
     .hero p {
@@ -168,7 +135,7 @@
       color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
       cursor: pointer; transition: 0.3s;
       position: relative; overflow: hidden;
-      box-shadow: 0 0 25px rgba(255, 107, 107, 0.5);
+      box-shadow: 0 0 25px rgba(255,107,107,0.5);
       z-index: 1;
     }
     .btn::before {
@@ -190,38 +157,66 @@
       100% { left: 150%; }
     }
     
-    /* Downloads */
-    .download-section {
+    /* Projetos Famosos */
+    .projects {
       padding: 5%;
       background: rgba(0,0,0,0.3);
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
-    .download-section h2 {
-      text-align: center; margin-bottom: 2rem;
-      font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;
+    .projects h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    .download-grid {
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
-    .download-card {
+    .project-box {
       background: rgba(255,255,255,0.05);
       border-radius: 15px;
       padding: 2rem;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.1);
-      transition: 0.3s; position: relative; overflow: hidden;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    .download-card:hover {
-      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    .project-box:hover {
+      transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     }
-    .download-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(45deg, transparent 50%, rgba(255,107,107,0.1));
-      pointer-events: none;
+    .project-box h3 {
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .project-box p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin: 1rem 0;
+    }
+    .video-container {
+      width: 100%;
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      height: 0;
+      margin-bottom: 1rem;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 10px;
+    }
+    .project-box .btn {
+      margin-top: 1rem;
     }
     
     /* Sobre */
@@ -229,15 +224,20 @@
       padding: 5%;
       background: rgba(0,0,0,0.4);
       text-align: center;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     .about h2 {
-      font-size: 2.5rem; margin-bottom: 1rem;
-      text-transform: uppercase; letter-spacing: 2px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .about p {
-      font-size: 1.1rem; max-width: 800px;
-      margin: 1rem auto; line-height: 1.6;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 1rem auto;
+      line-height: 1.6;
     }
     
     /* Projetos 3D */
@@ -245,60 +245,174 @@
       padding: 5%;
       background: rgba(0,0,0,0.5);
       text-align: center;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     .three-d-section h2 {
-      font-size: 2.5rem; margin-bottom: 1rem;
-      text-transform: uppercase; letter-spacing: 2px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     #cube-container {
-      width: 300px; height: 300px;
+      width: 300px;
+      height: 300px;
       margin: 0 auto;
     }
     
-    /* Vídeos */
+    /* Seção de Vídeos – Carrossel com Swiper */
     .videos {
       padding: 5%;
       background: rgba(0,0,0,0.2);
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     .videos h2 {
-      text-align: center; margin-bottom: 2rem;
-      font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    .video-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2rem;
-    }
-    .video-card {
+    /* Estrutura do Swiper */
+    .swiper-container {
+      width: 100%;
+      padding-bottom: 40px;
       position: relative;
+    }
+    .swiper-wrapper { }
+    .swiper-slide {
+      background: rgba(255,255,255,0.05);
       border-radius: 15px;
       overflow: hidden;
-      transform-style: preserve-3d;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
-    .video-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(45deg, rgba(78,205,196,0.3), rgba(255,107,107,0.3));
-      mix-blend-mode: screen;
-      pointer-events: none;
+    /* Slides que não são ativos apresentam blur e escala reduzida */
+    .swiper-slide:not(.swiper-slide-active) {
+      filter: blur(3px);
+      transform: scale(0.9);
     }
-    .video-card iframe {
-      width: 100%; height: 300px; border: none;
+    .swiper-slide.swiper-slide-active {
+      filter: none;
+      transform: scale(1);
+    }
+    .swiper-slide iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+    .video-info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .video-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .video-info p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .watch-button {
+      align-self: center;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(255,107,107,0.5);
+      transition: 0.3s;
+    }
+    .watch-button:hover { opacity: 0.9; }
+    
+    .autoplay-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 8px 12px;
+      border-radius: 20px;
+    }
+    .autoplay-toggle input[type="checkbox"] {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+    }
+    .autoplay-toggle input[type="checkbox"]:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    .autoplay-toggle input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 0;
+      left: 3px;
+      color: white;
+      font-size: 16px;
+    }
+    .autoplay-toggle label {
+      font-size: 0.9rem;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      background: rgba(0,0,0,0.7);
+      padding: 12px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: background 0.3s ease, color 0.3s ease;
+      z-index: 10;
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 22px;
     }
     
     /* Destaque para o Canal do YouTube */
     .highlight-channel {
       padding: 5%;
       background: rgba(0,0,0,0.6);
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       margin: 3rem 0;
     }
     .channel-container {
       position: relative;
       display: block;
-      width: 100%;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -352,15 +466,20 @@
       padding: 5%;
       background: rgba(0,0,0,0.3);
       text-align: center;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     .community h2 {
-      font-size: 2.5rem; margin-bottom: 1rem;
-      text-transform: uppercase; letter-spacing: 2px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .community p {
-      font-size: 1.1rem; max-width: 800px;
-      margin: 1rem auto; line-height: 1.6;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 1rem auto;
+      line-height: 1.6;
     }
     
     /* Footer */
@@ -371,7 +490,8 @@
       backdrop-filter: blur(10px);
       border-top: 2px solid var(--secondary);
       box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     .social-links {
       display: flex;
@@ -397,14 +517,9 @@
       text-decoration: none;
       margin: 0 0.5rem;
     }
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
+    .footer-links a:hover { text-decoration: underline; }
     
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px; height: 8px;
-    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #1a1a1a; }
     ::-webkit-scrollbar-thumb {
       border-radius: 4px;
@@ -419,10 +534,7 @@
     * { scrollbar-width: thin; scrollbar-color: #ff6b6b transparent; }
     
     @media (max-width: 768px) {
-      .navbar {
-        flex-direction: row;
-        padding: 1rem 3%;
-      }
+      .navbar { flex-direction: row; padding: 1rem 3%; }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -435,26 +547,20 @@
       }
       .nav-links.active { display: flex; }
       .hamburger { display: flex; }
-      .hero h1 {
-        font-size: 2.5rem;
-        letter-spacing: 0.3rem;
-      }
-      .hero p {
-        font-size: 1.2rem;
-        padding: 0 1rem;
-      }
+      .hero h1 { font-size: 2.5rem; letter-spacing: 0.3rem; }
+      .hero p { font-size: 1.2rem; padding: 0 1rem; }
       .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-      .download-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
       #cube-container { width: 200px; height: 200px; }
-      .video-card iframe { height: 200px; }
+      .swiper-slide iframe { height: 180px; }
     }
   </style>
 </head>
 <body>
-  <!-- Fundo de partículas -->
+  <!-- Fundo de Partículas -->
   <canvas id="particle-canvas"></canvas>
   
-  <!-- Container para popups -->
+  <!-- Container para Popups -->
   <div id="popup-container"></div>
 
   <header>
@@ -490,14 +596,42 @@
       </div>
     </section>
 
-    <!-- Downloads -->
-    <section class="download-section" id="downloads">
-      <h2 data-aos="fade-up">Downloads</h2>
-      <div class="download-grid">
-        <div class="download-card" data-aos="flip-left">
-          <h3>Haunted Optimization Pack</h3>
-          <p>Versão 3.2.1 | 256 MB</p>
-          <button class="btn"><i class="fas fa-download"></i> Download</button>
+    <!-- Projetos Famosos -->
+    <section class="projects" id="downloads">
+      <h2 data-aos="fade-up">PROJETOS FAMOSOS</h2>
+      <div class="projects-grid">
+        <!-- Projeto 1: RoBooster 2 -->
+        <div class="project-box" data-aos="flip-left">
+          <h3>RoBooster 2</h3>
+          <div class="video-container">
+            <iframe src="https://drive.google.com/file/d/1biF5hgcND6I1r5Xg6lvW0Pm-TLqqMyNj/preview" allow="autoplay"></iframe>
+          </div>
+          <p>O RoBooster 2 é um otimizador desenvolvido para integrar ao BloxStrap e melhorar o desempenho no Roblox.</p>
+          <a href="./downloads/arquivos/robooster2.html" target="_blank" rel="noopener noreferrer" class="btn">
+            Ver Projeto
+          </a>
+        </div>
+        <!-- Projeto 2: aMathyzin 3k Pack -->
+        <div class="project-box" data-aos="flip-left" data-aos-delay="100">
+          <h3>aMathyzin 3k Pack</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/Pxcaxgx_j-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>Este pack é uma otimização especial para os 3.000 inscritos do aMathyzin, focado em melhorar o desempenho geral do PC para jogos.</p>
+          <a href="./downloads/arquivos/3kpack.html" target="_blank" rel="noopener noreferrer" class="btn">
+            Ver Projeto
+          </a>
+        </div>
+        <!-- Projeto 3: BatchClick Pack -->
+        <div class="project-box" data-aos="flip-left" data-aos-delay="200">
+          <h3>BatchClick Pack</h3>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/iN5C3KDIGH8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>O BatchClick é um pack de otimização avançada para Windows que melhora o desempenho do sistema com precisão e eficiência.</p>
+          <a href="downloads/arquivos/batchclick.html" target="_blank" rel="noopener noreferrer" class="btn">
+            Ver Projeto
+          </a>
         </div>
       </div>
     </section>
@@ -522,8 +656,8 @@
         No YouTube, vídeos como "OTIMIZE SEU PC COM 1 COMANDO EM 1 MINUTO" demonstram otimizações rápidas e eficazes.
       </p>
       <div data-aos="fade-up" data-aos-delay="600">
-        <a href="https://amathyzin.com" target="_blank" rel="noopener noreferrer" class="btn">
-          <i class="fas fa-external-link-alt"></i> Site Oficial
+        <a href="./redirects/discord.html" target="_blank" rel="noopener noreferrer" class="btn">
+          <i class="fas fa-external-link-alt"></i> COMUNIDADE OFICIAL
         </a>
       </div>
     </section>
@@ -542,19 +676,120 @@
       </div>
     </section>
 
-    <!-- Vídeos -->
+    <!-- Seção de Vídeos Recentes – Carrossel com Swiper -->
     <section class="videos" id="videos">
-      <h2 data-aos="fade-up">Vídeos</h2>
-      <div class="video-container">
-        <div class="video-card" data-aos="parallax">
-          <iframe src="https://www.youtube.com/embed/teste" 
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
+      <h2 data-aos="fade-up">Vídeos Recentes</h2>
+      <div class="swiper-container" data-aos="fade-up">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/ylDMxtM9zTs" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>Otimização pro Roblox - RoBooster</h3>
+              <p>Uma otimização exclusiva em integração com o BloxStrap!</p>
+              <a href="https://www.youtube.com/watch?v=ylDMxtM9zTs" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 1: Extra -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/RzapmonmPp4" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>aMathyBoost</h3>
+              <p>Otimizador de PC avançado desenvolvido por Memphis. Feito para todos os tipos de PC.</p>
+              <a href="https://www.youtube.com/watch?v=RzapmonmPp4" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 2: Extra -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/ciHfcpppItg" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>Terminal Optimizer 1.0</h3>
+              <p>Otimize seu PC com esta poderosa ferramenta. Desenvolvida por Seven.</p>
+              <a href="https://www.youtube.com/watch?v=ciHfcpppItg" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 3: Extra -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/iN5C3KDIGH8" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>BatchClick Pack</h3>
+              <p>Um pack diferenciado com botões em arquivos batch. Feito para computadores médios e fracos.</p>
+              <a href="https://www.youtube.com/watch?v=iN5C3KDIGH8" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 4: Original (Central) -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/E26PVIiKWbQ" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>Terminal Optimizer 1.0</h3>
+              <p>Um vídeo ensinando a otimizar o computador em conjunto com a ferramenta de otimização exclusiva Terminal Optimizer.</p>
+              <a href="https://www.youtube.com/watch?v=E26PVIiKWbQ" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+              <!-- Checkbox de controle de rolagem automática (apenas no slide central) -->
+              <div class="autoplay-toggle">
+                <input type="checkbox" id="autoplayToggle" checked>
+                <label for="autoplayToggle">Rolagem Automática</label>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 5: Original -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/7qV-fDkxeVc" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>Correção de Erros do Valorant</h3>
+              <p>Um tutorial dinâmico ensinando a corrigir todos os problemas e erros do Valorant.</p>
+              <a href="https://www.youtube.com/watch?v=7qV-fDkxeVc" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 6: Extra -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/Pxcaxgx_j-0" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>aMathyzin 3k Pack</h3>
+              <p>O pack mais completo do canal. Feito quando atingimos 3.000 inscritos.</p>
+              <a href="https://www.youtube.com/watch?v=Pxcaxgx_j-0" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 7: Extra -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/ceBDhpBqe08" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>Como funcionam as otimizações</h3>
+              <p>Um vídeo onde eu explico como as otimizações de PC funcionam.</p>
+              <a href="https://www.youtube.com/watch?v=ceBDhpBqe08" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
+          <!-- Slide 8: Extra -->
+          <div class="swiper-slide">
+            <iframe src="https://www.youtube.com/embed/YG5O3CB3nWk" allowfullscreen></iframe>
+            <div class="video-info">
+              <h3>Otimizar o PC em 1 Minuto</h3>
+              <p>Nesse vídeo eu ensino a otimizar o PC com apenas um comando em um minuto.</p>
+              <a href="https://www.youtube.com/watch?v=YG5O3CB3nWk" target="_blank" class="watch-button">
+                <i class="fab fa-youtube"></i> Assistir no YouTube
+              </a>
+            </div>
+          </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
     </section>
 
-    <!-- Destaque para o Canal do YouTube -->
     <section class="highlight-channel" id="youtube-channel">
       <div class="channel-container">
         <h2 class="channel-title">Inscreva-se no nosso canal no YouTube!</h2>
@@ -584,7 +819,7 @@
   <footer>
     <div class="social-links" data-aos="fade-up">
       <a href="https://github.com/amathyzin" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-      <a href="https://www.youtube.com/@amathyzin" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.youtube.com/@aMathyzin" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
       <a href="https://amathyzin.com/discord" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
     </div>
     <div class="footer-links" data-aos="fade-up">
@@ -594,24 +829,22 @@
     <p data-aos="fade-up">&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
   </footer>
   
-  <!-- Scripts Externos -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
   <script src="https://apis.google.com/js/platform.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script src="./scripts/smooth-scroll.js" defer></script>
   
   <!-- Script Inline -->
   <script defer>
     document.addEventListener("DOMContentLoaded", function() {
-      // Inicializa AOS
       AOS.init({
         duration: 1000,
         once: true,
         easing: 'ease-in-out-quad'
       });
       
-      // Configuração do Three.js para o fundo de partículas
       const canvas = document.getElementById('particle-canvas');
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -685,7 +918,7 @@
       }
       animateCube();
       
-      // Animações GSAP
+      // Animações GSAP para a navbar
       gsap.from('.logo', { duration: 1, opacity: 0, y: -50 });
       gsap.from('.nav-links a', {
         duration: 1,
@@ -704,7 +937,7 @@
         navLinks.classList.toggle('active');
       });
       
-      // Popup com timer
+      // Popup com timer (exemplo simples)
       function showPopup(message) {
         const popup = document.createElement("div");
         popup.className = "popup";
@@ -728,10 +961,9 @@
         }
       });
       
-      // Efeito 3D reativo para a imagem do canal
+      // Efeito 3D reativo para a imagem do canal (exemplo)
       const channelContainer = document.querySelector('.channel-container');
       const channelImage = document.querySelector('.channel-image');
-      
       channelContainer.addEventListener('mousemove', (e) => {
         const rect = channelContainer.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -744,13 +976,74 @@
         const rotateY = deltaX * -10;
         channelImage.style.transform = `perspective(1000px) rotateX(${30 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
       });
-      
       channelContainer.addEventListener('mouseleave', () => {
         channelImage.style.transform = 'perspective(1000px) rotateX(30deg) rotateY(-10deg)';
       });
+      
+      // Inicialização do Swiper para o carrossel de vídeos
+      var swiper = new Swiper('.swiper-container', {
+        initialSlide: 4, 
+        slidesPerView: 3,
+        spaceBetween: 30,
+        centeredSlides: true, 
+        loop: true,
+        loopedSlides: 9, 
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        autoplay: {
+          delay: 3000, // 3 segundos
+          disableOnInteraction: false
+        },
+        breakpoints: {
+          320: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 }
+        },
+        speed: 600
+      });
+      
+      // Pausa o autoplay ao interagir com um slide
+      const slides = document.querySelectorAll('.swiper-slide');
+      slides.forEach(slide => {
+        slide.addEventListener('mouseenter', () => {
+          swiper.autoplay.stop();
+        });
+        slide.addEventListener('mouseleave', () => {
+          if(document.getElementById('autoplayToggle').checked) {
+            swiper.autoplay.start();
+          }
+        });
+      });
+      
+      // Controle de rolagem automática via checkbox
+      function updateAutoplayToggle() {
+        document.querySelectorAll('.autoplay-toggle').forEach(el => el.remove());
+        const toggle = document.createElement("div");
+        toggle.className = "autoplay-toggle";
+        toggle.innerHTML = '<input type="checkbox" id="autoplayToggle" checked><label for="autoplayToggle">Rolagem Automática</label>';
+        const activeSlide = document.querySelector('.swiper-slide.swiper-slide-active');
+        if (activeSlide) {
+          activeSlide.appendChild(toggle);
+        }
+        toggle.querySelector('input').addEventListener("change", function() {
+          if (this.checked) {
+            swiper.autoplay.start();
+          } else {
+            swiper.autoplay.stop();
+          }
+        });
+      }
+      
+      swiper.on('slideChangeTransitionEnd', function() {
+        updateAutoplayToggle();
+      });
+
+      updateAutoplayToggle();
     });
   </script>
   <script src="./scripts/nan.js"></script>
-
+  <script src="scripts/context.js"></script>
 </body>
 </html>
