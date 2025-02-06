@@ -5,20 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Permite o uso da API Compute Pressure no mesmo domínio -->
   <meta http-equiv="Permissions-Policy" content="compute-pressure=(self)">
-  <title>aMathyzin - Downloads</title>
-  
-  <!-- Meta Tags para redes sociais -->
-  <meta property="og:title" content="aMathyzin - Downloads">
-  <meta property="og:description" content="Downloads e senhas disponíveis para otimização do seu PC!">
+
+  <!-- Título e Descrição SEO -->
+  <title>aMathyzin - Downloads | Otimizações e Ferramentas para seu PC</title>
+  <meta name="description" content="Baixe ferramentas, otimizações e códigos gratuitos para melhorar a velocidade e o desempenho do seu PC e sistemas. Confira nossos downloads exclusivos e atualizados.">
+  <meta name="keywords" content="aMathyzin, downloads, otimizações, ferramentas, performance, velocidade, PC, sistemas, gratuitas">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="aMathyzin">
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn e outras plataformas) -->
+  <meta property="og:title" content="aMathyzin - Downloads | Otimizações e Ferramentas para seu PC">
+  <meta property="og:description" content="Baixe ferramentas e otimizações gratuitas para melhorar a velocidade e o desempenho do seu PC e sistemas. Confira nossos downloads e códigos fontes.">
   <meta property="og:image" content="https://amathyzin.com/icon.png">
-  <meta property="og:url" content="https://amathyzin.com/downloads">
+  <meta property="og:url" content="https://amathyzin.com/downloads/arquivos.html">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="aMathyzin">
+  <meta property="og:locale" content="pt_BR">
+  <!-- <meta property="fb:app_id" content="SEU_FACEBOOK_APP_ID"> -->
+
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="aMathyzin - Downloads">
-  <meta name="twitter:description" content="Downloads e senhas disponíveis para otimização do seu PC!">
+  <meta name="twitter:title" content="aMathyzin - Downloads | Otimizações e Ferramentas para seu PC">
+  <meta name="twitter:description" content="Baixe gratuitamente as melhores otimizações e ferramentas para acelerar o desempenho do seu PC e sistemas.">
   <meta name="twitter:image" content="https://amathyzin.com/icon.png">
+  <meta name="twitter:site" content="@amathyzin">
+  <meta name="twitter:creator" content="@amathyzin">
+
+  <!-- Pinterest Rich Pins -->
+  <meta name="pinterest-rich-pin" content="true">
+
+  <!-- Schema.org / Google+ Markup -->
+  <meta itemprop="name" content="aMathyzin - Downloads | Otimizações e Ferramentas para seu PC">
+  <meta itemprop="description" content="Baixe gratuitamente as melhores otimizações e ferramentas para acelerar o desempenho do seu PC e sistemas.">
+  <meta itemprop="image" content="https://amathyzin.com/icon.png">
   
   <!-- Ícones, AOS e fontes -->
+  <link rel="icon" href="https://amathyzin.com/icon.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
@@ -26,11 +49,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
-     @media only screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-  }
-}
+    @media only screen and (max-width: 768px) {
+      html, body {
+        overflow-x: hidden;
+      }
+    }
     /* Container para os popups */
     #popup-container {
       position: fixed;
@@ -41,7 +64,6 @@
       gap: 10px;
       z-index: 5000;
     }
-    
     /* Popup Minimalista */
     .popup {
       position: relative;
@@ -56,7 +78,6 @@
     .popup.show {
       opacity: 1;
     }
-    
     /* Barra de timer verde */
     .timer {
       height: 4px;
@@ -71,8 +92,7 @@
       from { width: 100%; }
       to   { width: 0; }
     }
-    
-    /* Separador entre seções de projetos */
+    /* Separador entre seções de downloads */
     .download-section {
       padding: 5% 10%;
       display: flex;
@@ -86,10 +106,8 @@
       border-top: 2px solid rgba(255, 255, 255, 0.2);
       padding-top: 2rem;
     }
-    
     /* Fallback para smooth scroll via CSS */
     html { scroll-behavior: smooth; }
-    
     /* Variáveis e reset */
     :root {
       --primary: #ff6b6b;
@@ -111,12 +129,10 @@
       perspective: 1000px;
       position: relative;
     }
-    
     /* Novo espaçamento para que o conteúdo não fique sob a topbar fixa */
     main {
       padding-top: 80px;
     }
-    
     /* Loader Animado */
     #loader {
       position: fixed;
@@ -151,7 +167,6 @@
       0%, 100% { transform: scale(0); }
       50% { transform: scale(1); }
     }
-    
     /* Navbar */
     .navbar {
       display: flex;
@@ -218,7 +233,6 @@
       background: white;
       transition: all 0.3s ease;
     }
-    
     /* Seções de Downloads */
     section.download-section {
       padding: 5% 10%;
@@ -251,7 +265,6 @@
     }
     .download-buttons { margin-top: 1rem; }
     .download-buttons .btn { display: inline-block; margin: 0.5rem; }
-    
     /* Botões Centralizados */
     .btn {
       display: block;
@@ -289,7 +302,6 @@
       0% { left: -50%; }
       100% { left: 150%; }
     }
-    
     /* Footer */
     footer {
       background: rgba(25,25,25,0.9);
@@ -327,7 +339,6 @@
     .footer-links a:hover {
       text-decoration: underline;
     }
-    
     /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #1a1a1a; }
@@ -345,7 +356,6 @@
       scrollbar-width: thin;
       scrollbar-color: #ff6b6b transparent;
     }
-    
     /* Responsividade para telas menores */
     @media (max-width: 768px) {
       .navbar {
@@ -370,7 +380,6 @@
       }
       .download-video iframe { height: 200px; }
     }
-    
     /* Popup para notificações (fixo) */
     #popup-container {
       position: fixed;
@@ -390,9 +399,7 @@
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
-    .popup.show {
-      opacity: 1;
-    }
+    .popup.show { opacity: 1; }
     .timer {
       height: 4px;
       background-color: green;
@@ -433,7 +440,7 @@
       <ul class="nav-links">
         <li><a href="../index.html"><i class="fas fa-home"></i> Início</a></li>
         <!-- Link de Downloads modificado -->
-        <li><a href="#" id="downloads-link"><i class="fas fa-download"></i> Downloads</a></li>
+        <li><a href="https://amathyzin.com/downloads/arquivos.html" id="downloads-link"><i class="fas fa-download"></i> Downloads</a></li>
         <li><a href="../info/sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
         <li><a href="../redirects/github.html"><i class="fab fa-github"></i> GitHub</a></li>
         <li><a href="../redirects/discord.html"><i class="fab fa-discord"></i> Comunidade</a></li>
@@ -444,7 +451,7 @@
   
   <!-- Main Content: Seções de Downloads -->
   <main>
-    <!-- NOVA Seção 1: aMathyBoost -->
+    <!-- Seção 1: aMathyBoost -->
     <section class="download-section" id="amathyboost">
       <div class="download-text" data-aos="fade-right">
         <h2>
@@ -566,7 +573,7 @@
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=VADHdVQGWB4" target="_blank" style="color: var(--primary);">FPSPack FirstBoost</a></p>
         <p><strong>Área De Download:</strong></p>
         <div class="download-buttons">
-          <a class="btn" href="/downloads/fpspack" target="_blank">Mais Inform.</a>
+          <a class="btn" href="/downloads/arquivos/fpspack" target="_blank">Mais Inform.</a>
         </div>
       </div>
       <div class="download-video" data-aos="fade-left">
@@ -690,7 +697,6 @@
         <iframe src="https://www.youtube.com/embed/hGUIwqxcqN8" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
   </main>
   
   <!-- Footer -->
