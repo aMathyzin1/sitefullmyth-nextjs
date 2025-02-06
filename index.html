@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
   <style>
-    /* Container de Popups */
+    /* Container de Popups (para notificações simples) */
     #popup-container {
       position: fixed;
       top: 20px;
@@ -73,11 +73,6 @@
       }
     }
     
-    /* Estilos Gerais */
-    html {
-      /* Caso utilize GSAP para scroll suave, comente a linha abaixo */
-      /* scroll-behavior: smooth; */
-    }
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
@@ -98,7 +93,7 @@
       perspective: 1000px;
     }
     
-    /* Fundo de Partículas (exemplo com Three.js) */
+    /* Fundo de Partículas (Three.js) */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -234,6 +229,7 @@
       overflow: hidden;
       box-shadow: 0 0 25px rgba(255,107,107,0.5);
       z-index: 1;
+      text-decoration: none;
     }
     .btn::before {
       content: '';
@@ -341,7 +337,7 @@
       line-height: 1.6;
     }
     
-    /* Projetos 3D */
+    /* Projetos 3D / Inovações */
     .three-d-section {
       padding: 5%;
       background: rgba(0,0,0,0.5);
@@ -355,10 +351,49 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
+    /* Container para o elemento 3D */
     #cube-container {
       width: 300px;
       height: 300px;
-      margin: 0 auto;
+      margin: 0 auto 2rem auto;
+    }
+    /* Cards adicionais em Projetos e Inovações */
+    .innovations-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .card a:hover {
+      background: var(--secondary);
     }
     
     /* Seção de Vídeos – Carrossel com Swiper */
@@ -437,150 +472,149 @@
       opacity: 0.9;
     }
     
-    .autoplay-toggle {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 8px 12px;
-      border-radius: 20px;
-    }
-    .autoplay-toggle input[type="checkbox"] {
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #fff;
-      border-radius: 4px;
-      outline: none;
-      cursor: pointer;
-      position: relative;
-    }
-    .autoplay-toggle input[type="checkbox"]:checked {
-      background-color: var(--primary);
-      border-color: var(--primary);
-    }
-    .autoplay-toggle input[type="checkbox"]:checked::after {
-      content: '✓';
-      position: absolute;
-      top: 0;
-      left: 3px;
-      color: white;
-      font-size: 16px;
-    }
-    .autoplay-toggle label {
-      font-size: 0.9rem;
-      color: white;
-      cursor: pointer;
-    }
-    
+    /* Botões de Navegação do Carrossel (Swiper) - Estilizados */
     .swiper-button-next,
     .swiper-button-prev {
-      background: rgba(0,0,0,0.7);
-      padding: 12px;
+      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+      padding: 15px;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--primary);
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
       z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     .swiper-button-next:hover,
     .swiper-button-prev:hover {
       background: var(--primary);
       color: white;
+      transform: scale(1.1);
     }
     .swiper-button-next::after,
     .swiper-button-prev::after {
-      font-size: 22px;
+      font-size: 26px;
+      font-weight: bold;
     }
     
-    /* Destaque para o Canal do YouTube */
+    /* Seção de Inscrição no Canal (Highlight Channel) */
     .highlight-channel {
       padding: 5%;
-      background: rgba(0,0,0,0.6);
-      position: relative;
-      z-index: 1;
+      background: linear-gradient(135deg, rgba(25,25,25,0.9), rgba(0,0,0,0.7));
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
       margin: 3rem 0;
     }
     .channel-container {
-      position: relative;
-      display: block;
-      max-width: 1000px;
-      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .channel-info {
+      flex: 1;
+      color: #fff;
+      text-align: left;
+      padding: 1rem;
     }
     .channel-title {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .channel-description {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .subscribe-buttons {
+      margin-bottom: 1.5rem;
+    }
+    .btn-subscribe {
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
       color: white;
-      font-size: 2rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
       font-weight: bold;
-      text-transform: uppercase;
-      text-align: center;
-      text-shadow: 0 0 10px red;
-    }
-    .channel-image {
-      display: block;
-      width: 100%;
-      border: 2px solid var(--primary);
-      border-radius: 10px;
-      min-height: 400px;
-      object-fit: cover;
-      transform: perspective(1000px) rotateX(30deg) rotateY(-10deg);
-      transition: transform 0.5s;
-    }
-    .btn-youtube {
+      text-decoration: none;
+      transition: background 0.3s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 1rem 2rem;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      border: none;
-      border-radius: 50px;
+    }
+    .btn-subscribe:hover {
+      background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+    }
+    .social-media a {
+      font-size: 2rem;
       color: white;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 0 25px rgba(255,107,107,0.5);
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .social-media a:hover {
+      transform: scale(1.2);
+    }
+    .channel-image-container {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+    }
+    .channel-image {
+      max-width: 100%;
+      border: 5px solid var(--primary);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     
-    /* Comunidade */
+    /* Comunidade - Área Repaginada */
     .community {
       padding: 5%;
-      background: rgba(0,0,0,0.3);
-      text-align: center;
-      position: relative;
-      z-index: 1;
+      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin: 3rem 0;
     }
-    .community h2 {
+    .community-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .community-info {
+      flex: 1;
+      color: #fff;
+      padding: 1rem;
+      text-align: left;
+    }
+    .community-info h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
     }
-    .community p {
+    .community-info p {
       font-size: 1.1rem;
-      max-width: 800px;
-      margin: 1rem auto;
+      margin-bottom: 1.5rem;
       line-height: 1.6;
+    }
+    .community-info .btn {
+      margin-top: 1rem;
+    }
+    .discord-widget {
+      flex: 1;
+      text-align: center;
+    }
+    /* Widget do Discord */
+    .discord-widget iframe {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     
     /* Footer */
@@ -687,6 +721,109 @@
       .swiper-slide iframe {
         height: 180px;
       }
+      .channel-container {
+        flex-direction: column;
+      }
+      .channel-info, .channel-image-container {
+        text-align: center;
+      }
+      .community-container {
+        flex-direction: column;
+      }
+      .community-info, .discord-widget {
+        text-align: center;
+      }
+    }
+
+    .autoplay-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 8px 12px;
+      border-radius: 20px;
+    }
+    .autoplay-toggle input[type="checkbox"] {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+    }
+    .autoplay-toggle input[type="checkbox"]:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    .autoplay-toggle input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 0;
+      left: 3px;
+      color: white;
+      font-size: 16px;
+    }
+    .autoplay-toggle label {
+      font-size: 0.9rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ==============================
+       Modal Popup para "Saiba Mais"
+       ============================== */
+    .modal {
+      display: none; /* escondido por padrão */
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background-color: #1a1a1a;
+      margin: auto;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 25px rgba(255,107,107,0.5);
+      animation: modalFadeIn 0.3s ease-in-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .modal p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -694,7 +831,7 @@
   <!-- Fundo de Partículas -->
   <canvas id="particle-canvas"></canvas>
   
-  <!-- Container para Popups -->
+  <!-- Container para Popups simples (ex.: "Você já está aqui!") -->
   <div id="popup-container"></div>
 
   <header>
@@ -797,14 +934,47 @@
       </div>
     </section>
 
-    <!-- Projetos 3D -->
+    <!-- Projetos 3D / Inovações -->
     <section class="three-d-section" id="projects">
       <h2 data-aos="fade-up">Projetos e Inovações</h2>
       <p data-aos="fade-up" data-aos-delay="100">
-        Confira os projetos inovadores do aMathyzin, com otimizações para Windows e ferramentas exclusivas.
+        Explore nossas inovações e veja como unimos tecnologia e criatividade para desenvolver soluções únicas.
       </p>
+      <!-- Elemento 3D Interativo: Cubo com faces coloridas -->
       <div id="cube-container" data-aos="fade-up" data-aos-delay="200"></div>
-      <div data-aos="fade-up" data-aos-delay="300">
+      
+      <!-- Conteúdo adicional: Cards com inovações -->
+      <div class="innovations-cards" data-aos="fade-up" data-aos-delay="300">
+        <div class="card">
+          <h3>Interface Futurista</h3>
+          <p>Desenvolvemos interfaces com design avançado que combinam interatividade e estética moderna.</p>
+          <a href="#" class="popup-link" 
+             data-title="Interface Futurista"
+             data-text="Descubra como nossas interfaces futuristas unem design inovador e tecnologia de ponta para criar experiências visuais imersivas e interativas. Cada detalhe é cuidadosamente projetado para otimizar a interação do usuário e garantir um visual único.">
+             Saiba Mais
+          </a>
+        </div>
+        <div class="card">
+          <h3>Otimização Inteligente</h3>
+          <p>Soluções que monitoram e otimizam recursos do PC em tempo real, garantindo performance máxima.</p>
+          <a href="#" class="popup-link" 
+             data-title="Otimização Inteligente"
+             data-text="Nossa solução de Otimização Inteligente monitora e ajusta dinamicamente os recursos do seu PC, proporcionando desempenho máximo sem comprometer a segurança. Ideal para usuários que buscam eficiência e praticidade.">
+             Saiba Mais
+          </a>
+        </div>
+        <div class="card">
+          <h3>Ferramentas Exclusivas</h3>
+          <p>Ferramentas desenvolvidas para melhorar a experiência do usuário e a eficiência do sistema.</p>
+          <a href="#" class="popup-link" 
+             data-title="Ferramentas Exclusivas"
+             data-text="Explore nossas Ferramentas Exclusivas, desenvolvidas para oferecer soluções personalizadas que elevam a experiência de uso do seu sistema. Cada ferramenta é testada e refinada para garantir resultados de alta performance.">
+             Saiba Mais
+          </a>
+        </div>
+      </div>
+      
+      <div data-aos="fade-up" data-aos-delay="400">
         <a href="https://github.com/amathyzin" target="_blank" rel="noopener noreferrer" class="btn">
           <i class="fab fa-github"></i> Acesse o GitHub
         </a>
@@ -816,57 +986,58 @@
       <h2 data-aos="fade-up">Vídeos Recentes</h2>
       <div class="swiper-container" data-aos="fade-up">
         <div class="swiper-wrapper">
+          <!-- Slide 1 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/ylDMxtM9zTs" allowfullscreen></iframe>
             <div class="video-info">
               <h3>Otimização pro Roblox - RoBooster</h3>
               <p>Uma otimização exclusiva em integração com o BloxStrap!</p>
               <a href="https://www.youtube.com/watch?v=ylDMxtM9zTs" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 1: Extra -->
+          <!-- Slide 2 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/RzapmonmPp4" allowfullscreen></iframe>
             <div class="video-info">
               <h3>aMathyBoost</h3>
               <p>Otimizador de PC avançado desenvolvido por Memphis. Feito para todos os tipos de PC.</p>
               <a href="https://www.youtube.com/watch?v=RzapmonmPp4" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 2: Extra -->
+          <!-- Slide 3 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/ciHfcpppItg" allowfullscreen></iframe>
             <div class="video-info">
               <h3>Terminal Optimizer 1.0</h3>
               <p>Otimize seu PC com esta poderosa ferramenta. Desenvolvida por Seven.</p>
               <a href="https://www.youtube.com/watch?v=ciHfcpppItg" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 3: Extra -->
+          <!-- Slide 4 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/iN5C3KDIGH8" allowfullscreen></iframe>
             <div class="video-info">
               <h3>BatchClick Pack</h3>
               <p>Um pack diferenciado com botões em arquivos batch. Feito para computadores médios e fracos.</p>
               <a href="https://www.youtube.com/watch?v=iN5C3KDIGH8" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 4: Original (Central) -->
+          <!-- Slide 5 (Central) -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/E26PVIiKWbQ" allowfullscreen></iframe>
             <div class="video-info">
               <h3>Terminal Optimizer 1.0</h3>
-              <p>Um vídeo ensinando a otimizar o computador em conjunto com a ferramenta de otimização exclusiva Terminal Optimizer.</p>
+              <p>Vídeo ensinando a otimizar o PC com a ferramenta exclusiva Terminal Optimizer.</p>
               <a href="https://www.youtube.com/watch?v=E26PVIiKWbQ" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
               <!-- Checkbox de controle de rolagem automática (apenas no slide central) -->
               <div class="autoplay-toggle">
@@ -875,47 +1046,47 @@
               </div>
             </div>
           </div>
-          <!-- Slide 5: Original -->
+          <!-- Slide 6 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/7qV-fDkxeVc" allowfullscreen></iframe>
             <div class="video-info">
               <h3>Correção de Erros do Valorant</h3>
-              <p>Um tutorial dinâmico ensinando a corrigir todos os problemas e erros do Valorant.</p>
+              <p>Tutorial dinâmico para corrigir problemas e erros do Valorant.</p>
               <a href="https://www.youtube.com/watch?v=7qV-fDkxeVc" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 6: Extra -->
+          <!-- Slide 7 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/Pxcaxgx_j-0" allowfullscreen></iframe>
             <div class="video-info">
               <h3>aMathyzin 3k Pack</h3>
-              <p>O pack mais completo do canal. Feito quando atingimos 3.000 inscritos.</p>
+              <p>O pack mais completo do canal, feito quando atingimos 3.000 inscritos.</p>
               <a href="https://www.youtube.com/watch?v=Pxcaxgx_j-0" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 7: Extra -->
+          <!-- Slide 8 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/ceBDhpBqe08" allowfullscreen></iframe>
             <div class="video-info">
               <h3>Como funcionam as otimizações</h3>
-              <p>Um vídeo onde eu explico como as otimizações de PC funcionam.</p>
+              <p>Vídeo explicativo sobre o funcionamento das otimizações de PC.</p>
               <a href="https://www.youtube.com/watch?v=ceBDhpBqe08" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
-          <!-- Slide 8: Extra -->
+          <!-- Slide 9 -->
           <div class="swiper-slide">
             <iframe src="https://www.youtube.com/embed/YG5O3CB3nWk" allowfullscreen></iframe>
             <div class="video-info">
               <h3>Otimizar o PC em 1 Minuto</h3>
-              <p>Nesse vídeo eu ensino a otimizar o PC com apenas um comando em um minuto.</p>
+              <p>Aprenda a otimizar seu PC com apenas um comando em 1 minuto.</p>
               <a href="https://www.youtube.com/watch?v=YG5O3CB3nWk" target="_blank" class="watch-button">
-                <i class="fab fa-youtube"></i> Assistir no YouTube
+                <i class="fab fa-youtube"></i> Assistir
               </a>
             </div>
           </div>
@@ -926,26 +1097,46 @@
     </section>
 
     <section class="highlight-channel" id="youtube-channel">
-      <div class="channel-container">
-        <h2 class="channel-title">Inscreva-se no nosso canal no YouTube!</h2>
-        <img src="assets/img/canal.PNG" alt="Print do canal com inscritos" class="channel-image">
-        <a href="./redirects/youtube.html" target="_blank" rel="noopener noreferrer" class="btn-youtube">
-          <i class="fab fa-youtube"></i> Ir para o Canal
-        </a>
+      <div class="channel-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="channel-info">
+          <h2 class="channel-title">Inscreva-se no nosso canal no YouTube!</h2>
+          <p class="channel-description">
+            Fique por dentro das novidades, dicas e tutoriais exclusivos para otimizar o seu PC.
+          </p>
+          <div class="subscribe-buttons">
+            <a href="./redirects/youtube.html" target="_blank" rel="noopener noreferrer" class="btn-subscribe">
+              <i class="fab fa-youtube"></i> Inscreva-se Agora
+            </a>
+          </div>
+          <div class="social-media">
+            <a href="https://www.youtube.com/@aMathyzin" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/amathyzin" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/amathyzin" target="_blank"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="channel-image-container" data-aos="zoom-in" data-aos-delay="300">
+          <img src="assets/img/canal.PNG" alt="Print do canal com inscritos" class="channel-image">
+        </div>
       </div>
     </section>
 
-    <!-- Comunidade -->
     <section class="community" id="community">
-      <h2 data-aos="fade-up">Comunidade</h2>
-      <p data-aos="fade-up" data-aos-delay="100">
-        Junte-se ao Discord do aMathyzin para suporte, sorteios e acesso antecipado a conteúdos exclusivos.
-        <br><strong>AMATHYZIN.COM</strong>
-      </p>
-      <div data-aos="fade-up" data-aos-delay="200">
-        <a href="https://amathyzin.com/discord" target="_blank" rel="noopener noreferrer" class="btn">
-          <i class="fab fa-discord"></i> Acesse o Discord
-        </a>
+      <div class="community-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="community-info">
+          <h2>Junte-se à nossa Comunidade!</h2>
+          <p>
+            Faça parte do servidor oficial do aMathyzin no Discord, onde você terá acesso a suporte exclusivo, sorteios, dicas e interações com outros entusiastas de tecnologia e otimização. Não perca as novidades e fique por dentro de todos os nossos projetos.
+          </p>
+          <a href="https://amathyzin.com/discord" target="_blank" rel="noopener noreferrer" class="btn">
+            <i class="fab fa-discord"></i> Entrar no Discord
+          </a>
+          <p style="margin-top:1rem; font-size:0.9rem; opacity:0.8;">
+            (Ou acesse pelo widget ao lado)
+          </p>
+        </div>
+        <div class="discord-widget" data-aos="zoom-in" data-aos-delay="300">
+          <iframe src="https://discord.com/widget?id=1210446694953779260&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        </div>
       </div>
     </section>
   </main>
@@ -963,6 +1154,14 @@
     </div>
     <p data-aos="fade-up">&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
   </footer>
+
+  <div id="popup-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-text"></p>
+    </div>
+  </div>
   
   <!-- Bibliotecas JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
@@ -972,7 +1171,6 @@
   <script src="https://apis.google.com/js/platform.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <!-- Caso possua um script para smooth scroll personalizado, mantenha-o se necessário -->
   <script src="./scripts/smooth-scroll.js" defer></script>
   
   <!-- Script Inline -->
@@ -984,7 +1182,9 @@
         easing: 'ease-in-out-quad'
       });
       
-      /* Configuração e animação do fundo de partículas com Three.js */
+      /* ============================
+         Fundo de Partículas (Three.js)
+      ============================ */
       const canvas = document.getElementById('particle-canvas');
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -1009,8 +1209,12 @@
         mouseY = event.clientY - window.innerHeight / 2;
       });
       
+      let particlesAnimationId;
+      let particlesRunning = false;
+      
       function animateParticles() {
-        requestAnimationFrame(animateParticles);
+        particlesRunning = true;
+        particlesAnimationId = requestAnimationFrame(animateParticles);
         particleMesh.rotation.y += 0.001;
         const targetRotX = mouseY * 0.0001;
         const targetRotY = mouseX * 0.0001;
@@ -1027,38 +1231,71 @@
       
       window.addEventListener('resize', resizeParticles);
       resizeParticles();
-      animateParticles();
       
-      /* Configuração do cubo 3D com Three.js */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.target === canvas) {
+            if (entry.isIntersecting) {
+              if (!particlesRunning) {
+                animateParticles();
+              }
+            } else {
+              cancelAnimationFrame(particlesAnimationId);
+              particlesRunning = false;
+            }
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.1
+      });
+      observer.observe(canvas);
+      
+      /* ============================
+         Elemento 3D Interativo: Cubo com Faces Coloridas
+      ============================ */
       const cubeContainer = document.getElementById('cube-container');
-      const cubeScene = new THREE.Scene();
-      const cubeCamera = new THREE.PerspectiveCamera(75, cubeContainer.clientWidth / cubeContainer.clientHeight, 0.1, 1000);
-      const cubeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      cubeRenderer.setPixelRatio(window.devicePixelRatio);
-      cubeRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
-      cubeContainer.appendChild(cubeRenderer.domElement);
+      if (cubeContainer) {
+        const cubeScene = new THREE.Scene();
+        const cubeCamera = new THREE.PerspectiveCamera(75, cubeContainer.clientWidth / cubeContainer.clientHeight, 0.1, 1000);
+        const cubeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        cubeRenderer.setPixelRatio(window.devicePixelRatio);
+        cubeRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+        cubeContainer.appendChild(cubeRenderer.domElement);
+        
+        const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+        const materials = [
+          new THREE.MeshBasicMaterial({ color: '#ff6b6b' }),
+          new THREE.MeshBasicMaterial({ color: '#4ecdc4' }),
+          new THREE.MeshBasicMaterial({ color: '#ffe66d' }),
+          new THREE.MeshBasicMaterial({ color: '#6bff6b' }),
+          new THREE.MeshBasicMaterial({ color: '#6b6bff' }),
+          new THREE.MeshBasicMaterial({ color: '#ff6b6b' })
+        ];
+        const cube = new THREE.Mesh(cubeGeometry, materials);
+        cubeScene.add(cube);
+        
+        cubeCamera.position.z = 3;
       
-      const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-      const cubeMaterial = new THREE.MeshStandardMaterial({ color: '#4ecdc4', roughness: 0.5, metalness: 0.1 });
-      const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-      cubeScene.add(cube);
-      
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-      cubeScene.add(ambientLight);
-      const pointLight = new THREE.PointLight(0xff6b6b, 1);
-      pointLight.position.set(5, 5, 5);
-      cubeScene.add(pointLight);
-      
-      cubeCamera.position.z = 3;
-      function animateCube() {
-        requestAnimationFrame(animateCube);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        cubeRenderer.render(cubeScene, cubeCamera);
+        function animateCube() {
+          requestAnimationFrame(animateCube);
+          cube.rotation.x += 0.01;
+          cube.rotation.y += 0.01;
+          cubeRenderer.render(cubeScene, cubeCamera);
+        }
+        animateCube();
+        
+        window.addEventListener('resize', function() {
+          cubeRenderer.setSize(cubeContainer.clientWidth, cubeContainer.clientHeight);
+          cubeCamera.aspect = cubeContainer.clientWidth / cubeContainer.clientHeight;
+          cubeCamera.updateProjectionMatrix();
+        });
       }
-      animateCube();
       
-      /* Animações GSAP para a navbar */
+      /* ============================
+         Animações GSAP e Outras Funcionalidades
+      ============================ */
+      
       gsap.from('.logo', { duration: 1, opacity: 0, y: -50 });
       gsap.from('.nav-links a', {
         duration: 1,
@@ -1068,7 +1305,6 @@
         delay: 0.5
       });
       
-      /* Toggle do menu mobile com ARIA */
       const hamburger = document.querySelector('.hamburger');
       const navLinks = document.querySelector('.nav-links');
       hamburger.addEventListener('click', () => {
@@ -1077,7 +1313,6 @@
         navLinks.classList.toggle('active');
       });
       
-      /* Popup com timer (exemplo simples) */
       function showPopup(message) {
         const popup = document.createElement("div");
         popup.className = "popup";
@@ -1101,33 +1336,33 @@
         }
       });
       
-      /* Efeito 3D reativo para a imagem do canal (exemplo) */
       const channelContainer = document.querySelector('.channel-container');
       const channelImage = document.querySelector('.channel-image');
-      channelContainer.addEventListener('mousemove', (e) => {
-        const rect = channelContainer.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const deltaX = (x - centerX) / centerX;
-        const deltaY = (y - centerY) / centerY;
-        const rotateX = deltaY * 10;
-        const rotateY = deltaX * -10;
-        channelImage.style.transform = `perspective(1000px) rotateX(${30 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
-      });
-      channelContainer.addEventListener('mouseleave', () => {
-        channelImage.style.transform = 'perspective(1000px) rotateX(30deg) rotateY(-10deg)';
-      });
+      if (channelContainer && channelImage) {
+        channelContainer.addEventListener('mousemove', (e) => {
+          const rect = channelContainer.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const deltaX = (x - centerX) / centerX;
+          const deltaY = (y - centerY) / centerY;
+          const rotateX = deltaY * 10;
+          const rotateY = deltaX * -10;
+          channelImage.style.transform = `perspective(1000px) rotateX(${30 + rotateX}deg) rotateY(${-10 + rotateY}deg)`;
+        });
+        channelContainer.addEventListener('mouseleave', () => {
+          channelImage.style.transform = 'perspective(1000px) rotateX(30deg) rotateY(-10deg)';
+        });
+      }
       
-      /* Inicialização do Swiper para o carrossel de vídeos */
       var swiper = new Swiper('.swiper-container', {
-        initialSlide: 4, 
+        initialSlide: 4,
         slidesPerView: 3,
         spaceBetween: 30,
-        centeredSlides: true, 
+        centeredSlides: true,
         loop: true,
-        loopedSlides: 9, 
+        loopedSlides: 9,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -1144,7 +1379,6 @@
         speed: 600
       });
       
-      /* Pausa o autoplay ao interagir com um slide */
       const slides = document.querySelectorAll('.swiper-slide');
       slides.forEach(slide => {
         slide.addEventListener('mouseenter', () => {
@@ -1157,7 +1391,6 @@
         });
       });
       
-      /* Controle de rolagem automática via checkbox */
       function updateAutoplayToggle() {
         document.querySelectorAll('.autoplay-toggle').forEach(el => el.remove());
         const toggle = document.createElement("div");
@@ -1181,7 +1414,6 @@
       });
       updateAutoplayToggle();
       
-      /* Animação suave para o clique no botão "Download Pack" usando GSAP e ScrollToPlugin */
       const downloadBtn = document.querySelector('a[href="#downloads"]');
       if (downloadBtn) {
         downloadBtn.addEventListener('click', function(event) {
@@ -1190,17 +1422,50 @@
             duration: 1, 
             scrollTo: { 
               y: "#downloads",
-              offsetY: 70  // Ajuste esse valor caso tenha uma navbar fixa
+              offsetY: 70
             },
             ease: "power2.out"
           });
         });
       }
+      
+      /* ============================
+         Modal Popup para "Saiba Mais"
+      ============================ */
+      const popupLinks = document.querySelectorAll('.popup-link');
+      const modal = document.getElementById('popup-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalText = document.getElementById('modal-text');
+      const modalClose = document.querySelector('.modal-close');
+
+      function openModal(title, text) {
+        modalTitle.textContent = title;
+        modalText.textContent = text;
+        modal.style.display = "flex";
+      }
+
+      popupLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const title = this.getAttribute('data-title');
+          const text = this.getAttribute('data-text');
+          openModal(title, text);
+        });
+      });
+
+      modalClose.addEventListener('click', function() {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
     });
   </script>
   <script src="./scripts/nan.js"></script>
   <script src="./scripts/context.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5624731249541141"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5624731249541141" crossorigin="anonymous"></script>
 </body>
 </html>
