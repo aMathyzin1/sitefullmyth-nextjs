@@ -3,19 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Ícones da Página -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
+  <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
+  
   <!-- Meta Tags para SEO e Redes Sociais -->
   <meta name="description" content="Baixe o Valorant Booster, um otimizador avançado para melhorar o FPS, latência e a performance no Valorant.">
   <meta name="keywords" content="Valorant Booster, otimização de FPS, Valorant, download, desempenho, otimização de jogos">
   <meta name="author" content="aMathyzin">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
   <meta property="og:title" content="Valorant Booster - Otimizador de FPS para Melhor Desempenho no Valorant">
   <meta property="og:description" content="O Valorant Booster otimiza seu jogo, aumentando FPS e melhorando a performance. Baixe agora!">
-  <meta property="og:image" content="https://amathyzin.com/downloads/icons/VB.png">
-  <meta property="og:url" content="https://amathyzin.com/downloads/valorantbooster">
+  <meta property="og:image" content="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/VB.png">
+  <meta property="og:url" content="https://amathyzin.com/downloads/valorantbooster1.html">
   <meta property="og:type" content="website">
+  
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Valorant Booster - Otimizador de FPS para Melhor Desempenho no Valorant">
   <meta name="twitter:description" content="Baixe o Valorant Booster para elevar o FPS e a performance do seu Valorant.">
-  <meta name="twitter:image" content="https://amathyzin.com/downloads/icons/valorant_booster_logo.jpg">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/VB.png">
+  
+  <!-- Dados Estruturados (JSON‑LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Valorant Booster",
+    "operatingSystem": "Windows",
+    "applicationCategory": "UtilityApplication",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "15"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "BRL"
+    },
+    "url": "https://amathyzin.com/downloads/valorantbooster1.html",
+    "image": "https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/VB.png",
+    "description": "Valorant Booster é um otimizador avançado para melhorar FPS, latência e desempenho no Valorant."
+  }
+  </script>
+  
+  <!-- Título da Página -->
   <title>Valorant Booster - Otimizador de FPS para Melhor Desempenho no Valorant</title>
   
   <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
@@ -358,17 +394,17 @@
       <!-- Seção de Download -->
       <div class="download-section" data-aos="fade-left">
         <div class="file-icon-container">
-          <img class="file-icon" src="https://amathyzin.com/downloads/icons/VB.png" alt="Ícone do Valorant Booster" loading="lazy">
+          <img class="file-icon" src="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/VB.png" alt="Ícone do Valorant Booster" loading="lazy">
         </div>
         <h2><i class="fas fa-download"></i> Download do Arquivo</h2>
-        <p>Valorant Booster Pré Alpha.bat - 12 Kb</p>
+        <p>Valorant Booster Pré Alpha.bat - 12 KB</p>
         
         <!-- Barra de Progresso -->
         <div class="progress-bar-container">
           <div class="progress-bar" id="progress-bar"></div>
           <div class="progress-text" id="progress-text">0%</div>
         </div>
-        <div class="progress-indicator" id="progress-indicator">0 KB de 9 12kb</div>
+        <div class="progress-indicator" id="progress-indicator">0 KB de 12 KB</div>
         
         <!-- Caixa para aceitar os termos -->
         <div class="terms-container" id="terms-container">
@@ -377,8 +413,8 @@
           </label>
         </div>
         
-        <!-- Botão de Download -->
-        <button onclick="iniciarDownload('./files/Valorant.bat', 'Valorant.bat')" class="highlight-button download-button" id="download-button" disabled>Download</button>
+        <!-- Botão de Download com Lógica Avançada -->
+        <button onclick="handleDownloadButtonClick('./files/Valorant.bat', 'Valorant.bat')" class="highlight-button download-button" id="download-button" disabled>Download</button>
         
         <!-- Botão para GitHub -->
         <a href="https://github.com/aMathyzin/Valorant-Booster-Alpha" class="highlight-button github-button" target="_blank" style="display: inline-block; margin-top: 10px; text-decoration: none; color: #fff; background-color: #333; padding: 10px 20px; border-radius: 5px;">
@@ -411,52 +447,100 @@
     © Copyright aMathyzin 2024. Todos os direitos reservados.
   </div>
   
-  <script>    
-    // Habilitar o botão de download ao marcar os termos
-    document.getElementById('terms-checkbox').addEventListener('change', function() {
-      const downloadButton = document.getElementById('download-button');
-      const termsContainer = document.getElementById('terms-container');
-      downloadButton.disabled = !this.checked;
-      termsContainer.classList.toggle('no-animation', this.checked);
-    });
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
     
-    // Função de download com barra de progresso
+    // Variável de estado do download: "idle", "waiting", "downloading", "complete"
+    let downloadState = "idle";
+    
+    // Atualiza o texto e estado do botão de download
+    function updateButtonState(text, disabled) {
+      const btn = document.getElementById('download-button');
+      btn.innerText = text;
+      btn.disabled = disabled;
+    }
+    
+    // Função que trata o clique do botão de download
+    function handleDownloadButtonClick(url, nomeArquivo) {
+      // Se um download já estiver em andamento, não faz nada
+      if (downloadState === "waiting" || downloadState === "downloading") return;
+      
+      // Se o download já foi concluído, pergunta se deseja baixar novamente
+      if (downloadState === "complete") {
+        Swal.fire({
+          title: 'Confirmar Download',
+          text: 'Deseja baixar novamente?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          background: '#333',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            downloadState = "waiting";
+            updateButtonState("Aguarde...", true);
+            iniciarDownload(url, nomeArquivo);
+          }
+        });
+      } else {
+        // Estado idle: inicia o download
+        downloadState = "waiting";
+        updateButtonState("Aguarde...", true);
+        iniciarDownload(url, nomeArquivo);
+      }
+    }
+    
+    // Função para realizar o download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
-      var xhr = new XMLHttpRequest();
+      const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'blob';
       
       xhr.onloadstart = function() {
         document.getElementById('progress-bar').style.width = '0%';
         document.getElementById('progress-text').innerText = '0%';
-        document.getElementById('progress-indicator').innerText = '0 KB de ...';
+        document.getElementById('progress-indicator').innerText = '0 KB de 12 KB';
       };
       
       xhr.onprogress = function(event) {
         if (event.lengthComputable) {
-          var percentComplete = (event.loaded / event.total) * 100;
-          document.getElementById('progress-bar').style.width = percentComplete + '%';
-          document.getElementById('progress-text').innerText = percentComplete.toFixed(2) + '%';
-          var totalSize = formatFileSize(event.total);
-          var downloadedSize = formatFileSize(event.loaded);
-          document.getElementById('progress-indicator').innerText = `${downloadedSize} baixados de ${totalSize}`;
+          let percent = (event.loaded / event.total) * 100;
+          document.getElementById('progress-bar').style.width = percent + '%';
+          document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
+          document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' baixados de ' + formatFileSize(event.total);
+          
+          // Se for o primeiro evento de progresso, se o estado era "waiting", atualiza para "downloading"
+          if (downloadState === "waiting") {
+            downloadState = "downloading";
+            updateButtonState("Download Iniciado", true);
+          }
         }
       };
       
       xhr.onload = function() {
         if (xhr.status === 200 && xhr.response.size > 0) {
+          // Garante que a barra esteja completa
           document.getElementById('progress-bar').style.width = '100%';
           document.getElementById('progress-text').innerText = '100%';
-          setTimeout(function() {
-            var blob = new Blob([xhr.response], { type: 'application/octet-stream' });
-            var downloadUrl = URL.createObjectURL(blob);
-            var a = document.createElement('a');
+          setTimeout(() => {
+            const blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+            const downloadUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
             a.href = downloadUrl;
             a.download = nomeArquivo;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
+            
+            // Atualiza o botão para "Download Completo" e permite novo clique
+            updateButtonState("Download Completo", false);
+            downloadState = "complete";
+            
             Swal.fire({
               title: 'Download Concluído!',
               text: 'Seu arquivo foi baixado com sucesso.',
@@ -477,7 +561,23 @@
             color: '#FFF',
             backdrop: 'rgba(0,0,0,0.5)'
           });
+          updateButtonState("Download", false);
+          downloadState = "idle";
         }
+      };
+      
+      xhr.onerror = function() {
+        Swal.fire({
+          title: 'Erro no Download!',
+          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        updateButtonState("Download", false);
+        downloadState = "idle";
       };
       
       xhr.send();
@@ -490,7 +590,18 @@
       return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
-    // Hamburger: popup de menu em telas pequenas
+    // Habilita o botão de download quando os termos forem aceitos
+    document.getElementById('terms-checkbox').addEventListener('change', function() {
+      const btn = document.getElementById('download-button');
+      const termsContainer = document.getElementById('terms-container');
+      // Só habilita se o estado for "idle"
+      if (downloadState === "idle") {
+        btn.disabled = !this.checked;
+      }
+      termsContainer.classList.toggle('no-animation', this.checked);
+    });
+    
+    // Hamburger: em telas pequenas, exibe um popup com as opções da navbar
     document.querySelector('.hamburger').addEventListener('click', function() {
       Swal.fire({
         title: 'Menu',
