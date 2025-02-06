@@ -3,15 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Meta tags para SEO e redes sociais -->
+
+  <!-- Ícones da Página -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/downloads/icons/haunted.png">
+  <link rel="icon" href="https://amathyzin.com/downloads/icons/haunted.png" type="image/png">
+
+  <!-- SEO Básico e Avançado -->
   <meta name="description" content="Baixe o Haunted, o melhor otimizador de Windows focado em fornecer a máxima performance para melhorar a jogabilidade e desempenho do seu PC.">
   <meta name="keywords" content="Haunted, Otimizador de Windows, FPS, otimização, download, performance, jogos">
   <meta name="author" content="aMathyzin">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
   <meta property="og:title" content="Haunted - Download">
   <meta property="og:description" content="Página de download do Haunted, agora com o novo visual do site aMathyzin.">
   <meta property="og:image" content="https://amathyzin.com/downloads/icons/haunted.png">
   <meta property="og:url" content="https://amathyzin.com/downloads/haunted">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="aMathyzin">
+  <meta property="og:locale" content="pt_BR">
+  
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Haunted - Download">
+  <meta name="twitter:description" content="Página de download do Haunted, agora com o novo visual do site aMathyzin.">
+  <meta name="twitter:image" content="https://amathyzin.com/downloads/icons/haunted.png">
+  <meta name="twitter:site" content="@amathyzin">
+  <meta name="twitter:creator" content="@amathyzin">
+
+  <!-- Dados Estruturados (JSON‑LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Haunted",
+    "operatingSystem": "Windows",
+    "applicationCategory": "UtilityApplication",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "10"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "BRL"
+    },
+    "url": "https://amathyzin.com/downloads/haunted",
+    "image": "https://amathyzin.com/downloads/icons/haunted.png",
+    "description": "Haunted é um otimizador de Windows para maximizar a performance, ideal para jogos e aplicações exigentes."
+  }
+  </script>
+  
+  <!-- Título da Página -->
   <title>Haunted - Download</title>
   
   <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
@@ -22,11 +66,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
-     @media only screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-  }
-}
+    @media only screen and (max-width: 768px) {
+      html, body {
+        overflow-x: hidden;
+      }
+    }
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
@@ -53,7 +97,7 @@
       height: 100%;
       z-index: -2;
     }
-    /* Navbar baseada no novo modelo */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -98,7 +142,7 @@
     .nav-links a:hover::after {
       width: 100%;
     }
-    /* Hamburger: escondido em telas grandes */
+    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -192,7 +236,7 @@
       display: block;
       margin: 0 auto 20px;
     }
-    /* Barra de progresso */
+    /* Barra de Progresso */
     .progress-bar-container {
       width: 100%;
       background-color: var(--primary);
@@ -277,13 +321,11 @@
       text-decoration: none;
       margin: 0 10px;
     }
-    /* Animação de pulso para a caixa de termos */
     @keyframes pulse {
       0% { box-shadow: 0 0 10px var(--primary); }
       50% { box-shadow: 0 0 20px var(--primary); }
       100% { box-shadow: 0 0 10px var(--primary); }
     }
-    /* Responsividade para telas menores e celulares */
     @media (max-width: 768px) {
       .download-container {
         flex-direction: column;
@@ -341,11 +383,11 @@
       
       <!-- Seção de Download -->
       <div class="download-section" data-aos="fade-left">
-        <img class="file-icon" src="https://amathyzin.com/downloads/icons/haunted.png" alt="Ícone do Haunted">
+        <img class="file-icon" src="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/haunted.png" alt="Ícone do Haunted">
         <h2><i class="fas fa-download"></i> Download do Haunted</h2>
         <p>Haunted.bat - 53,6 KB</p>
         
-        <!-- Barra de progresso -->
+        <!-- Barra de Progresso -->
         <div class="progress-bar-container">
           <div class="progress-bar" id="progress-bar"></div>
           <div class="progress-text" id="progress-text">0%</div>
@@ -359,8 +401,8 @@
           </label>
         </div>
         
-        <!-- Botão de Download -->
-        <button onclick="iniciarDownload('/files/Haunted.bat', 'Haunted.bat')" class="download-button" id="download-button" disabled>Download</button>
+        <!-- Botão de Download com Lógica Avançada -->
+        <button onclick="handleDownloadButtonClick('./files/Haunted.bat', 'Haunted.bat')" class="download-button" id="download-button" disabled>Download</button>
       </div>
     </section>
   </main>
@@ -384,37 +426,49 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Fundo de partículas com Three.js
-    const canvas = document.getElementById('particle-canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 2;
-    const particleCount = 3000;
-    const posArray = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 6;
-    }
-    const particles = new THREE.BufferGeometry();
-    particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particleMaterial = new THREE.PointsMaterial({ size: 0.005, color: '#ff6b6b' });
-    const particleMesh = new THREE.Points(particles, particleMaterial);
-    scene.add(particleMesh);
-    function animateParticles() {
-      requestAnimationFrame(animateParticles);
-      particleMesh.rotation.y += 0.001;
-      renderer.render(scene, camera);
-    }
-    function onResize() {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    }
-    window.addEventListener('resize', onResize);
-    onResize();
-    animateParticles();
+    // Variável de estado do download: idle, waiting, downloading, complete
+    let downloadState = "idle";
     
-    // Função para download com barra de progresso
+    // Atualiza o texto e o estado do botão de download
+    function updateButtonState(text, disabled) {
+      const btn = document.getElementById('download-button');
+      btn.innerText = text;
+      btn.disabled = disabled;
+    }
+    
+    // Função que trata o clique do botão de download
+    function handleDownloadButtonClick(url, nomeArquivo) {
+      // Se download já estiver em andamento, não faz nada
+      if (downloadState === "waiting" || downloadState === "downloading") return;
+      
+      // Se o download já foi concluído, pergunta se deseja baixar novamente
+      if (downloadState === "complete") {
+        Swal.fire({
+          title: 'Confirmar Download',
+          text: 'Deseja baixar novamente?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          background: '#333',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            downloadState = "waiting";
+            updateButtonState("Aguarde...", true);
+            iniciarDownload(url, nomeArquivo);
+          }
+        });
+      } else {
+        // Estado idle: inicia o download
+        downloadState = "waiting";
+        updateButtonState("Aguarde...", true);
+        iniciarDownload(url, nomeArquivo);
+      }
+    }
+    
+    // Função para realizar o download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
@@ -432,11 +486,18 @@
           document.getElementById('progress-bar').style.width = percent + '%';
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
           document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
+          
+          // Ao primeiro progresso, se estava aguardando, atualiza para "Download Iniciado"
+          if (downloadState === "waiting") {
+            downloadState = "downloading";
+            updateButtonState("Download Iniciado", true);
+          }
         }
       };
       
       xhr.onload = function() {
         if (xhr.status === 200 && xhr.response.size > 0) {
+          // Garante que a barra esteja completa
           document.getElementById('progress-bar').style.width = '100%';
           document.getElementById('progress-text').innerText = '100%';
           setTimeout(() => {
@@ -449,6 +510,11 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
+            
+            // Atualiza para "Download Completo" e permite novo clique
+            updateButtonState("Download Completo", false);
+            downloadState = "complete";
+            
             Swal.fire({
               title: 'Download Concluído!',
               text: 'Seu arquivo foi baixado com sucesso.',
@@ -469,7 +535,23 @@
             color: '#FFF',
             backdrop: 'rgba(0,0,0,0.5)'
           });
+          updateButtonState("Download", false);
+          downloadState = "idle";
         }
+      };
+      
+      xhr.onerror = function() {
+        Swal.fire({
+          title: 'Erro no Download!',
+          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        updateButtonState("Download", false);
+        downloadState = "idle";
       };
       
       xhr.send();
@@ -482,11 +564,14 @@
       return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
     }
     
-    // Habilitar botão de download ao aceitar os termos
+    // Habilita o botão de download quando os termos são aceitos
     document.getElementById('terms-checkbox').addEventListener('change', function() {
       const btn = document.getElementById('download-button');
       const container = document.getElementById('terms-container');
-      btn.disabled = !this.checked;
+      // Só habilita se o estado for idle
+      if (downloadState === "idle") {
+        btn.disabled = !this.checked;
+      }
       container.classList.toggle('no-animation', this.checked);
     });
     
@@ -497,19 +582,19 @@
         html: `
           <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
             <a href="../../index.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-home"></i> Início
+              <i class="fas fa-home"></i> Início
             </a>
             <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-download"></i> Downloads
+              <i class="fas fa-download"></i> Downloads
             </a>
             <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-info-circle"></i> Sobre
+              <i class="fas fa-info-circle"></i> Sobre
             </a>
             <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-github"></i> GitHub
+              <i class="fab fa-github"></i> GitHub
             </a>
             <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-discord"></i> Comunidade
+              <i class="fab fa-discord"></i> Comunidade
             </a>
           </div>
         `,
