@@ -9,7 +9,7 @@
   <meta name="author" content="aMathyzin">
   <meta property="og:title" content="aMathyzin - Downloads & Otimizações">
   <meta property="og:description" content="Descubra os melhores downloads e otimizações para seu PC com aMathyzin.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/aMathyzinn/sitefullmyth/refs/heads/main/img/thumb.png">
+  <meta property="og:image" content="https://amathyzin.com/imagens/og-image.jpg">
   <meta property="og:url" content="https://amathyzin.com">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -30,6 +30,47 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
   <style>
+      #popup-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 5000;
+  }
+  .popup {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    position: relative;
+  }
+  .popup.show {
+    opacity: 1;
+  }
+  .timer {
+    height: 4px;
+    background-color: green;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: timerBar 3s linear forwards;
+  }
+  @media only screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+  @keyframes timerBar {
+    from { width: 100%; }
+    to { width: 0; }
+  }
     /* Estilos Gerais */
     html { scroll-behavior: smooth; }
     :root {
