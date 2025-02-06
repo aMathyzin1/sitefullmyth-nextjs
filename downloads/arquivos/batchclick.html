@@ -3,18 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Ícones do Site -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
+  <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
+
   <!-- Meta Tags para SEO e Redes Sociais -->
   <meta name="description" content="Baixe o BatchClick, um pack de otimização avançada para Windows que melhora o desempenho do seu sistema com precisão e eficiência.">
   <meta name="keywords" content="BatchClick, otimização de Windows, pack de otimização, performance, download BatchClick">
   <meta name="author" content="aMathyzin">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
   <meta property="og:title" content="BatchClick - Pack de Otimização Avançada para Windows">
   <meta property="og:description" content="O BatchClick é um pack de otimização avançada que melhora o desempenho do seu Windows com precisão e eficiência. Baixe agora!">
   <meta property="og:image" content="https://amathyzin.com/downloads/icons/batchclick.png">
   <meta property="og:url" content="https://amathyzin.com/downloads/batchclick">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BatchClick - Pack de Otimização Avançada para Windows">
-  <meta name="twitter:description" content="Baixe o BatchClick, um pack de otimização avançada para Windows que melhora a performance do seu sistema.">
+  <meta name="twitter:description" content="Baixe o BatchClick, um pack de otimização avançada para Windows que melhora a performance do seu sistema com precisão.">
   <meta name="twitter:image" content="https://amathyzin.com/downloads/icons/batchclick.png">
+  
+  <!-- Dados Estruturados (JSON‑LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BatchClick",
+    "operatingSystem": "Windows",
+    "applicationCategory": "UtilityApplication",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "20"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "BRL"
+    },
+    "url": "https://amathyzin.com/downloads/batchclick",
+    "image": "https://amathyzin.com/downloads/icons/batchclick.png",
+    "description": "BatchClick é um pack de otimização avançada para Windows que melhora o desempenho do sistema com alta precisão e eficiência."
+  }
+  </script>
+  
+  <!-- Título da Página -->
   <title>BatchClick - Pack de Otimização Avançada para Windows</title>
   
   <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
@@ -340,7 +377,7 @@
         <iframe src="https://www.youtube.com/embed/iN5C3KDIGH8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="description-box">
           <h3><i class="fas fa-info-circle"></i> Sobre o Pack BatchClick</h3>
-          <p>O BatchClick é um pack de otimização avançado, feito para otimizar seu Windows com alta precisão e eficiência.</p>
+          <p>O BatchClick é um pack de otimização avançada, feito para otimizar seu Windows com alta precisão e eficiência.</p>
           <p>No vídeo acima, é ensinado como utilizá-lo da melhor forma.</p>
           <p class="important"><i class="fas fa-exclamation-circle"></i> Todos os direitos são reservados ao Grupo aMathyzin. Desenvolvedores: aMathyzin &amp; Memphis.</p>
           <p class="warning"><i class="fas fa-ban"></i> O BatchClick é um pack gratuito. Fica completamente proibido vendê-lo.</p>
@@ -368,7 +405,7 @@
         </div>
         
         <!-- Botões: Download e Senha -->
-        <button onclick="iniciarDownload('./files/BatchClick_Booster.zip', 'BatchClick Pack - aMathyzin.zip')" class="download-button" id="download-button" disabled>Download</button>
+        <button onclick="handleDownloadButtonClick('./files/BatchClick_Booster.zip', 'BatchClick Pack - aMathyzin.zip')" class="download-button" id="download-button" disabled>Download</button>
         <button onclick="mostrarSenha()" class="password-button">Senha</button>
       </div>
     </section>
@@ -393,37 +430,49 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Fundo de partículas com Three.js
-    const canvas = document.getElementById('particle-canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 2;
-    const particleCount = 3000;
-    const posArray = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 6;
-    }
-    const particles = new THREE.BufferGeometry();
-    particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particleMaterial = new THREE.PointsMaterial({ size: 0.005, color: '#ff6b6b' });
-    const particleMesh = new THREE.Points(particles, particleMaterial);
-    scene.add(particleMesh);
-    function animateParticles() {
-      requestAnimationFrame(animateParticles);
-      particleMesh.rotation.y += 0.001;
-      renderer.render(scene, camera);
-    }
-    function onResize() {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    }
-    window.addEventListener('resize', onResize);
-    onResize();
-    animateParticles();
+    // Variável de estado do download: "idle", "waiting", "downloading", "complete"
+    let downloadState = "idle";
     
-    // Função para download com barra de progresso
+    // Função para atualizar o estado e aparência do botão de download
+    function updateButtonState(text, disabled) {
+      const btn = document.getElementById('download-button');
+      btn.innerText = text;
+      btn.disabled = disabled;
+    }
+    
+    // Função para tratar o clique do botão de download com lógica avançada
+    function handleDownloadButtonClick(url, nomeArquivo) {
+      // Se um download já estiver em andamento, não faz nada
+      if (downloadState === "waiting" || downloadState === "downloading") return;
+      
+      // Se o download já foi concluído, pergunta se deseja baixar novamente
+      if (downloadState === "complete") {
+        Swal.fire({
+          title: 'Confirmar Download',
+          text: 'Deseja baixar novamente?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          background: '#333',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            downloadState = "waiting";
+            updateButtonState("Aguarde...", true);
+            iniciarDownload(url, nomeArquivo);
+          }
+        });
+      } else {
+        // Estado idle: inicia o download
+        downloadState = "waiting";
+        updateButtonState("Aguarde...", true);
+        iniciarDownload(url, nomeArquivo);
+      }
+    }
+    
+    // Função para realizar o download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
@@ -441,6 +490,12 @@
           document.getElementById('progress-bar').style.width = percent + '%';
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
           document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
+          
+          // Se for o primeiro progresso e o estado for "waiting", atualiza para "downloading"
+          if (downloadState === "waiting") {
+            downloadState = "downloading";
+            updateButtonState("Download Iniciado", true);
+          }
         }
       };
       
@@ -458,6 +513,8 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
+            updateButtonState("Download Completo", false);
+            downloadState = "complete";
             Swal.fire({
               title: 'Download Concluído!',
               text: 'Seu arquivo foi baixado com sucesso.',
@@ -478,7 +535,23 @@
             color: '#FFF',
             backdrop: 'rgba(0,0,0,0.5)'
           });
+          updateButtonState("Download", false);
+          downloadState = "idle";
         }
+      };
+      
+      xhr.onerror = function() {
+        Swal.fire({
+          title: 'Erro no Download!',
+          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        updateButtonState("Download", false);
+        downloadState = "idle";
       };
       
       xhr.send();
@@ -491,11 +564,13 @@
       return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
-    // Habilitar o botão de download ao aceitar os termos
+    // Habilita o botão de download ao aceitar os termos
     document.getElementById('terms-checkbox').addEventListener('change', function() {
       const btn = document.getElementById('download-button');
       const container = document.getElementById('terms-container');
-      btn.disabled = !this.checked;
+      if (downloadState === "idle") {
+        btn.disabled = !this.checked;
+      }
       container.classList.toggle('no-animation', this.checked);
     });
     
@@ -526,19 +601,19 @@
         html: `
           <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
             <a href="../../index.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-home"></i> Início
+              <i class="fas fa-home"></i> Início
             </a>
             <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-download"></i> Downloads
+              <i class="fas fa-download"></i> Downloads
             </a>
             <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-info-circle"></i> Sobre
+              <i class="fas fa-info-circle"></i> Sobre
             </a>
             <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-github"></i> GitHub
+              <i class="fab fa-github"></i> GitHub
             </a>
             <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-discord"></i> Comunidade
+              <i class="fab fa-discord"></i> Comunidade
             </a>
           </div>
         `,
