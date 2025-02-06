@@ -30,49 +30,54 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
   <style>
-      #popup-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 5000;
-  }
-  .popup {
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    position: relative;
-  }
-  .popup.show {
-    opacity: 1;
-  }
-  .timer {
-    height: 4px;
-    background-color: green;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    animation: timerBar 3s linear forwards;
-  }
-  @media only screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-  }
-}
-
-  @keyframes timerBar {
-    from { width: 100%; }
-    to { width: 0; }
-  }
+    /* Container de Popups */
+    #popup-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 5000;
+    }
+    .popup {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      position: relative;
+    }
+    .popup.show {
+      opacity: 1;
+    }
+    .timer {
+      height: 4px;
+      background-color: green;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      animation: timerBar 3s linear forwards;
+    }
+    @keyframes timerBar {
+      from { width: 100%; }
+      to { width: 0; }
+    }
+    
+    @media only screen and (max-width: 768px) {
+      html, body {
+        overflow-x: hidden;
+      }
+    }
+    
     /* Estilos Gerais */
-    html { scroll-behavior: smooth; }
+    html {
+      /* Caso utilize GSAP para scroll suave, comente a linha abaixo */
+      /* scroll-behavior: smooth; */
+    }
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
@@ -80,7 +85,12 @@
       --dark: #1a1a1a;
       --neon-glow: 0 0 15px rgba(255,107,107,0.8);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
     body {
       background: var(--dark);
       color: white;
@@ -91,44 +101,69 @@
     /* Fundo de Partículas (exemplo com Three.js) */
     #particle-canvas {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: -2;
     }
     
     /* Navbar */
     .navbar {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 1.5rem 5%;
       background: rgba(25,25,25,0.9);
       backdrop-filter: blur(10px);
-      position: fixed; width: 100%; z-index: 1000;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
       border-bottom: 2px solid var(--primary);
       box-shadow: var(--neon-glow);
     }
     .navbar::before {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute;
+      inset: 0;
       background: linear-gradient(45deg, transparent 50%, rgba(255,107,107,0.1));
       pointer-events: none;
     }
     .logo {
-      font-size: 2rem; font-weight: 700;
+      font-size: 2rem;
+      font-weight: 700;
       background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-shadow: 0 0 15px rgba(255,107,107,0.5);
     }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links li { list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links li {
+      list-style: none;
+    }
     .nav-links a {
-      color: white; text-decoration: none; padding: 0.5rem 1rem;
-      transition: 0.3s; position: relative;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: 0.3s;
+      position: relative;
     }
     .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--primary);
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
       transition: 0.3s;
     }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
     .hamburger {
       display: none;
       cursor: pointer;
@@ -148,47 +183,72 @@
     /* Hero */
     .hero {
       height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center; position: relative; overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
     .hero::before {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute;
+      inset: 0;
       background: radial-gradient(circle at 50% 50%, rgba(255,107,107,0.1), transparent 60%);
     }
     .hero h1 {
-      font-size: 4rem; text-transform: uppercase; letter-spacing: 0.5rem;
+      font-size: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5rem;
       margin-bottom: 2rem;
       animation: float 3s ease-in-out infinite;
       text-shadow: 0 0 30px rgba(255,107,107,0.5);
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     .hero p {
-      font-size: 1.5rem; max-width: 600px;
-      margin: 0 auto; opacity: 0.9;
-      position: relative; z-index: 1;
+      font-size: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
     }
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 1rem 2rem; margin: 2rem 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      margin: 2rem 0;
       background: linear-gradient(45deg, var(--primary), var(--secondary));
-      border: none; border-radius: 50px;
-      color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-      cursor: pointer; transition: 0.3s;
-      position: relative; overflow: hidden;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
       box-shadow: 0 0 25px rgba(255,107,107,0.5);
       z-index: 1;
     }
     .btn::before {
       content: '';
       position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
       background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
       transform: rotate(45deg);
       transition: 0.5s;
     }
-    .btn:hover::before { animation: shine 1.5s; }
+    .btn:hover::before {
+      animation: shine 1.5s;
+    }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -243,7 +303,7 @@
     .video-container {
       width: 100%;
       position: relative;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       margin-bottom: 1rem;
     }
@@ -315,7 +375,6 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
-    /* Estrutura do Swiper */
     .swiper-container {
       width: 100%;
       padding-bottom: 40px;
@@ -333,7 +392,6 @@
       flex-direction: column;
       position: relative;
     }
-    /* Slides que não são ativos apresentam blur e escala reduzida */
     .swiper-slide:not(.swiper-slide-active) {
       filter: blur(3px);
       transform: scale(0.9);
@@ -375,7 +433,9 @@
       box-shadow: 0 0 25px rgba(255,107,107,0.5);
       transition: 0.3s;
     }
-    .watch-button:hover { opacity: 0.9; }
+    .watch-button:hover {
+      opacity: 0.9;
+    }
     
     .autoplay-toggle {
       position: absolute;
@@ -558,10 +618,17 @@
       text-decoration: none;
       margin: 0 0.5rem;
     }
-    .footer-links a:hover { text-decoration: underline; }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
     
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
     ::-webkit-scrollbar-thumb {
       border-radius: 4px;
       animation: thumbFade 3s infinite linear;
@@ -572,10 +639,16 @@
       66% { background: #ff1a1a; }
       100% { background: #ff6b6b; }
     }
-    * { scrollbar-width: thin; scrollbar-color: #ff6b6b transparent; }
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #ff6b6b transparent;
+    }
     
     @media (max-width: 768px) {
-      .navbar { flex-direction: row; padding: 1rem 3%; }
+      .navbar {
+        flex-direction: row;
+        padding: 1rem 3%;
+      }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -586,14 +659,34 @@
         left: 0;
         padding: 1rem 0;
       }
-      .nav-links.active { display: flex; }
-      .hamburger { display: flex; }
-      .hero h1 { font-size: 2.5rem; letter-spacing: 0.3rem; }
-      .hero p { font-size: 1.2rem; padding: 0 1rem; }
-      .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      #cube-container { width: 200px; height: 200px; }
-      .swiper-slide iframe { height: 180px; }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+      }
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      #cube-container {
+        width: 200px;
+        height: 200px;
+      }
+      .swiper-slide iframe {
+        height: 180px;
+      }
     }
   </style>
 </head>
@@ -631,6 +724,7 @@
         Otimizações de alto desempenho para computadores fracos e fortes.
       </p>
       <div data-aos="fade-up" data-aos-delay="400">
+        <!-- Botão com link para a âncora #downloads -->
         <a href="#downloads" class="btn">
           <i class="fas fa-download"></i> Download Pack
         </a>
@@ -870,11 +964,15 @@
     <p data-aos="fade-up">&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
   </footer>
   
+  <!-- Bibliotecas JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
+  <!-- ScrollToPlugin do GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js" defer></script>
   <script src="https://apis.google.com/js/platform.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <!-- Caso possua um script para smooth scroll personalizado, mantenha-o se necessário -->
   <script src="./scripts/smooth-scroll.js" defer></script>
   
   <!-- Script Inline -->
@@ -886,6 +984,7 @@
         easing: 'ease-in-out-quad'
       });
       
+      /* Configuração e animação do fundo de partículas com Three.js */
       const canvas = document.getElementById('particle-canvas');
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -930,7 +1029,7 @@
       resizeParticles();
       animateParticles();
       
-      // Configuração do Three.js para o cubo 3D
+      /* Configuração do cubo 3D com Three.js */
       const cubeContainer = document.getElementById('cube-container');
       const cubeScene = new THREE.Scene();
       const cubeCamera = new THREE.PerspectiveCamera(75, cubeContainer.clientWidth / cubeContainer.clientHeight, 0.1, 1000);
@@ -959,7 +1058,7 @@
       }
       animateCube();
       
-      // Animações GSAP para a navbar
+      /* Animações GSAP para a navbar */
       gsap.from('.logo', { duration: 1, opacity: 0, y: -50 });
       gsap.from('.nav-links a', {
         duration: 1,
@@ -969,7 +1068,7 @@
         delay: 0.5
       });
       
-      // Toggle do menu mobile com ARIA
+      /* Toggle do menu mobile com ARIA */
       const hamburger = document.querySelector('.hamburger');
       const navLinks = document.querySelector('.nav-links');
       hamburger.addEventListener('click', () => {
@@ -978,7 +1077,7 @@
         navLinks.classList.toggle('active');
       });
       
-      // Popup com timer (exemplo simples)
+      /* Popup com timer (exemplo simples) */
       function showPopup(message) {
         const popup = document.createElement("div");
         popup.className = "popup";
@@ -1002,7 +1101,7 @@
         }
       });
       
-      // Efeito 3D reativo para a imagem do canal (exemplo)
+      /* Efeito 3D reativo para a imagem do canal (exemplo) */
       const channelContainer = document.querySelector('.channel-container');
       const channelImage = document.querySelector('.channel-image');
       channelContainer.addEventListener('mousemove', (e) => {
@@ -1021,7 +1120,7 @@
         channelImage.style.transform = 'perspective(1000px) rotateX(30deg) rotateY(-10deg)';
       });
       
-      // Inicialização do Swiper para o carrossel de vídeos
+      /* Inicialização do Swiper para o carrossel de vídeos */
       var swiper = new Swiper('.swiper-container', {
         initialSlide: 4, 
         slidesPerView: 3,
@@ -1034,7 +1133,7 @@
           prevEl: '.swiper-button-prev'
         },
         autoplay: {
-          delay: 3000, // 3 segundos
+          delay: 3000,
           disableOnInteraction: false
         },
         breakpoints: {
@@ -1045,7 +1144,7 @@
         speed: 600
       });
       
-      // Pausa o autoplay ao interagir com um slide
+      /* Pausa o autoplay ao interagir com um slide */
       const slides = document.querySelectorAll('.swiper-slide');
       slides.forEach(slide => {
         slide.addEventListener('mouseenter', () => {
@@ -1058,7 +1157,7 @@
         });
       });
       
-      // Controle de rolagem automática via checkbox
+      /* Controle de rolagem automática via checkbox */
       function updateAutoplayToggle() {
         document.querySelectorAll('.autoplay-toggle').forEach(el => el.remove());
         const toggle = document.createElement("div");
@@ -1080,8 +1179,23 @@
       swiper.on('slideChangeTransitionEnd', function() {
         updateAutoplayToggle();
       });
-
       updateAutoplayToggle();
+      
+      /* Animação suave para o clique no botão "Download Pack" usando GSAP e ScrollToPlugin */
+      const downloadBtn = document.querySelector('a[href="#downloads"]');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+          gsap.to(window, { 
+            duration: 1, 
+            scrollTo: { 
+              y: "#downloads",
+              offsetY: 70  // Ajuste esse valor caso tenha uma navbar fixa
+            },
+            ease: "power2.out"
+          });
+        });
+      }
     });
   </script>
   <script src="./scripts/nan.js"></script>
