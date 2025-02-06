@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
- <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
-<link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
+  <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
   <!-- SEO Básico -->
   <title>RoBooster 2 - Download | aMathyzin</title>
   <meta name="description" content="Baixe o RoBooster 2, o otimizador gratuito para Roblox que melhora o desempenho e a performance do seu PC, integrando ao BloxStrap.">
@@ -14,7 +14,7 @@
 
   <!-- Open Graph para Facebook, WhatsApp, LinkedIn etc. -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
-  <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do seu jogo e do seu PC.">
+  <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
   <meta property="og:image" content="https://amathyzin.com/downloads/icons/RoBooster2.png">
   <meta property="og:url" content="https://amathyzin.com/downloads/arquivos/robooster2.html">
   <meta property="og:type" content="website">
@@ -69,11 +69,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
-     @media only screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
-  }
-}
+    @media only screen and (max-width: 768px) {
+      html, body {
+        overflow-x: hidden;
+      }
+    }
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
@@ -403,7 +403,7 @@
         </div>
         
         <!-- Botão de Download -->
-        <button onclick="iniciarDownload('https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/arquivos/robooster.exe', 'RoBooster2.exe')" class="download-button" id="download-button" disabled>Download</button>
+        <button onclick="handleDownloadButtonClick('https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/arquivos/robooster.exe', 'RoBooster2.exe')" class="download-button" id="download-button" disabled>Download</button>
         
         <!-- Seção de Dependências -->
         <div class="additional-downloads">
@@ -440,35 +440,48 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Fundo de partículas com Three.js
-    const canvas = document.getElementById('particle-canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 2;
-    const particleCount = 3000;
-    const posArray = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 6;
+    // Variável de estado do download: idle, waiting, downloading, complete
+    let downloadState = "idle";
+    
+    // Função para atualizar o estado e aparência do botão
+    function updateButtonState(text, disabled) {
+      const btn = document.getElementById('download-button');
+      btn.innerText = text;
+      btn.disabled = disabled;
     }
-    const particles = new THREE.BufferGeometry();
-    particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particleMaterial = new THREE.PointsMaterial({ size: 0.005, color: '#ff6b6b' });
-    const particleMesh = new THREE.Points(particles, particleMaterial);
-    scene.add(particleMesh);
-    function animateParticles() {
-      requestAnimationFrame(animateParticles);
-      particleMesh.rotation.y += 0.001;
-      renderer.render(scene, camera);
+    
+    // Função para tratar o clique no botão de download
+    function handleDownloadButtonClick(url, nomeArquivo) {
+      // Se um download já estiver em andamento, não faz nada
+      if (downloadState === "waiting" || downloadState === "downloading") {
+        return;
+      }
+      // Se o download já foi concluído, pergunta se deseja baixar novamente
+      if (downloadState === "complete") {
+        Swal.fire({
+          title: 'Confirmar Download',
+          text: 'Deseja baixar novamente?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          background: '#333',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            downloadState = "waiting";
+            updateButtonState("Aguarde...", true);
+            iniciarDownload(url, nomeArquivo);
+          }
+        });
+      } else {
+        // Estado idle: inicia o download
+        downloadState = "waiting";
+        updateButtonState("Aguarde...", true);
+        iniciarDownload(url, nomeArquivo);
+      }
     }
-    function onResize() {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    }
-    window.addEventListener('resize', onResize);
-    onResize();
-    animateParticles();
     
     // Função para download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
@@ -488,11 +501,18 @@
           document.getElementById('progress-bar').style.width = percent + '%';
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
           document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
+          
+          // Se for o primeiro evento de progresso, atualiza para "Download Iniciado"
+          if (downloadState === "waiting") {
+            downloadState = "downloading";
+            updateButtonState("Download Iniciado", true);
+          }
         }
       };
       
       xhr.onload = function() {
         if (xhr.status === 200 && xhr.response.size > 0) {
+          // Garante que a barra de progresso esteja completa
           document.getElementById('progress-bar').style.width = '100%';
           document.getElementById('progress-text').innerText = '100%';
           setTimeout(() => {
@@ -505,6 +525,11 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
+            
+            // Atualiza o botão para Download Completo e permite novo clique
+            updateButtonState("Download Completo", false);
+            downloadState = "complete";
+            
             Swal.fire({
               title: 'Download Concluído!',
               text: 'Seu arquivo foi baixado com sucesso.',
@@ -525,7 +550,24 @@
             color: '#FFF',
             backdrop: 'rgba(0,0,0,0.5)'
           });
+          // Em caso de erro, retorna para o estado idle e reabilita o botão
+          updateButtonState("Download", false);
+          downloadState = "idle";
         }
+      };
+      
+      xhr.onerror = function() {
+        Swal.fire({
+          title: 'Erro no Download!',
+          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        updateButtonState("Download", false);
+        downloadState = "idle";
       };
       
       xhr.send();
@@ -542,7 +584,10 @@
     document.getElementById('terms-checkbox').addEventListener('change', function() {
       const btn = document.getElementById('download-button');
       const container = document.getElementById('terms-container');
-      btn.disabled = !this.checked;
+      // Só habilita se estiver em estado idle (ou seja, sem download em andamento ou já concluído)
+      if (downloadState === "idle") {
+        btn.disabled = !this.checked;
+      }
       container.classList.toggle('no-animation', this.checked);
     });
     
