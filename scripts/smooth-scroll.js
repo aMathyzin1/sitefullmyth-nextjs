@@ -1,7 +1,7 @@
 (function () {
     var defaultOptions = {
         frameRate: 150,
-        animationTime: 800,
+        animationTime: 1300,
         stepSize: 80,
         useEasing: true,
         accelerationDelta: 40,
