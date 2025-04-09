@@ -14,29 +14,31 @@
   <meta name="keywords" content="RoBooster 2, download, otimização, Roblox, aMathyzin, BloxStrap, performance, gratuita">
   <meta name="author" content="aMathyzin">
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph: configurado para que a logo seja usada como thumbnail e a imagem da interface seja exibida também -->
+  
+  <!-- Open Graph: A primeira imagem é a logo (thumbnail) e a segunda, a interface -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
   <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
-  <!-- A primeira imagem será a thumbnail (logo) e a segunda imagem aparecerá como imagem secundária -->
-  <meta property="og:image" content="https://amathyzin.com/logo.png">
-  <meta property="og:image:alt" content="RoBooster 2 Logo">
-  <meta property="og:image" content="https://amathyzin.com/downloads/robooster_interface.png">
-  <meta property="og:image:alt" content="RoBooster 2 Interface">
   <meta property="og:url" content="https://amathyzin.com/downloads/arquivos/robooster2.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
   
-  <!-- Twitter Cards: será utilizado apenas a logo como imagem principal -->
+  <!-- Definindo a logo como thumbnail -->
+  <meta property="og:image" content="https://amathyzin.com/logo.png">
+  <meta property="og:image:alt" content="Site Logo">
+  <!-- Definindo a imagem principal da embed -->
+  <meta property="og:image" content="https://amathyzin.com/img/robooster_interface.png">
+  <meta property="og:image:alt" content="RoBooster 2 Interface">
+  
+  <!-- Twitter Cards: Usamos a logo para o Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
   <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
   <meta name="twitter:image" content="https://amathyzin.com/logo.png">
-  <meta name="twitter:image:alt" content="RoBooster 2 Logo">
+  <meta name="twitter:image:alt" content="Site Logo">
   <meta name="twitter:site" content="@amathyzin">
   <meta name="twitter:creator" content="@amathyzin">
-
+  
   <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -231,11 +233,11 @@
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    /* Contador de Downloads em negrito e formatado */
+    /* Contador de Downloads */
     .download-count { margin-top: 15px; text-align: center; font-size: 1rem; }
     #download-count { font-weight: bold; }
     
-    /* Área de Dependências (na mesma caixa), separada por uma linha */
+    /* Divisor e Área de Dependências na mesma caixa */
     .dependencies-divider {
       border: none;
       border-top: 2px solid var(--primary);
@@ -363,9 +365,9 @@
         <!-- Linha Divisória para Dependências -->
         <hr class="dependencies-divider">
         
-        <!-- Área de Dependências Integrada -->
+        <!-- Área de Dependências Integrada (dentro da mesma caixa, separada por linha) -->
         <div class="dependencies-area">
-          <h3><i class="fas fa-cogs"></i> Baixe as Dependências</h3>
+          <h3><i class="fas fa-cogs"></i> <span style="font-size:1.8rem; color: var(--primary); font-weight: bold;">Baixe as Dependências</span></h3>
           <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
             <a href="https://bloxstraplabs.com/" target="_blank" class="dep-button">
               <i class="fas fa-download"></i> BloxStrap
@@ -396,7 +398,6 @@
   
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
   <!-- Efeito de Galáxia Roxa com Three.js -->
   <script>
     // Configuração do renderer
