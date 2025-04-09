@@ -3,29 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon e Ícone -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
   <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
+  
   <!-- SEO Básico -->
   <title>RoBooster 2 - Download | aMathyzin</title>
   <meta name="description" content="Baixe o RoBooster 2, o otimizador gratuito para Roblox que melhora o desempenho e a performance do seu PC, integrando ao BloxStrap.">
   <meta name="keywords" content="RoBooster 2, download, otimização, Roblox, aMathyzin, BloxStrap, performance, gratuita">
   <meta name="author" content="aMathyzin">
   <meta name="robots" content="index, follow">
-  <!-- Open Graph e Twitter Cards -->
+
+  <!-- Open Graph: configurado para que a logo seja usada como thumbnail e a imagem da interface seja exibida também -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
   <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
-  <meta property="og:image" content="../../robooster_interface.png">
+  <!-- A primeira imagem será a thumbnail (logo) e a segunda imagem aparecerá como imagem secundária -->
+  <meta property="og:image" content="https://amathyzin.com/logo.png">
+  <meta property="og:image:alt" content="RoBooster 2 Logo">
+  <meta property="og:image" content="https://amathyzin.com/downloads/robooster_interface.png">
+  <meta property="og:image:alt" content="RoBooster 2 Interface">
   <meta property="og:url" content="https://amathyzin.com/downloads/arquivos/robooster2.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
+  
+  <!-- Twitter Cards: será utilizado apenas a logo como imagem principal -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
   <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
-  <meta name="twitter:image" content="https://amathyzin.com/img/RoBooster2.png">
+  <meta name="twitter:image" content="https://amathyzin.com/logo.png">
+  <meta name="twitter:image:alt" content="RoBooster 2 Logo">
   <meta name="twitter:site" content="@amathyzin">
   <meta name="twitter:creator" content="@amathyzin">
-  
+
   <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -41,17 +52,9 @@
       --accent: #ffe66d;
       --dark: #1a1a1a;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: var(--dark); color: #fff; overflow-x: hidden; }
+    
     /* Canvas para Efeito de Galáxia com Three.js */
     #particle-canvas {
       position: fixed;
@@ -61,6 +64,7 @@
       height: 100%;
       z-index: -2;
     }
+    
     /* Navbar fixa no topo */
     .navbar {
       position: fixed;
@@ -105,9 +109,7 @@
       background: var(--primary);
       transition: width 0.3s ease;
     }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover::after { width: 100%; }
     .hamburger {
       display: none;
       flex-direction: column;
@@ -120,6 +122,7 @@
       background-color: #fff;
       border-radius: 2px;
     }
+    
     /* Conteúdo Principal */
     main {
       padding-top: 100px;
@@ -228,11 +231,11 @@
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    /* Contador de Downloads */
+    /* Contador de Downloads em negrito e formatado */
     .download-count { margin-top: 15px; text-align: center; font-size: 1rem; }
     #download-count { font-weight: bold; }
     
-    /* Área de Dependências Separada por Linha (mesma caixa) */
+    /* Área de Dependências (na mesma caixa), separada por uma linha */
     .dependencies-divider {
       border: none;
       border-top: 2px solid var(--primary);
@@ -247,9 +250,7 @@
       font-weight: bold;
       margin-bottom: 1rem;
     }
-    .dependencies-area h3 i {
-      margin-right: 8px;
-    }
+    .dependencies-area h3 i { margin-right: 8px; }
     .dependencies-area .dep-button {
       display: inline-flex;
       align-items: center;
@@ -294,7 +295,7 @@
   </style>
 </head>
 <body>
-  <!-- Canvas para Efeito de Galáxia Roxa -->
+  <!-- Canvas para Efeito de Galáxia Roxa com Three.js -->
   <canvas id="particle-canvas"></canvas>
   
   <!-- Navbar -->
@@ -369,7 +370,7 @@
             <a href="https://bloxstraplabs.com/" target="_blank" class="dep-button">
               <i class="fas fa-download"></i> BloxStrap
             </a>
-            <a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.36-windows-x64-installer?cid=getdotnetcore" target="_blank" class="dep-button">
+            <a href="https://dotnet.microsoft.com/en-us/download" target="_blank" class="dep-button">
               <i class="fas fa-download"></i> .NET
             </a>
           </div>
@@ -395,6 +396,7 @@
   
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <!-- Efeito de Galáxia Roxa com Three.js -->
   <script>
     // Configuração do renderer
@@ -473,7 +475,7 @@
       });
     }
     
-    // Atualiza a contagem consultando o backend
+    // Atualiza o contador consultando o backend
     function updateDownloadCount(id) {
       fetch(`${backendUrl}/api/downloads/${id}`)
         .then(response => response.json())
@@ -483,7 +485,7 @@
         .catch(error => console.error('Erro ao obter a contagem:', error));
     }
     
-    // Incrementa a contagem via backend e anima a atualização
+    // Incrementa o contador via backend e anima a atualização
     function incrementDownloadCount(id) {
       fetch(`${backendUrl}/api/downloads/${id}`, { method: 'POST' })
         .then(response => response.json())
@@ -495,14 +497,12 @@
     
     updateDownloadCount(fileId);
     
-    // Atualiza o estado e aparência do botão
     function updateButtonState(text, disabled) {
       const btn = document.getElementById('download-button');
       btn.innerText = text;
       btn.disabled = disabled;
     }
     
-    // Função para tratar o clique do download
     function handleDownloadButtonClick(url, nomeArquivo) {
       if (downloadState === "waiting" || downloadState === "downloading") return;
       downloadState = "waiting";
