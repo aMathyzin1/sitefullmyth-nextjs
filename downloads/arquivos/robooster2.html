@@ -15,27 +15,23 @@
   <meta name="author" content="aMathyzin">
   <meta name="robots" content="index, follow">
   
-  <!-- Open Graph: A primeira imagem é a logo (thumbnail) e a segunda, a interface -->
+  <!-- Open Graph e Twitter Cards -->
+  <!-- Define a imagem de embed como a interface -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
   <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
+  <meta property="og:image" content="https://amathyzin.com/img/robooster_interface.png">
+  <meta property="og:image:alt" content="RoBooster 2 Interface">
   <meta property="og:url" content="https://amathyzin.com/downloads/arquivos/robooster2.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
   
-  <!-- Definindo a logo como thumbnail -->
-  <meta property="og:image" content="https://amathyzin.com/logo.png">
-  <meta property="og:image:alt" content="Site Logo">
-  <!-- Definindo a imagem principal da embed -->
-  <meta property="og:image" content="https://amathyzin.com/img/robooster_interface.png">
-  <meta property="og:image:alt" content="RoBooster 2 Interface">
-  
-  <!-- Twitter Cards: Usamos a logo para o Twitter -->
+  <!-- Twitter utiliza a mesma imagem -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
   <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
-  <meta name="twitter:image" content="https://amathyzin.com/logo.png">
-  <meta name="twitter:image:alt" content="Site Logo">
+  <meta name="twitter:image" content="https://amathyzin.com/img/robooster_interface.png">
+  <meta name="twitter:image:alt" content="RoBooster 2 Interface">
   <meta name="twitter:site" content="@amathyzin">
   <meta name="twitter:creator" content="@amathyzin">
   
@@ -54,9 +50,17 @@
       --accent: #ffe66d;
       --dark: #1a1a1a;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: var(--dark); color: #fff; overflow-x: hidden; }
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
     /* Canvas para Efeito de Galáxia com Three.js */
     #particle-canvas {
       position: fixed;
@@ -66,7 +70,6 @@
       height: 100%;
       z-index: -2;
     }
-    
     /* Navbar fixa no topo */
     .navbar {
       position: fixed;
@@ -111,7 +114,9 @@
       background: var(--primary);
       transition: width 0.3s ease;
     }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
     .hamburger {
       display: none;
       flex-direction: column;
@@ -237,7 +242,7 @@
     .download-count { margin-top: 15px; text-align: center; font-size: 1rem; }
     #download-count { font-weight: bold; }
     
-    /* Divisor e Área de Dependências na mesma caixa */
+    /* Divisor e Área de Dependências (na mesma caixa) */
     .dependencies-divider {
       border: none;
       border-top: 2px solid var(--primary);
@@ -365,7 +370,7 @@
         <!-- Linha Divisória para Dependências -->
         <hr class="dependencies-divider">
         
-        <!-- Área de Dependências Integrada (dentro da mesma caixa, separada por linha) -->
+        <!-- Área de Dependências Integrada -->
         <div class="dependencies-area">
           <h3><i class="fas fa-cogs"></i> <span style="font-size:1.8rem; color: var(--primary); font-weight: bold;">Baixe as Dependências</span></h3>
           <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
