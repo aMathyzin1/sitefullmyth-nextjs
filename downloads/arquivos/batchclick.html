@@ -62,6 +62,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
+    /* Estilos base */
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
@@ -79,7 +80,7 @@
       color: #fff;
       overflow-x: hidden;
     }
-    /* Fundo animado de partículas */
+    /* Fundo Animado */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -311,6 +312,12 @@
       margin: 10px auto;
       display: block;
     }
+    /* Contador de Downloads */
+    .counter {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1rem;
+    }
     /* Footer */
     footer {
       background: rgba(25,25,25,0.9);
@@ -386,7 +393,7 @@
       
       <!-- Seção de Download -->
       <div class="download-section" data-aos="fade-left">
-        <img class="file-icon" src="https://amathyzin.com/downloads/icons/batchclick.png" alt="Ícone do BatchClick">
+        <img class="file-icon" src="../../img/batchclick.png" alt="Ícone do BatchClick">
         <h2><i class="fas fa-download"></i> Download do BatchClick</h2>
         <p>BatchClick Pack.zip - 3.01 MB</p>
         
@@ -407,6 +414,9 @@
         <!-- Botões: Download e Senha -->
         <button onclick="handleDownloadButtonClick('./files/BatchClick_Booster.zip', 'BatchClick Pack - aMathyzin.zip')" class="download-button" id="download-button" disabled>Download</button>
         <button onclick="mostrarSenha()" class="password-button">Senha</button>
+        
+        <!-- Contador de Downloads -->
+        <p class="counter">Downloads: <span id="download-count">0</span></p>
       </div>
     </section>
   </main>
@@ -430,7 +440,7 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Variável de estado do download: "idle", "waiting", "downloading", "complete"
+    // Estado do download: "idle", "waiting", "downloading", "complete"
     let downloadState = "idle";
     
     // Função para atualizar o estado e aparência do botão de download
@@ -440,12 +450,36 @@
       btn.disabled = disabled;
     }
     
-    // Função para tratar o clique do botão de download com lógica avançada
+    // URL do backend para contagem de downloads
+    const backendUrl = 'https://probable-entertaining-chess.glitch.me';
+    
+    // Atualiza a contagem de downloads para o fileId "BatchClick"
+    function updateDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao obter a contagem:', error));
+    }
+    
+    // Incrementa a contagem de downloads para o fileId "BatchClick" após download concluído
+    function incrementDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao incrementar a contagem:', error));
+    }
+    
+    // Inicializa a contagem para "BatchClick"
+    updateDownloadCount('BatchClick');
+    
+    // Função para tratar o clique do botão de download
     function handleDownloadButtonClick(url, nomeArquivo) {
-      // Se um download já estiver em andamento, não faz nada
       if (downloadState === "waiting" || downloadState === "downloading") return;
       
-      // Se o download já foi concluído, pergunta se deseja baixar novamente
       if (downloadState === "complete") {
         Swal.fire({
           title: 'Confirmar Download',
@@ -465,7 +499,6 @@
           }
         });
       } else {
-        // Estado idle: inicia o download
         downloadState = "waiting";
         updateButtonState("Aguarde...", true);
         iniciarDownload(url, nomeArquivo);
@@ -491,7 +524,6 @@
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
           document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
           
-          // Se for o primeiro progresso e o estado for "waiting", atualiza para "downloading"
           if (downloadState === "waiting") {
             downloadState = "downloading";
             updateButtonState("Download Iniciado", true);
@@ -515,6 +547,10 @@
             URL.revokeObjectURL(downloadUrl);
             updateButtonState("Download Completo", false);
             downloadState = "complete";
+            
+            // Incrementa a contagem para "BatchClick"
+            incrementDownloadCount('BatchClick');
+            
             Swal.fire({
               title: 'Download Concluído!',
               text: 'Seu arquivo foi baixado com sucesso.',
@@ -594,27 +630,17 @@
       });
     }
     
-    // Hamburger: em telas pequenas, exibe um popup com as opções da navbar
+    // Hamburger: exibe popup com as opções da navbar em telas pequenas
     document.querySelector('.hamburger').addEventListener('click', function() {
       Swal.fire({
         title: 'Menu',
         html: `
           <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
-            <a href="../../index.html" style="color:var(--primary); text-decoration:none;">
-              <i class="fas fa-home"></i> Início
-            </a>
-            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;">
-              <i class="fas fa-download"></i> Downloads
-            </a>
-            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;">
-              <i class="fas fa-info-circle"></i> Sobre
-            </a>
-            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-              <i class="fab fa-discord"></i> Comunidade
-            </a>
+            <a href="../../index.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-home"></i> Início</a>
+            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-info-circle"></i> Sobre</a>
+            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-discord"></i> Comunidade</a>
           </div>
         `,
         showConfirmButton: false,
@@ -624,7 +650,7 @@
     });
   </script>
   
-  <!-- Smooth-scroll (se houver) -->
+  <!-- Scripts adicionais (se houver) -->
   <script src="../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>
 </body>

@@ -66,279 +66,60 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
-    @media only screen and (max-width: 768px) {
-      html, body {
-        overflow-x: hidden;
-      }
-    }
+    /* Estilos padrão – mantenha ou adapte conforme necessário */
+    @media only screen and (max-width: 768px) { html, body { overflow-x: hidden; } }
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
       --accent: #ffe66d;
       --dark: #1a1a1a;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-    }
-    /* Fundo animado de partículas */
-    #particle-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-    }
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background: rgba(25,25,25,0.9);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      border-bottom: 2px solid var(--primary);
-      box-shadow: 0 0 25px rgba(255,107,107,0.5);
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      border-radius: 2px;
-    }
-    /* Conteúdo principal */
-    main {
-      padding-top: 100px;
-      max-width: 1200px;
-      margin: 0 auto;
-      z-index: 1;
-      position: relative;
-    }
-    .download-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 2rem;
-    }
-    /* Seção do Tutorial */
-    .tutorial-section {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid var(--primary);
-      border-radius: 10px;
-      padding: 20px;
-      flex: 1 1 600px;
-    }
-    .tutorial-section h2 {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .tutorial-section iframe {
-      width: 100%;
-      max-width: 740px;
-      height: 480px;
-      border: none;
-      border-radius: 5px;
-    }
-    .tutorial-section .description-box {
-      margin-top: 15px;
-      background: rgba(0,0,0,0.8);
-      border: 1px solid var(--primary);
-      padding: 15px;
-      border-radius: 5px;
-    }
-    .tutorial-section .description-box h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .tutorial-section .description-box p {
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    /* Seção de Download */
-    .download-section {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid var(--primary);
-      border-radius: 10px;
-      padding: 20px;
-      flex: 1 1 500px;
-      text-align: center;
-    }
-    .download-section h2 {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .download-section p {
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .download-section .file-icon {
-      max-width: 200px;
-      display: block;
-      margin: 0 auto 20px;
-    }
-    /* Barra de Progresso */
-    .progress-bar-container {
-      width: 100%;
-      background-color: var(--primary);
-      margin: 20px 0;
-      height: 20px;
-      border-radius: 5px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-bar {
-      height: 100%;
-      background-color: var(--secondary);
-      width: 0%;
-      border-radius: 5px;
-      transition: width 0.4s ease;
-    }
-    .progress-text {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .progress-indicator {
-      text-align: center;
-      color: #aaa;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-    /* Termos e Botão de Download */
-    .terms-container {
-      margin: 15px 0;
-      text-align: center;
-      padding: 10px;
-      border: 1px solid var(--primary);
-      border-radius: 5px;
-      animation: pulse 1.5s infinite;
-    }
-    .terms-container.no-animation {
-      animation: none;
-      box-shadow: none;
-    }
-    .terms-container label {
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .terms-container input[type="checkbox"] {
-      margin-right: 5px;
-    }
-    .download-button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: block;
-      margin: 10px auto;
-    }
-    .download-button:disabled {
-      background: #555;
-      cursor: not-allowed;
-    }
-    .download-button:hover:not(:disabled) {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-    /* Footer */
-    footer {
-      background: rgba(25,25,25,0.9);
-      padding: 2rem 5%;
-      text-align: center;
-      border-top: 2px solid var(--secondary);
-      margin-top: 50px;
-    }
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-      margin: 0 10px;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: var(--dark); color: #fff; overflow-x: hidden; }
+    #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background: rgba(25,25,25,0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 1000; border-bottom: 2px solid var(--primary); box-shadow: 0 0 25px rgba(255,107,107,0.5); }
+    .logo { font-size: 2rem; font-weight: 700; background: linear-gradient(45deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; position: relative; padding: 0.5rem 0; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 25px; height: 3px; background-color: #fff; border-radius: 2px; }
+    main { padding-top: 100px; max-width: 1200px; margin: 0 auto; z-index: 1; position: relative; }
+    .download-container { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem; }
+    .tutorial-section { background: rgba(0,0,0,0.6); border: 1px solid var(--primary); border-radius: 10px; padding: 20px; flex: 1 1 600px; }
+    .tutorial-section h2 { display: flex; align-items: center; gap: 10px; color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem; }
+    .tutorial-section iframe { width: 100%; max-width: 740px; height: 480px; border: none; border-radius: 5px; }
+    .tutorial-section .description-box { margin-top: 15px; background: rgba(0,0,0,0.8); border: 1px solid var(--primary); padding: 15px; border-radius: 5px; }
+    .tutorial-section .description-box h3 { color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+    .tutorial-section .description-box p { margin-bottom: 10px; line-height: 1.5; }
+    .download-section { background: rgba(0,0,0,0.6); border: 1px solid var(--primary); border-radius: 10px; padding: 20px; flex: 1 1 500px; text-align: center; }
+    .download-section h2 { display: flex; align-items: center; gap: 10px; color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem; }
+    .download-section p { margin-bottom: 15px; text-align: center; }
+    .download-section .file-icon { max-width: 200px; display: block; margin: 0 auto 20px; }
+    .progress-bar-container { width: 100%; background-color: var(--primary); margin: 20px 0; height: 20px; border-radius: 5px; overflow: hidden; position: relative; }
+    .progress-bar { height: 100%; background-color: var(--secondary); width: 0%; border-radius: 5px; transition: width 0.4s ease; }
+    .progress-text { position: absolute; width: 100%; text-align: center; color: #fff; font-weight: bold; top: 50%; transform: translateY(-50%); }
+    .progress-indicator { text-align: center; color: #aaa; font-size: 14px; margin-top: 5px; }
+    .terms-container { margin: 15px 0; text-align: center; padding: 10px; border: 1px solid var(--primary); border-radius: 5px; animation: pulse 1.5s infinite; }
+    .terms-container.no-animation { animation: none; box-shadow: none; }
+    .terms-container label { font-size: 14px; cursor: pointer; }
+    .terms-container input[type="checkbox"] { margin-right: 5px; }
+    .download-button { background: var(--primary); color: #fff; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; margin: 10px auto; }
+    .download-button:disabled { background: #555; cursor: not-allowed; }
+    .download-button:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+    footer { background: rgba(25,25,25,0.9); padding: 2rem 5%; text-align: center; border-top: 2px solid var(--secondary); margin-top: 50px; }
+    footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
     @keyframes pulse {
       0% { box-shadow: 0 0 10px var(--primary); }
       50% { box-shadow: 0 0 20px var(--primary); }
       100% { box-shadow: 0 0 10px var(--primary); }
     }
     @media (max-width: 768px) {
-      .download-container {
-        flex-direction: column;
-      }
-      .tutorial-section iframe {
-        height: 300px;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
+      .download-container { flex-direction: column; }
+      .tutorial-section iframe { height: 300px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
@@ -401,8 +182,13 @@
           </label>
         </div>
         
-        <!-- Botão de Download com Lógica Avançada -->
+        <!-- Botão de Download -->
         <button onclick="handleDownloadButtonClick('./files/Haunted.bat', 'Haunted.bat')" class="download-button" id="download-button" disabled>Download</button>
+        
+        <!-- (Opcional) Se desejar, aqui você pode adicionar um contador na página do Haunted também -->
+        <p style="text-align: center; margin-top: 15px;">
+          Downloads: <span id="download-count">0</span>
+        </p>
       </div>
     </section>
   </main>
@@ -426,7 +212,7 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Variável de estado do download: idle, waiting, downloading, complete
+    // Estado do download: idle, waiting, downloading, complete
     let downloadState = "idle";
     
     // Atualiza o texto e o estado do botão de download
@@ -436,12 +222,36 @@
       btn.disabled = disabled;
     }
     
-    // Função que trata o clique do botão de download
+    // URL do backend – atualize com a URL do seu projeto no Glitch
+    const backendUrl = 'https://probable-entertaining-chess.glitch.me';
+    
+    // Atualiza a contagem ao carregar a página (usando o identificador "Haunted")
+    function updateDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao obter a contagem:', error));
+    }
+    
+    // Incrementa a contagem após o download concluído
+    function incrementDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao incrementar a contagem:', error));
+    }
+    
+    // Inicializa a contagem para "Haunted"
+    updateDownloadCount('Haunted');
+    
+    // Trata o clique no botão de download
     function handleDownloadButtonClick(url, nomeArquivo) {
-      // Se download já estiver em andamento, não faz nada
       if (downloadState === "waiting" || downloadState === "downloading") return;
       
-      // Se o download já foi concluído, pergunta se deseja baixar novamente
       if (downloadState === "complete") {
         Swal.fire({
           title: 'Confirmar Download',
@@ -461,14 +271,13 @@
           }
         });
       } else {
-        // Estado idle: inicia o download
         downloadState = "waiting";
         updateButtonState("Aguarde...", true);
         iniciarDownload(url, nomeArquivo);
       }
     }
     
-    // Função para realizar o download com barra de progresso
+    // Realiza o download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
@@ -487,7 +296,6 @@
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
           document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
           
-          // Ao primeiro progresso, se estava aguardando, atualiza para "Download Iniciado"
           if (downloadState === "waiting") {
             downloadState = "downloading";
             updateButtonState("Download Iniciado", true);
@@ -497,7 +305,6 @@
       
       xhr.onload = function() {
         if (xhr.status === 200 && xhr.response.size > 0) {
-          // Garante que a barra esteja completa
           document.getElementById('progress-bar').style.width = '100%';
           document.getElementById('progress-text').innerText = '100%';
           setTimeout(() => {
@@ -511,9 +318,11 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
             
-            // Atualiza para "Download Completo" e permite novo clique
             updateButtonState("Download Completo", false);
             downloadState = "complete";
+            
+            // Incrementa a contagem de downloads para "Haunted"
+            incrementDownloadCount('Haunted');
             
             Swal.fire({
               title: 'Download Concluído!',
@@ -568,34 +377,23 @@
     document.getElementById('terms-checkbox').addEventListener('change', function() {
       const btn = document.getElementById('download-button');
       const container = document.getElementById('terms-container');
-      // Só habilita se o estado for idle
       if (downloadState === "idle") {
         btn.disabled = !this.checked;
       }
       container.classList.toggle('no-animation', this.checked);
     });
     
-    // Hamburger: em telas pequenas, exibe um popup com as opções da navbar
+    // Hamburger: exibe menu popup para telas pequenas
     document.querySelector('.hamburger').addEventListener('click', function() {
       Swal.fire({
         title: 'Menu',
         html: `
           <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
-            <a href="../../index.html" style="color:var(--primary); text-decoration:none;">
-              <i class="fas fa-home"></i> Início
-            </a>
-            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;">
-              <i class="fas fa-download"></i> Downloads
-            </a>
-            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;">
-              <i class="fas fa-info-circle"></i> Sobre
-            </a>
-            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-              <i class="fab fa-discord"></i> Comunidade
-            </a>
+            <a href="../../index.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-home"></i> Início</a>
+            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-info-circle"></i> Sobre</a>
+            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-discord"></i> Comunidade</a>
           </div>
         `,
         showConfirmButton: false,
@@ -605,7 +403,7 @@
     });
   </script>
   
-  <!-- Smooth-scroll (se houver) -->
+  <!-- Scripts adicionais, se necessário -->
   <script src="../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>
 </body>

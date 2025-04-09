@@ -12,7 +12,7 @@
   <meta name="author" content="aMathyzin">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph para Facebook, WhatsApp, LinkedIn etc. -->
+  <!-- Open Graph e Twitter Cards -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
   <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
   <meta property="og:image" content="https://amathyzin.com/downloads/icons/RoBooster2.png">
@@ -20,10 +20,6 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
-  <!-- Caso possua um Facebook App ID, descomente a linha abaixo -->
-  <!-- <meta property="fb:app_id" content="SEU_FACEBOOK_APP_ID"> -->
-
-  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
   <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
@@ -31,48 +27,17 @@
   <meta name="twitter:site" content="@amathyzin">
   <meta name="twitter:creator" content="@amathyzin">
 
-  <!-- Pinterest Rich Pins -->
-  <meta name="pinterest-rich-pin" content="true">
-
-  <!-- Schema.org / JSON‑LD Structured Data para o Projeto -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "RoBooster 2",
-    "operatingSystem": "Windows",
-    "applicationCategory": "UtilityApplication",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.5",
-      "reviewCount": "25"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0.00",
-      "priceCurrency": "BRL"
-    },
-    "url": "https://amathyzin.com/downloads/arquivos/robooster2.html",
-    "image": "https://amathyzin.com/downloads/icons/RoBooster2.png",
-    "description": "RoBooster 2 é um otimizador gratuito para Roblox, desenvolvido por aMathyzin, que melhora o desempenho do jogo integrando ao BloxStrap."
-  }
-  </script>
-  
-  <!-- Font Awesome e AOS para animações -->
+  <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- Three.js para fundo animado -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
+    /* Seus estilos originais (CSS) – mantenha o que já utiliza */
     @media only screen and (max-width: 768px) {
-      html, body {
-        overflow-x: hidden;
-      }
+      html, body { overflow-x: hidden; }
     }
     :root {
       --primary: #ff6b6b;
@@ -80,264 +45,51 @@
       --accent: #ffe66d;
       --dark: #1a1a1a;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-    }
-    /* Fundo animado de partículas */
-    #particle-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-    }
-    /* Navbar baseada no novo modelo */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background: rgba(25,25,25,0.9);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      border-bottom: 2px solid var(--primary);
-      box-shadow: 0 0 25px rgba(255,107,107,0.5);
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    /* Hamburger: escondido em telas grandes */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      border-radius: 2px;
-    }
-    /* Conteúdo principal */
-    main {
-      padding-top: 100px;
-      max-width: 1200px;
-      margin: 0 auto;
-      z-index: 1;
-      position: relative;
-    }
-    .download-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding: 2rem;
-    }
-    /* Tutorial com maior largura */
-    .tutorial-section {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid var(--primary);
-      border-radius: 10px;
-      padding: 20px;
-      flex: 1 1 600px;
-    }
-    .download-section {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid var(--primary);
-      border-radius: 10px;
-      padding: 20px;
-      flex: 1 1 500px;
-      text-align: center;
-    }
-    .tutorial-section h2, .download-section h2 {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .tutorial-section iframe {
-      width: 100%;
-      max-width: 740px;
-      height: 480px;
-      border: none;
-      border-radius: 5px;
-    }
-    .download-section .file-icon {
-      max-width: 200px;
-      display: block;
-      margin: 0 auto 20px;
-    }
-    /* Barra de progresso adaptada */
-    .progress-bar-container {
-      width: 100%;
-      background-color: var(--primary);
-      margin: 20px 0;
-      height: 20px;
-      border-radius: 5px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-bar {
-      height: 100%;
-      background-color: var(--secondary);
-      width: 0%;
-      border-radius: 5px;
-      transition: width 0.4s ease;
-    }
-    .progress-text {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      color: #fff;
-      font-weight: bold;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .progress-indicator {
-      text-align: center;
-      color: #aaa;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-    /* Termos e botão de download */
-    .terms-container {
-      margin: 15px 0;
-      text-align: center;
-      padding: 10px;
-      border: 1px solid var(--primary);
-      border-radius: 5px;
-      animation: pulse 1.5s infinite;
-    }
-    .terms-container.no-animation {
-      animation: none;
-      box-shadow: none;
-    }
-    .terms-container label {
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .terms-container input[type="checkbox"] {
-      margin-right: 5px;
-    }
-    .download-button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: block;
-      margin: 10px auto;
-    }
-    .download-button:disabled {
-      background: #555;
-      cursor: not-allowed;
-    }
-    .download-button:hover:not(:disabled) {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-    /* Seção de dependências (ex: BloxStrap e .NET) */
-    .additional-downloads {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .additional-downloads h3 {
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-    .additional-downloads .dep-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s;
-    }
-    .additional-downloads .dep-button:hover {
-      transform: scale(1.05);
-    }
-    /* Footer */
-    footer {
-      background: rgba(25,25,25,0.9);
-      padding: 2rem 5%;
-      text-align: center;
-      border-top: 2px solid var(--secondary);
-      margin-top: 50px;
-    }
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    /* Animação de pulso para a caixa de termos */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: var(--dark); color: #fff; overflow-x: hidden; }
+    #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background: rgba(25,25,25,0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 1000; border-bottom: 2px solid var(--primary); box-shadow: 0 0 25px rgba(255,107,107,0.5); }
+    .logo { font-size: 2rem; font-weight: 700; background: linear-gradient(45deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #fff; text-decoration: none; position: relative; padding: 0.5rem 0; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 25px; height: 3px; background-color: #fff; border-radius: 2px; }
+    main { padding-top: 100px; max-width: 1200px; margin: 0 auto; z-index: 1; position: relative; }
+    .download-container { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem; }
+    .tutorial-section { background: rgba(0,0,0,0.6); border: 1px solid var(--primary); border-radius: 10px; padding: 20px; flex: 1 1 600px; }
+    .download-section { background: rgba(0,0,0,0.6); border: 1px solid var(--primary); border-radius: 10px; padding: 20px; flex: 1 1 500px; text-align: center; }
+    .tutorial-section h2, .download-section h2 { display: flex; align-items: center; gap: 10px; color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem; }
+    .tutorial-section iframe { width: 100%; max-width: 740px; height: 480px; border: none; border-radius: 5px; }
+    .download-section .file-icon { max-width: 200px; display: block; margin: 0 auto 20px; }
+    .progress-bar-container { width: 100%; background-color: var(--primary); margin: 20px 0; height: 20px; border-radius: 5px; overflow: hidden; position: relative; }
+    .progress-bar { height: 100%; background-color: var(--secondary); width: 0%; border-radius: 5px; transition: width 0.4s ease; }
+    .progress-text { position: absolute; width: 100%; text-align: center; color: #fff; font-weight: bold; top: 50%; transform: translateY(-50%); }
+    .progress-indicator { text-align: center; color: #aaa; font-size: 14px; margin-top: 5px; }
+    .terms-container { margin: 15px 0; text-align: center; padding: 10px; border: 1px solid var(--primary); border-radius: 5px; animation: pulse 1.5s infinite; }
+    .terms-container.no-animation { animation: none; box-shadow: none; }
+    .terms-container label { font-size: 14px; cursor: pointer; }
+    .terms-container input[type="checkbox"] { margin-right: 5px; }
+    .download-button { background: var(--primary); color: #fff; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; margin: 10px auto; }
+    .download-button:disabled { background: #555; cursor: not-allowed; }
+    .download-button:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+    .additional-downloads { margin-top: 30px; text-align: center; }
+    .additional-downloads h3 { color: var(--primary); margin-bottom: 20px; }
+    .additional-downloads .dep-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: transform 0.3s; }
+    .additional-downloads .dep-button:hover { transform: scale(1.05); }
+    footer { background: rgba(25,25,25,0.9); padding: 2rem 5%; text-align: center; border-top: 2px solid var(--secondary); margin-top: 50px; }
+    footer a { color: var(--primary); text-decoration: none; margin: 0 10px; }
     @keyframes pulse {
       0% { box-shadow: 0 0 10px var(--primary); }
       50% { box-shadow: 0 0 20px var(--primary); }
       100% { box-shadow: 0 0 10px var(--primary); }
     }
-    /* Responsividade para telas menores e celulares */
     @media (max-width: 768px) {
-      .download-container {
-        flex-direction: column;
-      }
-      .tutorial-section iframe {
-        height: 300px;
-      }
-      /* Esconde as nav-links e exibe o hamburger */
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
+      .download-container { flex-direction: column; }
+      .tutorial-section iframe { height: 300px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
@@ -356,7 +108,6 @@
         <li><a href="../../redirects/github.html" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
         <li><a href="../../redirects/discord.html" target="_blank"><i class="fab fa-discord"></i> Comunidade</a></li>
       </ul>
-      <!-- Ícone de hamburger para dispositivos móveis -->
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -388,7 +139,7 @@
         <h2><i class="fas fa-download"></i> Download do RoBooster 2</h2>
         <p style="margin-bottom: 15px; text-align:center;">RoBooster.exe - 95.08 MB</p>
         
-        <!-- Barra de progresso -->
+        <!-- Barra de Progresso -->
         <div class="progress-bar-container">
           <div class="progress-bar" id="progress-bar"></div>
           <div class="progress-text" id="progress-text">0%</div>
@@ -404,6 +155,11 @@
         
         <!-- Botão de Download -->
         <button onclick="handleDownloadButtonClick('https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/arquivos/robooster.exe', 'RoBooster2.exe')" class="download-button" id="download-button" disabled>Download</button>
+        
+        <!-- Contador de Downloads -->
+        <p style="text-align: center; margin-top: 15px;">
+          Downloads: <span id="download-count">0</span>
+        </p>
         
         <!-- Seção de Dependências -->
         <div class="additional-downloads">
@@ -440,23 +196,46 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Variável de estado do download: idle, waiting, downloading, complete
+    // Estado do download: idle, waiting, downloading, complete
     let downloadState = "idle";
     
-    // Função para atualizar o estado e aparência do botão
+    // Atualiza o estado e o texto do botão de download
     function updateButtonState(text, disabled) {
       const btn = document.getElementById('download-button');
       btn.innerText = text;
       btn.disabled = disabled;
     }
     
-    // Função para tratar o clique no botão de download
+    // URL do backend – substitua pela URL do seu projeto no Glitch
+    const backendUrl = 'https://probable-entertaining-chess.glitch.me';
+    
+    // Atualiza a contagem ao carregar a página (identificador "RoBooster2")
+    function updateDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao obter a contagem:', error));
+    }
+    
+    // Incrementa a contagem após o download concluído
+    function incrementDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao incrementar a contagem:', error));
+    }
+    
+    // Inicializa a contagem para "RoBooster2"
+    updateDownloadCount('RoBooster2');
+    
+    // Trata o clique no botão de download
     function handleDownloadButtonClick(url, nomeArquivo) {
-      // Se um download já estiver em andamento, não faz nada
-      if (downloadState === "waiting" || downloadState === "downloading") {
-        return;
-      }
-      // Se o download já foi concluído, pergunta se deseja baixar novamente
+      if (downloadState === "waiting" || downloadState === "downloading") return;
+      
       if (downloadState === "complete") {
         Swal.fire({
           title: 'Confirmar Download',
@@ -476,14 +255,13 @@
           }
         });
       } else {
-        // Estado idle: inicia o download
         downloadState = "waiting";
         updateButtonState("Aguarde...", true);
         iniciarDownload(url, nomeArquivo);
       }
     }
     
-    // Função para download com barra de progresso
+    // Realiza o download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
@@ -502,7 +280,6 @@
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
           document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
           
-          // Se for o primeiro evento de progresso, atualiza para "Download Iniciado"
           if (downloadState === "waiting") {
             downloadState = "downloading";
             updateButtonState("Download Iniciado", true);
@@ -512,7 +289,6 @@
       
       xhr.onload = function() {
         if (xhr.status === 200 && xhr.response.size > 0) {
-          // Garante que a barra de progresso esteja completa
           document.getElementById('progress-bar').style.width = '100%';
           document.getElementById('progress-text').innerText = '100%';
           setTimeout(() => {
@@ -526,9 +302,11 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
             
-            // Atualiza o botão para Download Completo e permite novo clique
             updateButtonState("Download Completo", false);
             downloadState = "complete";
+            
+            // Incrementa a contagem de downloads para "RoBooster2"
+            incrementDownloadCount('RoBooster2');
             
             Swal.fire({
               title: 'Download Concluído!',
@@ -550,7 +328,6 @@
             color: '#FFF',
             backdrop: 'rgba(0,0,0,0.5)'
           });
-          // Em caso de erro, retorna para o estado idle e reabilita o botão
           updateButtonState("Download", false);
           downloadState = "idle";
         }
@@ -580,38 +357,27 @@
       return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
     }
     
-    // Habilitar botão de download ao aceitar os termos
+    // Habilita o botão de download quando os termos são aceitos
     document.getElementById('terms-checkbox').addEventListener('change', function() {
       const btn = document.getElementById('download-button');
       const container = document.getElementById('terms-container');
-      // Só habilita se estiver em estado idle (ou seja, sem download em andamento ou já concluído)
       if (downloadState === "idle") {
         btn.disabled = !this.checked;
       }
       container.classList.toggle('no-animation', this.checked);
     });
     
-    // Hamburger: em telas pequenas, ao clicar abre um popup com as opções da navbar
+    // Hamburger: exibe menu popup nas telas menores
     document.querySelector('.hamburger').addEventListener('click', function() {
       Swal.fire({
         title: 'Menu',
         html: `
           <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
-            <a href="../../index.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-home"></i> Início
-            </a>
-            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-download"></i> Downloads
-            </a>
-            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-info-circle"></i> Sobre
-            </a>
-            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-discord"></i> Comunidade
-            </a>
+            <a href="../../index.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-home"></i> Início</a>
+            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-info-circle"></i> Sobre</a>
+            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-discord"></i> Comunidade</a>
           </div>
         `,
         showConfirmButton: false,
@@ -621,7 +387,7 @@
     });
   </script>
   
-  <!-- Seu próprio smooth-scroll.js (se houver) -->
+  <!-- Scripts adicionais, se necessário -->
   <script src="../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>
 </body>

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <!-- Meta tags para SEO e redes sociais -->
   <meta name="description" content="Baixe o 3k Pack, o pack especial para os 3.000 inscritos do aMathyzin! Segurança, desempenho e otimização garantidos.">
   <meta name="keywords" content="3k pack, aMathyzin, download, otimização, performance, 3.000 inscritos, pack">
   <meta name="author" content="aMathyzin">
+  
   <meta property="og:title" content="aMathyzin 3k Pack - Download">
   <meta property="og:description" content="Página de download do 3k Pack, a otimização especial para os 3.000 inscritos do aMathyzin.">
   <meta property="og:image" content="https://amathyzin.com/downloads/icons/3kpack.png">
@@ -261,6 +263,12 @@
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
+    /* Contador de downloads */
+    .counter {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1rem;
+    }
     /* Footer */
     footer {
       background: rgba(25,25,25,0.9);
@@ -274,7 +282,7 @@
       text-decoration: none;
       margin: 0 10px;
     }
-    /* Animação de pulso para a caixa de termos */
+    /* Animação de pulso */
     @keyframes pulse {
       0% { box-shadow: 0 0 10px var(--primary); }
       50% { box-shadow: 0 0 20px var(--primary); }
@@ -337,7 +345,7 @@
       
       <!-- Seção de Download -->
       <div class="download-section" data-aos="fade-left">
-        <img class="file-icon" src="https://amathyzin.com/downloads/icons/3kpack.png" alt="Ícone do 3k Pack">
+        <img class="file-icon" src="../../img/3kpack.png" alt="Ícone do 3k Pack">
         <h2><i class="fas fa-download"></i> Download do 3k Pack</h2>
         <p>aMathyzin 3k Pack.zip - 5.6 MB</p>
         
@@ -356,7 +364,10 @@
         </div>
         
         <!-- Botão de Download -->
-        <button onclick="iniciarDownload('./files/aMathyzin 3k Pack.zip', 'aMathyzin 3k Pack.zip')" class="download-button" id="download-button" disabled>Download</button>
+        <button onclick="handleDownloadButtonClick('./files/aMathyzin 3k Pack.zip', 'aMathyzin 3k Pack.zip')" class="download-button" id="download-button" disabled>Download</button>
+        
+        <!-- Contador de Downloads -->
+        <p class="counter">Downloads: <span id="download-count">0</span></p>
       </div>
     </section>
   </main>
@@ -380,37 +391,71 @@
   <script>
     AOS.init({ duration: 1000, once: true });
     
-    // Fundo de partículas com Three.js
-    const canvas = document.getElementById('particle-canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 2;
-    const particleCount = 3000;
-    const posArray = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 6;
-    }
-    const particles = new THREE.BufferGeometry();
-    particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particleMaterial = new THREE.PointsMaterial({ size: 0.005, color: '#ff6b6b' });
-    const particleMesh = new THREE.Points(particles, particleMaterial);
-    scene.add(particleMesh);
-    function animateParticles() {
-      requestAnimationFrame(animateParticles);
-      particleMesh.rotation.y += 0.001;
-      renderer.render(scene, camera);
-    }
-    function onResize() {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    }
-    window.addEventListener('resize', onResize);
-    onResize();
-    animateParticles();
+    // Estado do download: "idle", "waiting", "downloading", "complete"
+    let downloadState = "idle";
+    // URL do backend para contagem de downloads
+    const backendUrl = 'https://probable-entertaining-chess.glitch.me';
     
-    // Função para download com barra de progresso
+    // Atualiza a contagem de downloads para o identificador "3kPack"
+    function updateDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao obter a contagem:', error));
+    }
+    
+    // Incrementa a contagem de downloads para o identificador "3kPack"
+    function incrementDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao incrementar a contagem:', error));
+    }
+    
+    // Inicia a contagem ao carregar a página
+    updateDownloadCount("3kPack");
+    
+    // Atualiza o estado e aparência do botão de download
+    function updateButtonState(text, disabled) {
+      const btn = document.getElementById('download-button');
+      btn.innerText = text;
+      btn.disabled = disabled;
+    }
+    
+    // Função para tratar o clique do botão de download
+    function handleDownloadButtonClick(url, nomeArquivo) {
+      if (downloadState === "waiting" || downloadState === "downloading") return;
+      // Se o download já foi concluído, podemos perguntar se deseja baixar novamente (opcional)
+      if (downloadState === "complete") {
+        Swal.fire({
+          title: 'Confirmar Download',
+          text: 'Deseja baixar novamente?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          background: '#333',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            downloadState = "waiting";
+            updateButtonState("Aguarde...", true);
+            iniciarDownload(url, nomeArquivo);
+          }
+        });
+      } else {
+        downloadState = "waiting";
+        updateButtonState("Aguarde...", true);
+        iniciarDownload(url, nomeArquivo);
+      }
+    }
+    
+    // Função para realizar o download com barra de progresso
     function iniciarDownload(url, nomeArquivo) {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
@@ -427,10 +472,13 @@
           let percent = (event.loaded / event.total) * 100;
           document.getElementById('progress-bar').style.width = percent + '%';
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
-          // Calcula o tamanho em MB com uma casa decimal
           const totalMB = (event.total / (1024 * 1024)).toFixed(1);
           const loadedMB = (event.loaded / (1024 * 1024)).toFixed(1);
           document.getElementById('progress-indicator').innerText = loadedMB + ' MB de ' + totalMB + ' MB';
+          if (downloadState === "idle") {
+            downloadState = "downloading";
+            updateButtonState("Download Iniciado", true);
+          }
         }
       };
       
@@ -448,6 +496,10 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
+            updateButtonState("Download Completo", false);
+            downloadState = "complete";
+            // Incrementa a contagem de downloads para "3kPack"
+            incrementDownloadCount("3kPack");
             Swal.fire({
               title: 'Download Concluído!',
               text: 'Seu arquivo foi baixado com sucesso.',
@@ -468,48 +520,27 @@
             color: '#FFF',
             backdrop: 'rgba(0,0,0,0.5)'
           });
+          updateButtonState("Download", false);
+          downloadState = "idle";
         }
+      };
+      
+      xhr.onerror = function() {
+        Swal.fire({
+          title: 'Erro no Download!',
+          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        updateButtonState("Download", false);
+        downloadState = "idle";
       };
       
       xhr.send();
     }
-    
-    // Habilitar botão de download ao aceitar os termos
-    document.getElementById('terms-checkbox').addEventListener('change', function() {
-      const btn = document.getElementById('download-button');
-      const container = document.getElementById('terms-container');
-      btn.disabled = !this.checked;
-      container.classList.toggle('no-animation', this.checked);
-    });
-    
-    // Hamburger: em telas pequenas, exibe um popup com as opções da navbar
-    document.querySelector('.hamburger').addEventListener('click', function() {
-      Swal.fire({
-        title: 'Menu',
-        html: `
-          <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
-            <a href="../../index.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-home"></i> Início
-            </a>
-            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-download"></i> Downloads
-            </a>
-            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;">
-                <i class="fas fa-info-circle"></i> Sobre
-            </a>
-            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;">
-                <i class="fab fa-discord"></i> Comunidade
-            </a>
-          </div>
-        `,
-        showConfirmButton: false,
-        background: '#333',
-        color: '#FFF'
-      });
-    });
   </script>
   
   <!-- Smooth-scroll (se houver) -->
