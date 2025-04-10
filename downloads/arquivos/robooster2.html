@@ -494,12 +494,14 @@
     
     // Função que verifica se o usuário veio do link do encurtador
     function validReferrer() {
-      return document.referrer.includes("https://tav.animerigel.com/RoBooster2");
+      const ref = document.referrer;
+      // Verifica se o referrer é igual ao URL esperado, considerando ou não a barra final.
+      return ref === "https://tav.animerigel.com/RoBooster2" || ref === "https://tav.animerigel.com/RoBooster2/";
     }
     
     // Função de Download com verificação do referrer
     function handleDownloadButtonClick(url, nomeArquivo) {
-      // Se o usuário não veio pelo encurtador, exibe o popup com o botão no alerta.
+      // Se o usuário não veio pelo encurtador, exibe o popup com o botão integrado.
       if (!validReferrer()) {
         Swal.fire({
           title: 'Acesso Negado!',
