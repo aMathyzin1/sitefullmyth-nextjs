@@ -7,6 +7,7 @@
   <meta name="description" content="Página 404 - aMathyzin">
   <meta name="author" content="aMathyzin">
   <title>404 - Página Não Encontrada | aMathyzin</title>
+  <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
   
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -139,13 +140,19 @@
       position: relative;
       padding: 0 2rem;
     }
-    .hero h1 {
-      font-size: 6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5rem;
+    .hero img {
+      max-width: 400px; /* Limita o tamanho da imagem para telas maiores */
+      width: 100%;
+      height: auto;
       margin-bottom: 1.5rem;
       animation: float 3s ease-in-out infinite;
-      text-shadow: 0 0 30px rgba(255,107,107,0.5);
+      filter: drop-shadow(0 0 30px rgba(255,107,107,0.5));
+    }
+    /* Responsividade para dispositivos menores */
+    @media (max-width: 600px) {
+      .hero img {
+        max-width: 90%; /* A imagem ocupará 90% da largura disponível */
+      }
     }
     .hero p {
       font-size: 1.5rem;
@@ -239,7 +246,8 @@
   <!-- Conteúdo Principal: Seção de Erro 404 -->
   <main>
     <section class="hero" id="error">
-      <h1 data-aos="zoom-in">404</h1>
+      <!-- Altere o valor do atributo "src" para a sua imagem -->
+      <img src="./img/404.png" alt="Erro 404 - Página Não Encontrada" data-aos="zoom-in">
       <p data-aos="fade-up" data-aos-delay="200">Página Não Encontrada</p>
       <p data-aos="fade-up" data-aos-delay="300">Desculpe, a página que você procura não existe.</p>
       <div data-aos="fade-up" data-aos-delay="400">
