@@ -4,20 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Favicon e Ícone -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
   <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- SEO Básico -->
   <title>RoBooster 2 - Download | aMathyzin</title>
   <meta name="description" content="Baixe o RoBooster 2, o otimizador gratuito para Roblox que melhora o desempenho e a performance do seu PC, integrando ao BloxStrap.">
   <meta name="keywords" content="RoBooster 2, download, otimização, Roblox, aMathyzin, BloxStrap, performance, gratuita">
   <meta name="author" content="aMathyzin">
   <meta name="robots" content="index, follow">
   
-  <!-- Open Graph e Twitter Cards -->
-  <!-- Define a imagem de embed como a interface -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
   <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
   <meta property="og:image" content="https://amathyzin.com/img/robooster_interface.png">
@@ -27,7 +23,6 @@
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
   
-  <!-- Twitter utiliza a mesma imagem -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
   <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
@@ -36,7 +31,6 @@
   <meta name="twitter:site" content="@amathyzin">
   <meta name="twitter:creator" content="@amathyzin">
   
-  <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -239,11 +233,9 @@
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    /* Contador de Downloads */
     .download-count { margin-top: 15px; text-align: center; font-size: 1rem; }
     #download-count { font-weight: bold; }
     
-    /* Divisor e Área de Dependências (na mesma caixa) */
     .dependencies-divider {
       border: none;
       border-top: 2px solid var(--primary);
@@ -303,10 +295,8 @@
   </style>
 </head>
 <body>
-  <!-- Canvas para Efeito de Galáxia Roxa com Three.js -->
   <canvas id="particle-canvas"></canvas>
   
-  <!-- Navbar -->
   <header>
     <nav class="navbar" data-aos="fade-down">
       <div class="logo">aMathyzin</div>
@@ -325,10 +315,8 @@
     </nav>
   </header>
   
-  <!-- Conteúdo Principal -->
   <main>
     <section class="download-container">
-      <!-- Seção do Tutorial -->
       <div class="tutorial-section" data-aos="fade-right">
         <h2><i class="fas fa-video"></i> Tutorial</h2>
         <iframe src="https://drive.google.com/file/d/1biF5hgcND6I1r5Xg6lvW0Pm-TLqqMyNj/preview" allow="autoplay"></iframe>
@@ -342,36 +330,29 @@
         </div>
       </div>
       
-      <!-- Seção de Download Principal -->
       <div class="download-section" data-aos="fade-left">
         <img class="file-icon" src="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/RoBooster2.png" alt="Ícone do RoBooster 2">
         <h2><i class="fas fa-download"></i> Download do RoBooster 2</h2>
         <p style="margin-bottom: 15px; text-align:center;">RoBooster.exe - 95.08 MB</p>
         
-        <!-- Barra de Progresso -->
         <div class="progress-bar-container">
           <div class="progress-bar" id="progress-bar"></div>
           <div class="progress-text" id="progress-text">0%</div>
         </div>
         <div class="progress-indicator" id="progress-indicator">0 KB de 95.08 MB</div>
         
-        <!-- Termos de Serviço -->
         <div class="terms-container" id="terms-container">
           <label>
             <input type="checkbox" id="terms-checkbox"> Eu aceito os <a href="../../juridico/termos.html" target="_blank" style="color: var(--primary); text-decoration: underline;">Termos de Serviço</a>
           </label>
         </div>
         
-        <!-- Botão de Download -->
         <button onclick="handleDownloadButtonClick('https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/arquivos/robooster.exe', 'RoBooster2.exe')" class="download-button" id="download-button" disabled>Download</button>
         
-        <!-- Contador de Downloads (em negrito e formatado) -->
         <p style="text-align: center; margin-top: 15px;">Downloads: <span id="download-count">0</span></p>
         
-        <!-- Linha Divisória para Dependências -->
         <hr class="dependencies-divider">
         
-        <!-- Área de Dependências Integrada -->
         <div class="dependencies-area">
           <h3><i class="fas fa-cogs"></i> <span style="font-size:1.8rem; color: var(--primary); font-weight: bold;">Baixe as Dependências</span></h3>
           <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
@@ -388,7 +369,6 @@
     </section>
   </main>
   
-  <!-- Footer -->
   <footer data-aos="fade-up">
     <div style="margin-bottom: 1rem;">
       <a href="mailto:contato@amathyzin.com"><i class="fas fa-envelope"></i> contato@amathyzin.com</a>
@@ -402,11 +382,8 @@
     <p>&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
   </footer>
   
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Efeito de Galáxia Roxa com Three.js -->
   <script>
-    // Configuração do renderer
     const canvas = document.getElementById('particle-canvas');
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -414,11 +391,9 @@
     
     const scene = new THREE.Scene();
     
-    // Configuração da câmera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     camera.position.z = 4;
     
-    // Criando a galáxia com partículas
     const galaxyCount = 10000;
     const galaxyGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(galaxyCount * 3);
@@ -435,7 +410,6 @@
     }
     galaxyGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     
-    // Material para os pontos
     const galaxyMaterial = new THREE.PointsMaterial({
       size: 0.02,
       sizeAttenuation: true,
@@ -460,7 +434,6 @@
     });
   </script>
   
-  <!-- Código de Contagem e Download com GSAP -->
   <script>
     AOS.init({ duration: 1000, once: true });
     
@@ -468,7 +441,6 @@
     const backendUrl = 'https://probable-entertaining-chess.glitch.me';
     const fileId = "RoBooster2";
     
-    // Função para animar o contador usando GSAP e formatar o número com separador de milhar
     function animateCounter(newValue) {
       const counterEl = document.getElementById('download-count');
       const currentValue = parseInt(counterEl.innerText.replace(/\D/g, ''), 10) || 0;
@@ -482,7 +454,6 @@
       });
     }
     
-    // Atualiza o contador consultando o backend
     function updateDownloadCount(id) {
       fetch(`${backendUrl}/api/downloads/${id}`)
         .then(response => response.json())
@@ -492,7 +463,6 @@
         .catch(error => console.error('Erro ao obter a contagem:', error));
     }
     
-    // Incrementa o contador via backend e anima a atualização
     function incrementDownloadCount(id) {
       fetch(`${backendUrl}/api/downloads/${id}`, { method: 'POST' })
         .then(response => response.json())
@@ -634,7 +604,6 @@
     });
   </script>
   
-  <!-- Scripts adicionais -->
   <script src="../../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>
   <script src="./script/endpoint_encurtador.js"></script>
