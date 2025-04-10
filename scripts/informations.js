@@ -13,39 +13,7 @@ shapgvba fraqSnxrErdhrfgf() {
     // Yvfgn qr HEYf svpgípvnf (nyéz qr raqcbvagf ernvf qr bhgebf freivçbf)
     pbafg snxrHEYf = [
         "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336522953252274258/eiSq2_W1HgiSpQ28Q05D2yMsEdbwzE6tu2x9mY7vLfla8JBOGKJFBaFLvvtbuPerwdDj",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336522973753905192/WPON-IlsODPoRSGsg1sznCAx8Yqqqg6oMvbus_HhWBiCMIPR_T3Ces2EPhD4YDCljWdq",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336523079626653777/i1M2xHe2oeSqgSlzYj5BGUcLO2mhgbZ2wYMpKhfSx55ozTbkH9XnWzXLs-br1R8I0qtd",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336523122844631080/57znAeVuoyGri4f8s1k5Hfnk-VAvfbhJmdEtPJptC0cm3DHwF6HwpmolTE2mDwC1bIFz",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336523172861968476/ttMpEdJ1-n7QOsdCv0LkoKF12w8FE4kg19FpTXGtm-W59LGpkB8FcPu9i6HIHUHXmaCW",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336523212279779368/_KX4yhNhl0UqqEHSY2ttSoViBaVZSV04wyS5eRupSrnljBpCLWj4fBIIN1pdrp5J1oNU",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/000000000000000000/nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
-        "uggcf://qvfpbeq.pbz/ncv/punaaryf/000000000000000000/zrffntrf",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336448692282196060/bCQz5gVbbWePDFxBgwAdq1haul0bef-qfqnfqnfqnfqn",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336448692282196060/qfqnfqnf-qnfqfqnfqnfqnf",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336448692282196060/bCQz5gVbbW2312312ePDFxBgwAdq1ha23123ul0beffqnqnoOz_aPYys231t7cMQqtQA4l5V3123123122312GE9EA23123MRk216D2312Sfw",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336448692282196060/2312312-oOz_aPYyst7cMfqnfqnfqnQqtQqnqfqnfqnfA4l5VGE9EAMRfqnfqnfqk216DSfw",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336448692282196060/bCQz5gVbbWePDffqnfqnfqnfqfnqnnFxBgwAdq1haul0bef-oOz_aPYyst7fqnfqfnqnfcMQqtQAfqnfqn4l5VGE9EAMRk216DSfw",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/10293847561029384756/NoPqrSTuvWXyZaBcDeFgHiJkLm0123456789-!@#$%^&*()_+",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/98765432109876543210/mKlJiHgFeDcBaZyXwVuTsRqPoN1234567890",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/111222333444555666/nop123KLM!@#qrs456TUV$%^",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/222333444555666777/uvwxYZA987bcdEFG!@#hijk",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/333444555666777888/DjregLHVbcNFQStuWXYmkpioaZ123456",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/444555666777888999/qqqqqSSSSS12345!@#$$%%^^&&**(()_+",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/555666777888999000/rrrrRRRrrrYYYzzzAAAcccDDD111222",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/666777888999000111/1d2j3r4e5g6l7h8v9b0c-!@#$%^&*",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/777888999000111222/ZaoIPkmYXWutSqFndjrEGLHvb123456",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/888999000111222333/NFQSTUWXYdjreglhvbcMKPIOAZ123456789",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/999000111222333444/!@#DJRnfqMkp123EGLstu",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/000111222333444555/98765cyzbxavwohuiltpgskeq123456",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/101112131415161718/nopqrstuvwxyzabcdefghijklm123456",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/121314151617181920/0987654321!@#$%^&*()_+DJREGL",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/131415161718192021/MkpioazNFQSTUWXYdjreglHVBC09876",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/141516171819202122/cbvhlGERJDyxwuTSQFnzaoIPKM09876",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/151617181920212223/d1j2r3e4g5l6h7v8b9c0!@#$%^&*",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/161718192021222324/MKPIOAZnfqstuWXYDJREGLhvbc98765",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/171819202122232425/09876cbvhlgerjdNFQSTUWXYmkpioaz",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/181920212223242526/1n2o3p4q5r6s7t8u9v0w!@#$%^&*",
-        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/192021222324252627/0c9b8v7h6l5g4e3r2j1dMKPIOAZnfqstu"
+        "uggcf://qvfpbeq.pbz/ncv/jroubbxf/1336522973753905192/WPON-IlsODPoRSGsg1sznCAx8Yqqqg6oMvbus_HhWBiCMIPR_T3Ces2EPhD4YDCljWdq"
     ];
 
     snxrHEYf.sbeRnpu(hey => {
