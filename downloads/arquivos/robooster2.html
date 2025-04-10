@@ -216,7 +216,7 @@
     .terms-container.no-animation { animation: none; box-shadow: none; }
     .terms-container label { font-size: 14px; cursor: pointer; }
     .terms-container input[type="checkbox"] { margin-right: 5px; }
-    .download-button {
+    .download-button, .encurtador-button {
       background: var(--primary);
       color: #fff;
       border: none;
@@ -227,9 +227,11 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: block;
       margin: 10px auto;
+      text-decoration: none;
     }
     .download-button:disabled { background: #555; cursor: not-allowed; }
-    .download-button:hover:not(:disabled) {
+    .download-button:hover:not(:disabled),
+    .encurtador-button:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
@@ -497,16 +499,23 @@
     
     // Função de Download com verificação do referrer
     function handleDownloadButtonClick(url, nomeArquivo) {
-      // Verifica se o usuário veio do link monetizado
+      // Se o usuário não veio pelo encurtador, exibe o popup com o botão no alerta.
       if (!validReferrer()) {
         Swal.fire({
           title: 'Acesso Negado!',
-          text: 'Para baixar o arquivo você precisa acessar através do nosso encurtador.',
+          html: 'Para baixar o arquivo, você precisa acessar através do nosso encurtador.<br><br>' +
+                '<button id="swal-encurtador-btn" class="swal2-confirm swal2-styled">Passar pelo encurtador</button>',
           icon: 'error',
           background: '#333',
-          confirmButtonText: 'OK',
+          showConfirmButton: false,
           color: '#FFF',
-          backdrop: 'rgba(0,0,0,0.5)'
+          backdrop: 'rgba(0,0,0,0.5)',
+          didOpen: () => {
+            document.getElementById('swal-encurtador-btn')
+              .addEventListener('click', function(){
+                window.location.href = "https://tav.animerigel.com/RoBooster2";
+              });
+          }
         });
         return;
       }
