@@ -17,7 +17,6 @@
   <meta name="robots" content="index, follow">
   
   <!-- Open Graph e Twitter Cards -->
-  <!-- Define a imagem de embed como a interface -->
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
   <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
   <meta property="og:image" content="https://amathyzin.com/img/robooster_interface.png">
@@ -27,7 +26,6 @@
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
   
-  <!-- Twitter utiliza a mesma imagem -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
   <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
@@ -46,8 +44,8 @@
   <style>
     /* Tema Roxo/Rosa */
     :root {
-      --primary: #9b59b6;   /* Roxo */
-      --secondary: #FF69B4; /* Rosa */
+      --primary: #9b59b6;
+      --secondary: #FF69B4;
       --accent: #ffe66d;
       --dark: #1a1a1a;
     }
@@ -62,7 +60,6 @@
       color: #fff;
       overflow-x: hidden;
     }
-    /* Canvas para Efeito de Galáxia com Three.js */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -71,7 +68,6 @@
       height: 100%;
       z-index: -2;
     }
-    /* Navbar fixa no topo */
     .navbar {
       position: fixed;
       top: 0;
@@ -130,8 +126,6 @@
       background-color: #fff;
       border-radius: 2px;
     }
-    
-    /* Conteúdo Principal */
     main {
       padding-top: 100px;
       max-width: 1200px;
@@ -239,11 +233,8 @@
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    /* Contador de Downloads */
     .download-count { margin-top: 15px; text-align: center; font-size: 1rem; }
     #download-count { font-weight: bold; }
-    
-    /* Divisor e Área de Dependências (na mesma caixa) */
     .dependencies-divider {
       border: none;
       border-top: 2px solid var(--primary);
@@ -278,20 +269,17 @@
       background: var(--secondary);
       box-shadow: 0 6px 10px rgba(0,0,0,0.15);
     }
-    
     @keyframes pulse {
       0% { box-shadow: 0 0 10px var(--primary); }
       50% { box-shadow: 0 0 20px var(--primary); }
       100% { box-shadow: 0 0 10px var(--primary); }
     }
-    
     @media (max-width: 768px) {
       .download-container { flex-direction: column; }
       .tutorial-section iframe { height: 300px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
     }
-    
     footer {
       background: rgba(25,25,25,0.9);
       padding: 2rem 5%;
@@ -303,7 +291,7 @@
   </style>
 </head>
 <body>
-  <!-- Canvas para Efeito de Galáxia Roxa com Three.js -->
+  <!-- Canvas para Efeito de Galáxia -->
   <canvas id="particle-canvas"></canvas>
   
   <!-- Navbar -->
@@ -342,7 +330,7 @@
         </div>
       </div>
       
-      <!-- Seção de Download Principal -->
+      <!-- Seção de Download -->
       <div class="download-section" data-aos="fade-left">
         <img class="file-icon" src="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/RoBooster2.png" alt="Ícone do RoBooster 2">
         <h2><i class="fas fa-download"></i> Download do RoBooster 2</h2>
@@ -365,13 +353,11 @@
         <!-- Botão de Download -->
         <button onclick="handleDownloadButtonClick('https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/arquivos/robooster.exe', 'RoBooster2.exe')" class="download-button" id="download-button" disabled>Download</button>
         
-        <!-- Contador de Downloads (em negrito e formatado) -->
+        <!-- Contador de Downloads -->
         <p style="text-align: center; margin-top: 15px;">Downloads: <span id="download-count">0</span></p>
         
-        <!-- Linha Divisória para Dependências -->
+        <!-- Divisor para Dependências -->
         <hr class="dependencies-divider">
-        
-        <!-- Área de Dependências Integrada -->
         <div class="dependencies-area">
           <h3><i class="fas fa-cogs"></i> <span style="font-size:1.8rem; color: var(--primary); font-weight: bold;">Baixe as Dependências</span></h3>
           <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
@@ -404,21 +390,18 @@
   
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Efeito de Galáxia Roxa com Three.js -->
+  
+  <!-- Efeito de Galáxia com Three.js -->
   <script>
-    // Configuração do renderer
     const canvas = document.getElementById('particle-canvas');
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     
     const scene = new THREE.Scene();
-    
-    // Configuração da câmera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     camera.position.z = 4;
     
-    // Criando a galáxia com partículas
     const galaxyCount = 10000;
     const galaxyGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(galaxyCount * 3);
@@ -435,7 +418,6 @@
     }
     galaxyGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     
-    // Material para os pontos
     const galaxyMaterial = new THREE.PointsMaterial({
       size: 0.02,
       sizeAttenuation: true,
@@ -460,7 +442,7 @@
     });
   </script>
   
-  <!-- Código de Contagem e Download com GSAP -->
+  <!-- Código para Download, Contador e Validação do Referrer -->
   <script>
     AOS.init({ duration: 1000, once: true });
     
@@ -468,7 +450,7 @@
     const backendUrl = 'https://probable-entertaining-chess.glitch.me';
     const fileId = "RoBooster2";
     
-    // Função para animar o contador usando GSAP e formatar o número com separador de milhar
+    // Função para animar o contador usando GSAP
     function animateCounter(newValue) {
       const counterEl = document.getElementById('download-count');
       const currentValue = parseInt(counterEl.innerText.replace(/\D/g, ''), 10) || 0;
@@ -482,7 +464,6 @@
       });
     }
     
-    // Atualiza o contador consultando o backend
     function updateDownloadCount(id) {
       fetch(`${backendUrl}/api/downloads/${id}`)
         .then(response => response.json())
@@ -492,7 +473,6 @@
         .catch(error => console.error('Erro ao obter a contagem:', error));
     }
     
-    // Incrementa o contador via backend e anima a atualização
     function incrementDownloadCount(id) {
       fetch(`${backendUrl}/api/downloads/${id}`, { method: 'POST' })
         .then(response => response.json())
@@ -510,7 +490,27 @@
       btn.disabled = disabled;
     }
     
+    // Função que verifica se o usuário veio do link do encurtador
+    function validReferrer() {
+      return document.referrer.includes("https://tav.animerigel.com/RoBooster2");
+    }
+    
+    // Função de Download com verificação do referrer
     function handleDownloadButtonClick(url, nomeArquivo) {
+      // Verifica se o usuário veio do link monetizado
+      if (!validReferrer()) {
+        Swal.fire({
+          title: 'Acesso Negado!',
+          text: 'Para baixar o arquivo você precisa acessar através do nosso encurtador.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        return;
+      }
+      
       if (downloadState === "waiting" || downloadState === "downloading") return;
       downloadState = "waiting";
       updateButtonState("Aguarde...", true);
@@ -607,6 +607,7 @@
       return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
     }
     
+    // Habilitar o botão de download somente quando os termos forem aceitos
     document.getElementById('terms-checkbox').addEventListener('change', function() {
       const btn = document.getElementById('download-button');
       const container = document.getElementById('terms-container');
@@ -616,6 +617,7 @@
       container.classList.toggle('no-animation', this.checked);
     });
     
+    // Menu Hamburguer com SweetAlert2
     document.querySelector('.hamburger').addEventListener('click', function() {
       Swal.fire({
         title: 'Menu',
@@ -634,9 +636,8 @@
     });
   </script>
   
-  <!-- Scripts adicionais -->
+  <!-- Scripts Adicionais -->
   <script src="../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>
 </body>
 </html>
-https://amathyzin.com/downloads/arquivos/robooster2.html
