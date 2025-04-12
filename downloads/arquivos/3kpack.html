@@ -189,7 +189,7 @@
     .download-section .file-icon {
       max-width: 200px;
       display: block;
-      margin: 0 auto 20px;
+      margin: 0 auto 20px auto;
     }
     /* Barra de progresso */
     .progress-bar-container {
@@ -429,7 +429,7 @@
     // Função para tratar o clique do botão de download
     function handleDownloadButtonClick(url, nomeArquivo) {
       if (downloadState === "waiting" || downloadState === "downloading") return;
-      // Se o download já foi concluído, podemos perguntar se deseja baixar novamente (opcional)
+      // Se o download já foi concluído, perguntamos se deseja baixar novamente
       if (downloadState === "complete") {
         Swal.fire({
           title: 'Confirmar Download',
@@ -541,9 +541,20 @@
       
       xhr.send();
     }
+    
+    // Evento que habilita o botão de download ao marcar os termos
+    document.addEventListener("DOMContentLoaded", function() {
+      const termsCheckbox = document.getElementById('terms-checkbox');
+      const downloadButton = document.getElementById('download-button');
+      
+      termsCheckbox.addEventListener('change', function() {
+        // O botão ficará habilitado apenas se o checkbox estiver marcado
+        downloadButton.disabled = !this.checked;
+      });
+    });
   </script>
   
-  <!-- Smooth-scroll (se houver) -->
+  <!-- Outras dependências -->
   <script src="../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>
 </body>
