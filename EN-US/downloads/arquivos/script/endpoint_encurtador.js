@@ -1,27 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("🔄 Script iniciado e DOM carregado.");
+  console.log("🔄 Script started and DOM loaded.");
 
-  const UMA_HORA = 60 * 60 * 1000;
-  const TEMPO_MINIMO = 20 * 1000;
+  const ONE_HOUR = 60 * 60 * 1000;
+  const MINIMUM_TIME = 20 * 1000;
 
-  const agora = Date.now();
-  const ultimoAcessoValido = localStorage.getItem("lastValidAccess");
-  const inicioEncurtador = localStorage.getItem("encStart");
+  const now = Date.now();
+  const lastValidAccess = localStorage.getItem("lastValidAccess");
+  const encStart = localStorage.getItem("encStart");
 
-  if (ultimoAcessoValido && agora - ultimoAcessoValido < UMA_HORA) {
-    const tempoRestante = UMA_HORA - (agora - ultimoAcessoValido);
-    console.log("✅ Acesso já liberado recentemente. Tempo restante até expirar:", Math.ceil(tempoRestante / 1000), "segundos");
+  if (lastValidAccess && now - lastValidAccess < ONE_HOUR) {
+    const remainingTime = ONE_HOUR - (now - lastValidAccess);
+    console.log("✅ Access already granted recently. Time remaining until expiration:", Math.ceil(remainingTime / 1000), "seconds");
     return;
   }
 
-  function mostrarPopupDePassagem() {
-    console.log("🛑 Mostrando popup para forçar passagem pelo encurtador.");
-    
+  function showBypassPopup() {
+    console.log("🛑 Showing popup to force shortlink pass-through.");
+
     Swal.fire({
-      title: "Acesso Restrito",
+      title: "Restricted Access",
       html: `
-        Para acessar o conteúdo, você precisa passar pelo encurtador.<br><br>
-        <button id="passarBtn" class="swal2-confirm swal2-styled">Passar pelo encurtador</button>
+        To access the content, you must go through the shortlink.<br><br>
+        <button id="passBtn" class="swal2-confirm swal2-styled">Go through shortlink</button>
       `,
       icon: "warning",
       showConfirmButton: false,
@@ -31,48 +31,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setTimeout(() => {
-      const botao = document.getElementById("passarBtn");
-      if (botao) {
-        botao.addEventListener("click", () => {
-          console.log("➡️ Usuário clicou para passar pelo encurtador.");
+      const button = document.getElementById("passBtn");
+      if (button) {
+        button.addEventListener("click", () => {
+          console.log("➡️ User clicked to pass through the shortlink.");
           localStorage.setItem("encStart", Date.now());
           window.location.href = "https://tav.animerigel.com/RoBooster2";
         });
       } else {
-        console.warn("⚠️ Botão de passar não encontrado.");
+        console.warn("⚠️ Pass button not found.");
       }
     }, 100);
   }
 
-  if (inicioEncurtador) {
-    const tempoDecorrido = agora - parseInt(inicioEncurtador, 10);
+  if (encStart) {
+    const timeElapsed = now - parseInt(encStart, 10);
 
-    console.log("⏱ Tempo desde o clique no encurtador:", Math.ceil(tempoDecorrido / 1000), "segundos");
+    console.log("⏱ Time since shortlink click:", Math.ceil(timeElapsed / 1000), "seconds");
 
-    if (tempoDecorrido < TEMPO_MINIMO) {
-      console.log("❌ Tempo insuficiente. Usuário voltou muito rápido.");
+    if (timeElapsed < MINIMUM_TIME) {
+      console.log("❌ Not enough time. User returned too quickly.");
       Swal.fire({
-        title: "Acesso Negado",
-        text: "Você voltou rápido demais. Tente novamente.",
+        title: "Access Denied",
+        text: "You returned too quickly. Please try again.",
         icon: "error",
         allowOutsideClick: false,
         allowEscapeKey: false,
-        confirmButtonText: "Tentar novamente",
+        confirmButtonText: "Try Again",
         backdrop: "rgba(0, 0, 0, 0.8)"
       }).then(() => {
-        console.log("🔁 Reiniciando fluxo de passagem.");
+        console.log("🔁 Restarting shortlink flow.");
         localStorage.removeItem("encStart");
-        mostrarPopupDePassagem();
+        showBypassPopup();
       });
 
       return;
     } else {
-      console.log("✅ Tempo mínimo cumprido. Acesso liberado.");
-      localStorage.setItem("lastValidAccess", agora);
+      console.log("✅ Minimum time met. Access granted.");
+      localStorage.setItem("lastValidAccess", now);
       localStorage.removeItem("encStart");
       return;
     }
   }
 
-  mostrarPopupDePassagem();
+  showBypassPopup();
 });

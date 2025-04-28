@@ -21,7 +21,6 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="aMathyzin">
   <meta property="og:locale" content="pt_BR">
-  <!-- <meta property="fb:app_id" content="SEU_FACEBOOK_APP_ID"> -->
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
@@ -235,6 +234,33 @@
       background: white;
       transition: all 0.3s ease;
     }
+    /* Search box */
+    .search-box {
+      position: relative;
+      margin-left: auto;
+    }
+    .search-box input {
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      width: 200px;
+      transition: width 0.3s ease;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .search-box input:focus {
+      width: 300px;
+      background: rgba(255,255,255,0.2);
+    }
+    .search-box #search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #fff;
+    }
     /* Seções de Downloads */
     section.download-section {
       padding: 5% 10%;
@@ -242,10 +268,7 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
-      text-align: left;
-      position: relative;
-      z-index: 1;
+      gap: 2rem
     }
     .download-section h2 {
       font-size: 2.5rem;
@@ -266,7 +289,6 @@
       border: none;
     }
     .download-buttons { margin-top: 1rem; }
-    .download-buttons .btn { display: inline-block; margin: 0.5rem; }
     /* Botões Centralizados */
     .btn {
       display: block;
@@ -382,39 +404,6 @@
       }
       .download-video iframe { height: 200px; }
     }
-    /* Popup para notificações (fixo) */
-    #popup-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 5000;
-    }
-    .popup {
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 1rem;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-    .popup.show { opacity: 1; }
-    .timer {
-      height: 4px;
-      background-color: green;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      animation: timerBar 3s linear forwards;
-    }
-    @keyframes timerBar {
-      from { width: 100%; }
-      to   { width: 0; }
-    }
   </style>
 </head>
 <body>
@@ -441,13 +430,17 @@
       </div>
       <ul class="nav-links">
         <li><a href="../index.html"><i class="fas fa-home"></i> Início</a></li>
-        <!-- Link de Downloads modificado -->
         <li><a href="https://amathyzin.com/downloads/arquivos.html" id="downloads-link"><i class="fas fa-download"></i> Downloads</a></li>
         <li><a href="../info/sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
         <li><a href="../redirects/github.html"><i class="fab fa-github"></i> GitHub</a></li>
         <li><a href="../redirects/discord.html"><i class="fab fa-discord"></i> Comunidade</a></li>
         <li><a href="../redirects/youtube.html"><i class="fab fa-youtube"></i> Vídeos</a></li>
       </ul>
+      <!-- Search box -->
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Pesquisar projetos..." />
+        <i class="fas fa-search" id="search-icon"></i>
+      </div>
     </nav>
   </header>
   
@@ -456,9 +449,7 @@
     <!-- Seção 1: aMathyBoost -->
     <section class="download-section" id="amathyboost">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> aMathyBoost <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> aMathyBoost <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Projeto criado por Memphis.</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=RzapmonmPp4" target="_blank" style="color: var(--primary);">Ver no Youtube</a></p>
         <div class="download-buttons">
@@ -470,13 +461,10 @@
         <iframe src="https://www.youtube.com/embed/RzapmonmPp4" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 2: RoBooster 2 -->
     <section class="download-section" id="robooster2">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> RoBooster 2 <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> RoBooster 2 <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Otimizador para melhorar o desempenho no Roblox, integrado ao BloxStrap.</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" style="color: var(--primary);">Ver no Youtube</a></p>
         <div class="download-buttons">
@@ -488,13 +476,10 @@
         <iframe src="https://www.youtube.com/embed/SEU_VIDEO_LINK_AQUI" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 3: Haunted! -->
     <section class="download-section" id="haunted">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Haunted! <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Haunted! <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Painel de Otimização Haunted Mathy</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=ciHfcpppItg" target="_blank" style="color: var(--primary);">Ver no Youtube</a></p>
         <p><strong>Haunted Optimizer by Miguelin</strong></p>
@@ -507,13 +492,10 @@
         <iframe src="https://www.youtube.com/embed/ciHfcpppItg" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 4: BatchClick Pack! -->
     <section class="download-section" id="batchclick">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> BatchClick Pack! <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> BatchClick Pack! <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Um pack de otimização com um estilo jamais antes visto!</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=iN5C3KDIGH8" target="_blank" style="color: var(--primary);">Ver no Youtube</a></p>
         <p><strong>BatchClick Pack</strong></p>
@@ -526,13 +508,10 @@
         <iframe src="https://www.youtube.com/embed/iN5C3KDIGH8" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 5: Minimal Optimizer! -->
     <section class="download-section" id="minimal">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Minimal Optimizer! <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Minimal Optimizer! <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Um Painel de Otimização Muito Eficiente!</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=GG9ORzRMSrc" target="_blank" style="color: var(--primary);">Ver no Youtube</a></p>
         <p><strong>Minimal Download</strong></p>
@@ -545,13 +524,10 @@
         <iframe src="https://www.youtube.com/embed/GG9ORzRMSrc" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 6: Pack especial de inscritos! -->
     <section class="download-section" id="especial">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Pack especial de inscritos! <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Pack especial de inscritos! <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Limpe e otimize seu sistema inteiro com esse pack super eficiente!</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=Pxcaxgx_j-0" target="_blank" style="color: var(--primary);">Ver no Youtube</a></p>
         <p><strong>aMathyzin 3k Pack</strong></p>
@@ -564,13 +540,10 @@
         <iframe src="https://www.youtube.com/embed/Pxcaxgx_j-0" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 7: FPSPack FirstBoost -->
     <section class="download-section" id="fpspack">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> FPSPack FirstBoost <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> FPSPack FirstBoost <i class="fas fa-feather-alt"></i></strong></h2>
         <p>FPSPack v3 FirstBoost</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=VADHdVQGWB4" target="_blank" style="color: var(--primary);">FPSPack FirstBoost</a></p>
         <p><strong>Área De Download:</strong></p>
@@ -582,13 +555,10 @@
         <iframe src="https://www.youtube.com/embed/VADHdVQGWB4" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 8: StorageClean HDD E SSD -->
     <section class="download-section" id="storageclean">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> StorageClean HDD E SSD <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> StorageClean HDD E SSD <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Limpe seu HDD/SSD de maneira PROFUNDA</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch/InodK7kHyGU" target="_blank" style="color: var(--primary);">Otimizar HDD ou SSD!</a></p>
         <p><strong>EM BREVE SERÁ REPOSTADO</strong></p>
@@ -601,13 +571,10 @@
         <iframe src="https://www.youtube.com/embed/InodK7kHyGU" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 9: Microsoft Store -->
     <section class="download-section" id="msstore">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Microsoft Store <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Microsoft Store <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Como RESOLVER DEFINITIVAMENTE Todos Os Erros da Microsoft Store</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=RKoig3Xp39c" target="_blank" style="color: var(--primary);">Microsoft Store</a></p>
         <p><strong>Área De Instalação:</strong></p>
@@ -621,13 +588,10 @@
         <iframe src="https://www.youtube.com/embed/RKoig3Xp39c" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 10: Xbox Cloud -->
     <section class="download-section" id="xboxcloud">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Xbox Cloud <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Xbox Cloud <i class="fas fa-feather-alt"></i></strong></h2>
         <p>XCloud com TECLADO + MOUSE - Gratis</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=s_1c6Hf5Ob4" target="_blank" style="color: var(--primary);">Xbox Cloud</a></p>
         <p><strong>Área De Instalação:</strong></p>
@@ -641,13 +605,10 @@
         <iframe src="https://www.youtube.com/embed/s_1c6Hf5Ob4" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 11: 2023 FPSPack V2 (Boost Pack) -->
     <section class="download-section" id="boostpack">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> 2023 FPSPack V2 <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> 2023 FPSPack V2 <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Aumente o MÁXIMO do SEU FPS em jogos (Boost Pack 2023)</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=XO1wqBFFDN8" target="_blank" style="color: var(--primary);">Storage Clean</a></p>
         <p><strong>Área De Instalação:</strong></p>
@@ -661,13 +622,10 @@
         <iframe src="https://www.youtube.com/embed/XO1wqBFFDN8" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 12: Otimização Máxima -->
     <section class="download-section" id="otimizacao">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Otimização Máxima <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Otimização Máxima <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Otimize seu PC SEM BAIXAR NADA *Máximo desempenho</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=0J4nhSur9DI" target="_blank" style="color: var(--primary);">Sem Baixar Nada</a></p>
         <p><strong>Área De Instalação:</strong></p>
@@ -679,13 +637,10 @@
         <iframe src="https://www.youtube.com/embed/0J4nhSur9DI" allow="compute-pressure" allowfullscreen></iframe>
       </div>
     </section>
-    
     <!-- Seção 13: Pack Mobile -->
     <section class="download-section" id="packmobile">
       <div class="download-text" data-aos="fade-right">
-        <h2>
-          <strong><i class="fas fa-feather-alt"></i> Pack Mobile <i class="fas fa-feather-alt"></i></strong>
-        </h2>
+        <h2><strong><i class="fas fa-feather-alt"></i> Pack Mobile <i class="fas fa-feather-alt"></i></strong></h2>
         <p>Como otimizar o celular para jogos em 2023 (Boost Pack Mobile)</p>
         <p><strong>Tutorial:</strong> <a href="https://www.youtube.com/watch?v=hGUIwqxcqN8" target="_blank" style="color: var(--primary);">Pack Mobile</a></p>
         <p><strong>Área De Instalação:</strong></p>
@@ -784,8 +739,41 @@
         }, 300);
       }, 3000);
     });
+
+    // Search functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const sections = Array.from(document.querySelectorAll('section.download-section'));
+      const index = sections.map(sec => ({
+        element: sec,
+        title: sec.querySelector('h2').innerText.trim().toLowerCase()
+      }));
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        const main = document.querySelector('main');
+        if (!query) {
+          sections.forEach(sec => {
+            sec.style.display = 'flex';
+            main.appendChild(sec);
+          });
+          return;
+        }
+        const matched = index.filter(item => item.title.includes(query));
+        matched.sort((a, b) => {
+          const aStarts = a.title.startsWith(query);
+          const bStarts = b.title.startsWith(query);
+          if (aStarts && !bStarts) return -1;
+          if (!aStarts && bStarts) return 1;
+          return a.title.localeCompare(b.title);
+        });
+        sections.forEach(sec => sec.style.display = 'none');
+        matched.forEach(item => {
+          item.element.style.display = 'flex';
+          main.appendChild(item.element);
+        });
+      });
+    });
   </script>
-  
   <!-- Seu próprio smooth-scroll.js (se houver) -->
   <script src="../scripts/smooth-scroll.js"></script>
   <script src="./script/nan.js"></script>

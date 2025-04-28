@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <!-- Apple Touch Icon & Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
   <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <title>RoBooster 2 - Download | aMathyzin</title>
-  <meta name="description" content="Baixe o RoBooster 2, o otimizador gratuito para Roblox que melhora o desempenho e a performance do seu PC, integrando ao BloxStrap.">
-  <meta name="keywords" content="RoBooster 2, download, otimização, Roblox, aMathyzin, BloxStrap, performance, gratuita">
+  <meta name="description" content="Download RoBooster 2, the free optimizer for Roblox that enhances your PC’s performance by integrating with BloxStrap.">
+  <meta name="keywords" content="RoBooster 2, download, optimization, Roblox, aMathyzin, BloxStrap, performance, free">
   <meta name="author" content="aMathyzin">
   <meta name="robots" content="index, follow">
   
   <meta property="og:title" content="RoBooster 2 - Download | aMathyzin">
-  <meta property="og:description" content="Baixe o RoBooster 2, a ferramenta gratuita de otimização para Roblox, e melhore o desempenho do jogo e do seu PC.">
+  <meta property="og:description" content="Download RoBooster 2, the free optimization tool for Roblox, and improve your game and PC performance.">
   <meta property="og:image" content="https://amathyzin.com/img/robooster_interface.png">
   <meta property="og:image:alt" content="RoBooster 2 Interface">
   <meta property="og:url" content="https://amathyzin.com/downloads/arquivos/robooster2.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="aMathyzin">
-  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale" content="en_US">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RoBooster 2 - Download | aMathyzin">
-  <meta name="twitter:description" content="Baixe gratuitamente o RoBooster 2 e otimize o desempenho do Roblox no seu PC.">
+  <meta name="twitter:description" content="Download RoBooster 2 for free and optimize the performance of Roblox on your PC.">
   <meta name="twitter:image" content="https://amathyzin.com/img/robooster_interface.png">
   <meta name="twitter:image:alt" content="RoBooster 2 Interface">
   <meta name="twitter:site" content="@amathyzin">
@@ -38,10 +39,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
   
   <style>
-    /* Tema Roxo/Rosa */
+    /* Purple/Pink Theme */
     :root {
-      --primary: #9b59b6;   /* Roxo */
-      --secondary: #FF69B4; /* Rosa */
+      --primary: #9b59b6;   /* Purple */
+      --secondary: #FF69B4; /* Pink */
       --accent: #ffe66d;
       --dark: #1a1a1a;
     }
@@ -56,7 +57,7 @@
       color: #fff;
       overflow-x: hidden;
     }
-    /* Canvas para Efeito de Galáxia com Three.js */
+    /* Canvas for Galaxy Effect with Three.js */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -65,7 +66,7 @@
       height: 100%;
       z-index: -2;
     }
-    /* Navbar fixa no topo */
+    /* Fixed Navbar at the Top */
     .navbar {
       position: fixed;
       top: 0;
@@ -125,7 +126,7 @@
       border-radius: 2px;
     }
     
-    /* Conteúdo Principal */
+    /* Main Content */
     main {
       padding-top: 100px;
       max-width: 1200px;
@@ -206,7 +207,7 @@
       margin-top: 5px;
     }
     .terms-container {
-      margin: 15px 0;
+      margin-top: 15px;
       text-align: center;
       padding: 10px;
       border: 1px solid var(--primary);
@@ -301,11 +302,11 @@
     <nav class="navbar" data-aos="fade-down">
       <div class="logo">aMathyzin</div>
       <ul class="nav-links">
-        <li><a href="../../index.html"><i class="fas fa-home"></i> Início</a></li>
-        <li><a href="../arquivos.html"><i class="fas fa-download"></i> Downloads</a></li>
-        <li><a href="../../info/sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+        <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="https://amathyzin.com/downloads/arquivos.html" id="downloads-link"><i class="fas fa-download"></i> Downloads</a></li>
+        <li><a href="../../info/sobre.html"><i class="fas fa-info-circle"></i> About</a></li>
         <li><a href="../../redirects/github.html" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-        <li><a href="../../redirects/discord.html" target="_blank"><i class="fab fa-discord"></i> Comunidade</a></li>
+        <li><a href="../../redirects/discord.html" target="_blank"><i class="fab fa-discord"></i> Community</a></li>
       </ul>
       <div class="hamburger">
         <span></span>
@@ -315,35 +316,36 @@
     </nav>
   </header>
   
+  <!-- Main Content: Downloads Sections -->
   <main>
     <section class="download-container">
       <div class="tutorial-section" data-aos="fade-right">
         <h2><i class="fas fa-video"></i> Tutorial</h2>
         <iframe src="https://drive.google.com/file/d/1biF5hgcND6I1r5Xg6lvW0Pm-TLqqMyNj/preview" allow="autoplay"></iframe>
         <div style="margin-top: 15px; background: rgba(0,0,0,0.8); border: 1px solid var(--primary); padding: 15px; border-radius: 5px;">
-          <h3 style="color: var(--primary);"><i class="fas fa-info-circle"></i> Sobre o RoBooster 2</h3>
-          <p>O RoBooster 2 é um otimizador desenvolvido para integrar ao BloxStrap e melhorar o desempenho no Roblox.</p>
-          <p>Baixe o BloxStrap oficial <a href="https://bloxstraplabs.com" target="_blank" style="color: var(--primary); text-decoration: underline;">aqui</a>.</p>
-          <p>Desenvolvido por aMathyzin. Licença: <a href="https://github.com/aMathyzin/RoBooster-2/blob/main/LICENCE" target="_blank" style="color: var(--primary); text-decoration: underline;">Proprietária</a>.</p>
-          <p style="color: var(--accent);"><i class="fas fa-exclamation-circle"></i> Todos os direitos reservados.</p>
-          <p style="color: #FFCC00;"><i class="fas fa-ban"></i> Ferramenta de acesso parcialmente gratuito – venda proibida.</p>
+          <h3 style="color: var(--primary);"><i class="fas fa-info-circle"></i> About RoBooster 2</h3>
+          <p>RoBooster 2 is an optimizer developed to integrate with BloxStrap and improve Roblox performance.</p>
+          <p>Download the official BloxStrap <a href="https://bloxstraplabs.com" target="_blank" style="color: var(--primary); text-decoration: underline;">here</a>.</p>
+          <p>Developed by aMathyzin. License: <a href="https://github.com/aMathyzin/RoBooster-2/blob/main/LICENCE" target="_blank" style="color: var(--primary); text-decoration: underline;">Proprietary</a>.</p>
+          <p style="color: var(--accent);"><i class="fas fa-exclamation-circle"></i> All rights reserved.</p>
+          <p style="color: #FFCC00;"><i class="fas fa-ban"></i> Partially free access tool – resale prohibited.</p>
         </div>
       </div>
       
       <div class="download-section" data-aos="fade-left">
-        <img class="file-icon" src="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/RoBooster2.png" alt="Ícone do RoBooster 2">
-        <h2><i class="fas fa-download"></i> Download do RoBooster 2</h2>
+        <img class="file-icon" src="https://raw.githubusercontent.com/aMathyzin/aMathyzin/refs/heads/main/downloads/icons/RoBooster2.png" alt="RoBooster 2 Icon">
+        <h2><i class="fas fa-download"></i> Download RoBooster 2</h2>
         <p style="margin-bottom: 15px; text-align:center;">RoBooster.exe - 95.08 MB</p>
         
         <div class="progress-bar-container">
           <div class="progress-bar" id="progress-bar"></div>
           <div class="progress-text" id="progress-text">0%</div>
         </div>
-        <div class="progress-indicator" id="progress-indicator">0 KB de 95.08 MB</div>
+        <div class="progress-indicator" id="progress-indicator">0 KB of 95.08 MB</div>
         
         <div class="terms-container" id="terms-container">
           <label>
-            <input type="checkbox" id="terms-checkbox"> Eu aceito os <a href="../../juridico/termos.html" target="_blank" style="color: var(--primary); text-decoration: underline;">Termos de Serviço</a>
+            <input type="checkbox" id="terms-checkbox"> I accept the <a href="../../juridico/termos.html" target="_blank" style="color: var(--primary); text-decoration: underline;">Terms of Service</a>
           </label>
         </div>
         
@@ -354,7 +356,7 @@
         <hr class="dependencies-divider">
         
         <div class="dependencies-area">
-          <h3><i class="fas fa-cogs"></i> <span style="font-size:1.8rem; color: var(--primary); font-weight: bold;">Baixe as Dependências</span></h3>
+          <h3><i class="fas fa-cogs"></i> <span style="font-size:1.8rem; color: var(--primary); font-weight: bold;">Download Dependencies</span></h3>
           <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
             <a href="https://bloxstraplabs.com/" target="_blank" class="dep-button">
               <i class="fas fa-download"></i> BloxStrap
@@ -376,14 +378,49 @@
       <a href="../../redirects/youtube.html" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
     </div>
     <div class="footer-links" data-aos="fade-up" style="margin-bottom: 1rem;">
-      <a href="../../juridico/termos.html" target="_blank">Termos de Serviço</a> | 
-      <a href="../../juridico/privacy.html" target="_blank">Política de Privacidade</a>
+      <a href="../../juridico/termos.html" target="_blank">Terms of Service</a> | 
+      <a href="../../juridico/privacy.html" target="_blank">Privacy Policy</a>
     </div>
-    <p>&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
+    <p>&copy; 2025 aMathyzin. All rights reserved.</p>
   </footer>
   
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({ duration: 1000, once: true, easing: 'ease-in-out-quad' });
+    
+    // GSAP Animations for Navbar
+    gsap.from('.logo', { duration: 1, opacity: 0, y: -50 });
+    gsap.from('.nav-links a', {
+      duration: 1,
+      opacity: 0,
+      y: -20,
+      stagger: 0.2,
+      delay: 0.5
+    });
+    
+    // Hamburger click event with SweetAlert2 menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      Swal.fire({
+        title: 'Menu',
+        html: `
+          <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+            <a href="../../index.html" style="color: var(--primary); text-decoration: none;"><i class="fas fa-home"></i> Home</a>
+            <a href="../arquivos.html" style="color: var(--primary); text-decoration: none;"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../../info/sobre.html" style="color: var(--primary); text-decoration: none;"><i class="fas fa-info-circle"></i> About</a>
+            <a href="../../redirects/discord.html" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fab fa-discord"></i> Discord</a>
+          </div>
+        `,
+        showConfirmButton: false,
+        background: '#333',
+        color: '#FFF'
+      });
+      navLinks.classList.toggle('active');
+    });
+    
+    // Galaxy Effect using Three.js
     const canvas = document.getElementById('particle-canvas');
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -391,7 +428,7 @@
     
     const scene = new THREE.Scene();
     
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 4;
     
     const galaxyCount = 10000;
@@ -432,11 +469,8 @@
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
     });
-  </script>
-  
-  <script>
-    AOS.init({ duration: 1000, once: true });
     
+    // Download functionality
     let downloadState = "idle";
     const backendUrl = 'https://probable-entertaining-chess.glitch.me';
     const fileId = "RoBooster2";
@@ -448,7 +482,7 @@
         duration: 1,
         value: newValue,
         onUpdate: function() {
-          counterEl.innerText = Math.floor(this.targets()[0].value).toLocaleString('pt-BR');
+          counterEl.innerText = Math.floor(this.targets()[0].value).toLocaleString('en-US');
         },
         ease: "power1.out"
       });
@@ -460,7 +494,7 @@
         .then(data => {
           animateCounter(data.count);
         })
-        .catch(error => console.error('Erro ao obter a contagem:', error));
+        .catch(error => console.error('Error fetching count:', error));
     }
     
     function incrementDownloadCount(id) {
@@ -469,7 +503,7 @@
         .then(data => {
           animateCounter(data.count);
         })
-        .catch(error => console.error('Erro ao incrementar a contagem:', error));
+        .catch(error => console.error('Error incrementing count:', error));
     }
     
     updateDownloadCount(fileId);
@@ -480,14 +514,14 @@
       btn.disabled = disabled;
     }
     
-    function handleDownloadButtonClick(url, nomeArquivo) {
+    function handleDownloadButtonClick(url, fileName) {
       if (downloadState === "waiting" || downloadState === "downloading") return;
       downloadState = "waiting";
-      updateButtonState("Aguarde...", true);
-      iniciarDownload(url, nomeArquivo);
+      updateButtonState("Please wait...", true);
+      iniciarDownload(url, fileName);
     }
     
-    function iniciarDownload(url, nomeArquivo) {
+    function iniciarDownload(url, fileName) {
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'blob';
@@ -495,7 +529,7 @@
       xhr.onloadstart = function() {
         document.getElementById('progress-bar').style.width = '0%';
         document.getElementById('progress-text').innerText = '0%';
-        document.getElementById('progress-indicator').innerText = '0 KB de 95.08 MB';
+        document.getElementById('progress-indicator').innerText = '0 KB of 95.08 MB';
       };
       
       xhr.onprogress = function(event) {
@@ -503,10 +537,10 @@
           let percent = (event.loaded / event.total) * 100;
           document.getElementById('progress-bar').style.width = percent + '%';
           document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
-          document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
+          document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' of ' + formatFileSize(event.total);
           if (downloadState === "waiting") {
             downloadState = "downloading";
-            updateButtonState("Download Iniciado", true);
+            updateButtonState("Download Started", true);
           }
         }
       };
@@ -520,17 +554,17 @@
             const downloadUrl = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = downloadUrl;
-            a.download = nomeArquivo;
+            a.download = fileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(downloadUrl);
-            updateButtonState("Download Completo", false);
+            updateButtonState("Download Complete", false);
             downloadState = "complete";
             incrementDownloadCount(fileId);
             Swal.fire({
-              title: 'Download Concluído!',
-              text: 'Seu arquivo foi baixado com sucesso.',
+              title: 'Download Completed!',
+              text: 'Your file has been successfully downloaded.',
               icon: 'success',
               background: '#333',
               confirmButtonText: 'OK',
@@ -540,8 +574,8 @@
           }, 500);
         } else {
           Swal.fire({
-            title: 'Erro no Download!',
-            text: 'Não foi possível baixar o arquivo. Tente novamente mais tarde.',
+            title: 'Download Error!',
+            text: 'Unable to download the file. Please try again later.',
             icon: 'error',
             background: '#333',
             confirmButtonText: 'OK',
@@ -555,8 +589,8 @@
       
       xhr.onerror = function() {
         Swal.fire({
-          title: 'Erro no Download!',
-          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          title: 'Download Error!',
+          text: 'An error occurred during the download. Please try again later.',
           icon: 'error',
           background: '#333',
           confirmButtonText: 'OK',
@@ -586,21 +620,25 @@
       container.classList.toggle('no-animation', this.checked);
     });
     
-    document.querySelector('.hamburger').addEventListener('click', function() {
-      Swal.fire({
-        title: 'Menu',
-        html: `
-          <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
-            <a href="../../index.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-home"></i> Início</a>
-            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-download"></i> Downloads</a>
-            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-info-circle"></i> Sobre</a>
-            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-discord"></i> Discord</a>
-          </div>
-        `,
-        showConfirmButton: false,
-        background: '#333',
-        color: '#FFF'
-      });
+    // Popup for notifications when clicking on "Downloads"
+    const downloadsLink = document.getElementById("downloads-link");
+    downloadsLink.addEventListener("click", function(event) {
+      event.preventDefault();
+      
+      const popup = document.createElement("div");
+      popup.className = "popup";
+      popup.textContent = "You are already here!";
+      
+      const timerDiv = document.createElement("div");
+      timerDiv.className = "timer";
+      popup.appendChild(timerDiv);
+      
+      document.getElementById("popup-container").appendChild(popup);
+      setTimeout(() => popup.classList.add("show"), 10);
+      setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => { if (popup.parentNode) { popup.parentNode.removeChild(popup); } }, 300);
+      }, 3000);
     });
   </script>
   
