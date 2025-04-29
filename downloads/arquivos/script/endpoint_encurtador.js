@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         botao.addEventListener("click", () => {
           console.log("➡️ Usuário clicou para passar pelo encurtador.");
           localStorage.setItem("encStart", Date.now());
-          window.location.href = "https://tav.animerigel.com/RoBooster2";
+          window.location.href = "https://fir3.net/RoBooster2";
         });
       } else {
         console.warn("⚠️ Botão de passar não encontrado.");
