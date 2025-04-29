@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
           console.log("➡️ User clicked to pass through the shortlink.");
           localStorage.setItem("encStart", Date.now());
-          window.location.href = "https://tav.animerigel.com/RoBooster2";
+          window.location.href = "https://fir3.net/RoBooster-2-English";
         });
       } else {
         console.warn("⚠️ Pass button not found.");
