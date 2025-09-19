@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark light;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+}
+
+a {
+  @apply underline-offset-4 transition-colors;
+}
+
+::selection {
+  background-color: rgba(99, 102, 241, 0.35);
+  color: #fff;
+}
+
+.gradient-grid {
+  background-image: radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.18), transparent 55%),
+    radial-gradient(circle at 75% 25%, rgba(236, 72, 153, 0.18), transparent 55%),
+    radial-gradient(circle at 50% 75%, rgba(14, 165, 233, 0.16), transparent 60%);
+}
+
+.blur-glow {
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.mask-gradient {
+  mask-image: radial-gradient(circle at center, black, transparent 70%);
+}
