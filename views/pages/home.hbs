@@ -1,0 +1,92 @@
+<section class="section-card">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge">
+        <i class="fa-solid fa-bolt"></i>
+        {{hero.eyebrow}}
+      </span>
+      <h1 class="hero-title">{{hero.title}}</h1>
+      <p class="hero-subtitle">{{hero.subtitle}}</p>
+      <div class="hero-actions">
+        <a class="pill-button" href="{{hero.ctaPrimary.href}}">{{hero.ctaPrimary.label}}</a>
+        <a class="pill-button" style="background:rgba(255,255,255,0.08);border:1px solid var(--border);color:var(--muted);box-shadow:none" href="{{hero.ctaSecondary.href}}">
+          {{hero.ctaSecondary.label}}
+        </a>
+      </div>
+      <ul class="hero-highlights">
+        {{#each hero.highlights}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="section-card" style="background:rgba(14,16,22,0.9);box-shadow:var(--shadow-soft);">
+      <h2 class="section-title">{{spotlight.title}}</h2>
+      <p style="color:var(--muted);margin-bottom:18px;">{{spotlight.description}}</p>
+      <div class="projects-grid">
+        {{#each spotlight.items}}
+          <article class="project-card">
+            <span class="badge">{{badge}}</span>
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+            <a class="pill-button" style="align-self:flex-start;padding:10px 18px;" href="{{href}}">
+              {{#if ../locale}}{{#if (eq ../locale 'en')}}View project{{else}}Ver projeto{{/if}}{{else}}Ver projeto{{/if}}
+            </a>
+          </article>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-card">
+  <h2 class="section-title">{{#if (eq locale 'en')}}Why it works{{else}}Por que funciona{{/if}}</h2>
+  <div class="feature-grid">
+    {{#each features}}
+      <article class="feature-card">
+        <i class="fa-solid {{icon}}"></i>
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </article>
+    {{/each}}
+  </div>
+</section>
+
+<section class="section-card">
+  <h2 class="section-title">{{#if (eq locale 'en')}}Three-step onboarding{{else}}Três passos para começar{{/if}}</h2>
+  <div class="steps-grid">
+    {{#each steps}}
+      <article class="step-card">
+        <strong>{{plus @index 1}}</strong>
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </article>
+    {{/each}}
+  </div>
+</section>
+
+<section class="section-card">
+  <h2 class="section-title">{{#if (eq locale 'en')}}What the community says{{else}}O que a comunidade diz{{/if}}</h2>
+  <div class="testimonials">
+    {{#each testimonials}}
+      <blockquote class="testimonial-card">
+        <p>“{{quote}}”</p>
+        <cite>{{author}} — {{role}}</cite>
+      </blockquote>
+    {{/each}}
+  </div>
+</section>
+
+<section class="section-card">
+  <div class="community-cta">
+    <div>
+      <h2 class="section-title">{{communityCta.title}}</h2>
+      <p style="color:var(--muted);margin-bottom:18px;">{{communityCta.description}}</p>
+      <div class="cta-buttons">
+        {{#each communityCta.buttons}}
+          <a class="pill-button" href="{{href}}">{{label}}</a>
+        {{/each}}
+      </div>
+    </div>
+    <div class="community-visual"></div>
+  </div>
+</section>

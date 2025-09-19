@@ -1,0 +1,25 @@
+<section class="section-card">
+  <h1 class="section-title">{{title}}</h1>
+  <p style="color:var(--muted);">{{description}}</p>
+</section>
+
+<section class="section-card" style="padding:0;overflow:hidden;">
+  <div class="game-shell">
+    <div id="overlay">
+      <button id="playBtn">Play</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="restartBtn">Restart</button>
+      <div id="status">Status: Stopped</div>
+      <div id="info">Time: 0.0 s | XP: 0</div>
+    </div>
+    <div id="recordScreen">
+      <h1>Record!</h1>
+      <div id="recordText"></div>
+      <button id="restartGameBtn">Play again</button>
+    </div>
+    <canvas id="game-canvas"></canvas>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="/static/scripts/game.js"></script>
