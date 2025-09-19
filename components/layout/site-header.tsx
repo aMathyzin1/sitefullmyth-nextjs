@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { Menu, X } from 'lucide-react';
+import { List, X } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -45,10 +45,10 @@ export function SiteHeader({ locale, navigation }: SiteHeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-white/5 bg-slate-950/60 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
         <Link href={logoHref} className="group inline-flex items-center gap-2">
-          <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-indigo-500 text-lg font-bold text-white shadow-lg shadow-brand-500/30 transition-transform group-hover:scale-105">
+          <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-sky-500 text-lg font-bold text-white shadow-lg shadow-brand-500/30 transition-transform group-hover:scale-105">
             aM
           </span>
           <span className="text-left text-sm font-semibold text-white">
@@ -64,16 +64,16 @@ export function SiteHeader({ locale, navigation }: SiteHeaderProps) {
           <button
             type="button"
             onClick={() => setOpen((state) => !state)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-white/30 hover:bg-white/10 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-brand-300/50 hover:bg-white/10 md:hidden"
             aria-label="Abrir menu"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X weight="bold" className="h-5 w-5" aria-hidden /> : <List weight="bold" className="h-5 w-5" aria-hidden />}
           </button>
         </div>
       </div>
       {open ? (
         <div className="md:hidden">
-          <div className="mx-4 mb-4 rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-brand-500/10">
+          <div className="mx-4 mb-4 rounded-3xl border border-white/10 bg-slate-950/80 p-4 shadow-xl shadow-brand-500/10">
             <nav className="flex flex-col gap-2">
               {navigation.map(renderLink)}
             </nav>

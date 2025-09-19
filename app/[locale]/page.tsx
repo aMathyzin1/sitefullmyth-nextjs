@@ -12,7 +12,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <div className="space-y-10">
       <HeroSection content={dictionary.home.hero} locale={dictionary.locale} />
-      <FeaturesSection features={dictionary.home.features} />
+      <FeaturesSection features={dictionary.home.features} locale={dictionary.locale} />
       <StepsSection steps={dictionary.home.steps} locale={dictionary.locale} />
       <SpotlightSection spotlight={dictionary.home.spotlight} locale={dictionary.locale} />
       <TestimonialsSection testimonials={dictionary.home.testimonials} locale={dictionary.locale} />
