@@ -1,0 +1,38 @@
+<section class="section-card about-grid">
+  <header>
+    <h1 class="section-title">{{title}}</h1>
+    <p style="color:var(--muted);font-size:1.05rem;">{{intro}}</p>
+  </header>
+  <section>
+    <h2 class="section-title">{{#if (eq locale 'en')}}Mission{{else}}Missão{{/if}}</h2>
+    <p style="color:var(--muted);">{{mission}}</p>
+  </section>
+  {{#each sections}}
+    <section>
+      <h2 class="section-title">{{heading}}</h2>
+      {{#each body}}
+        <p style="color:var(--muted);margin-bottom:12px;">{{this}}</p>
+      {{/each}}
+    </section>
+  {{/each}}
+  <section class="section-card" style="background:rgba(18,20,26,0.95);border-radius:var(--radius-lg);">
+    <h2 class="section-title">{{timeline.title}}</h2>
+    <div class="timeline">
+      {{#each timeline.items}}
+        <div class="timeline-item">
+          <strong>{{year}}</strong>
+          <p style="color:var(--muted);">{{description}}</p>
+        </div>
+      {{/each}}
+    </div>
+  </section>
+  <section class="section-card" style="background:rgba(18,20,26,0.95);border-radius:var(--radius-lg);">
+    <h2 class="section-title">{{contactCta.title}}</h2>
+    <p style="color:var(--muted);margin-bottom:18px;">{{contactCta.description}}</p>
+    <div class="cta-buttons">
+      {{#each contactCta.actions}}
+        <a class="pill-button" href="{{href}}">{{label}}</a>
+      {{/each}}
+    </div>
+  </section>
+</section>

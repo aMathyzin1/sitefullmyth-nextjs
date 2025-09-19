@@ -1,0 +1,33 @@
+<section class="section-card">
+  <h1 class="section-title">{{title}}</h1>
+  <p style="color:var(--muted);margin-bottom:24px;">{{description}}</p>
+  <div class="feature-grid">
+    {{#each categories}}
+      <article class="feature-card">
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </article>
+    {{/each}}
+  </div>
+</section>
+
+<section class="section-card download-list">
+  {{#each items}}
+    <article class="download-card">
+      <header>
+        <div class="download-meta">
+          <span class="badge-neutral"><i class="fa-solid fa-tag"></i>{{name}}</span>
+          <span class="badge-neutral"><i class="fa-solid fa-globe"></i>{{#if (eq ../locale 'en')}}{{seo.title}}{{else}}{{seo.title}}{{/if}}</span>
+        </div>
+        <h3>{{name}}</h3>
+        <p style="color:var(--muted);">{{tagline}}</p>
+      </header>
+      <div class="list-grid">
+        {{#each highlights}}
+          <li>{{this}}</li>
+        {{/each}}
+      </div>
+      <a class="pill-button" href="{{../downloadBase}}/{{slug}}">{{#if (eq ../../locale 'en')}}View details{{else}}Ver detalhes{{/if}}</a>
+    </article>
+  {{/each}}
+</section>
